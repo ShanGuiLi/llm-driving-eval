@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# environments
+.env
+.venv
+
+# models (非常大)
+models/
+
+# datasets
+data/raw_videos/
+data/tmp_frames/
+
+# evaluation outputs
+data/eval_results/
+
+# notebooks checkpoints
+.ipynb_checkpoints/
+
+# logs
+*.log
+
+# vscode
+.vscode/
+
+# pytorch
+*.pt
+*.pth
+*.bin
+*.safetensors
