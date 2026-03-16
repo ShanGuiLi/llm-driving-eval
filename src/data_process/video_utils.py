@@ -1,76 +1,127 @@
 import os
 from typing import List
 
-import cv2
+import imageio.v2 as imageio
+import numpy as np
+from PIL import Image
 
 
-def _resize_to_qwen25vl_safe(frame, max_side: int = 672):
+def _align_to_multiple(value: int, base: int = 28, min_value: int = 28) -> int:
+    aligned_value = max(min_value, (value // base) * base)
+    return aligned_value
+
+
+def _resize_to_qwen25vl_safe(frame_array: np.ndarray, max_side: int = 672) -> Image.Image:
     """
-    把图像缩放到较安全的尺寸，并对齐到 28 的倍数。
-    qwen2.5vl 在 Ollama 里对图像尺寸比较敏感。
+    Resize the frame to a safer size for Qwen2.5-VL and align width and height
+    to multiples of 28.
     """
-    h, w = frame.shape[:2]
+    if frame_array.ndim == 2:
+        image = Image.fromarray(frame_array).convert("RGB")
+    elif frame_array.ndim == 3:
+        if frame_array.shape[2] == 4:
+            image = Image.fromarray(frame_array).convert("RGB")
+        else:
+            image = Image.fromarray(frame_array[:, :, :3]).convert("RGB")
+    else:
+        raise ValueError(f"Unsupported frame shape: {frame_array.shape}")
 
-    # 按最长边缩放
-    scale = min(max_side / max(h, w), 1.0)
-    new_w = int(w * scale)
-    new_h = int(h * scale)
+    width, height = image.size
 
-    # 对齐到 28 的倍数，且至少 28
-    new_w = max(28, (new_w // 28) * 28)
-    new_h = max(28, (new_h // 28) * 28)
+    scale = min(max_side / max(width, height), 1.0)
+    new_width = int(width * scale)
+    new_height = int(height * scale)
 
-    resized = cv2.resize(frame, (new_w, new_h), interpolation=cv2.INTER_AREA)
-    return resized
+    new_width = _align_to_multiple(new_width, base=28, min_value=28)
+    new_height = _align_to_multiple(new_height, base=28, min_value=28)
+
+    resized_image = image.resize((new_width, new_height), Image.Resampling.LANCZOS)
+    return resized_image
+
+
+def _get_total_frames(reader, video_path: str) -> int:
+    """
+    Try to get total frame count from the reader. Fall back to metadata if needed.
+    """
+    try:
+        total_frames = reader.count_frames()
+        if total_frames and total_frames > 0:
+            return int(total_frames)
+    except Exception:
+        pass
+
+    try:
+        metadata = reader.get_meta_data()
+        total_frames = metadata.get("nframes", 0)
+        if total_frames and total_frames > 0 and total_frames != float("inf"):
+            return int(total_frames)
+    except Exception:
+        pass
+
+    raise ValueError(f"Cannot determine total frame count: {video_path}")
+
+
+def _build_frame_indices(total_frames: int, num_frames: int) -> List[int]:
+    if total_frames <= 0:
+        raise ValueError("Total frame count must be positive")
+
+    if num_frames <= 0:
+        raise ValueError("num_frames must be positive")
+
+    if num_frames == 1:
+        return [total_frames // 2]
+
+    indices = [
+        int(i * (total_frames - 1) / (num_frames - 1))
+        for i in range(num_frames)
+    ]
+
+    unique_indices = []
+    visited = set()
+    for index in indices:
+        if index not in visited:
+            visited.add(index)
+            unique_indices.append(index)
+
+    return unique_indices
 
 
 def extract_key_frames(
     video_path: str,
     output_dir: str,
-    num_frames: int = 6
+    num_frames: int = 16
 ) -> List[str]:
     os.makedirs(output_dir, exist_ok=True)
 
-    cap = cv2.VideoCapture(video_path)
-    if not cap.isOpened():
-        raise ValueError(f"Cannot open video: {video_path}")
+    if not os.path.exists(video_path):
+        raise FileNotFoundError(f"Video file not found: {video_path}")
 
-    total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-    if total_frames <= 0:
-        cap.release()
-        raise ValueError(f"Invalid total frame count: {video_path}")
+    reader = None
+    try:
+        reader = imageio.get_reader(video_path, format="ffmpeg")
+        total_frames = _get_total_frames(reader, video_path)
+        frame_indices = _build_frame_indices(total_frames, num_frames)
 
-    if num_frames == 1:
-        indices = [total_frames // 2]
-    else:
-        indices = [
-            int(i * (total_frames - 1) / (num_frames - 1))
-            for i in range(num_frames)
-        ]
+        frame_paths: List[str] = []
 
-    frame_paths = []
-    saved = set()
+        for frame_index in frame_indices:
+            try:
+                frame_array = reader.get_data(frame_index)
+            except Exception:
+                continue
 
-    for idx in indices:
-        if idx in saved:
-            continue
-        saved.add(idx)
+            resized_image = _resize_to_qwen25vl_safe(frame_array, max_side=672)
 
-        cap.set(cv2.CAP_PROP_POS_FRAMES, idx)
-        ok, frame = cap.read()
-        if not ok or frame is None:
-            continue
+            frame_name = f"frame_{frame_index:06d}.jpg"
+            frame_path = os.path.join(output_dir, frame_name)
+            resized_image.save(frame_path, format="JPEG", quality=95)
+            frame_paths.append(frame_path)
 
-        frame = _resize_to_qwen25vl_safe(frame, max_side=672)
+        if not frame_paths:
+            raise ValueError(f"No frames extracted from video: {video_path}")
 
-        frame_name = f"frame_{idx:06d}.jpg"
-        frame_path = os.path.join(output_dir, frame_name)
-        cv2.imwrite(frame_path, frame, [cv2.IMWRITE_JPEG_QUALITY, 95])
-        frame_paths.append(frame_path)
+        return frame_paths
 
-    cap.release()
-
-    if not frame_paths:
-        raise ValueError(f"No frames extracted from video: {video_path}")
-
-    return frame_paths
+    finally:
+        if reader is not None:
+            reader.close()

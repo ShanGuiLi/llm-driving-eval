@@ -1,9 +1,17 @@
 import json
 import os
 import re
-from typing import Any, Dict
+from pathlib import Path
+from typing import Any, Dict, List
 
-from ollama import chat
+import torch
+from transformers import (
+    AutoModelForCausalLM,
+    AutoProcessor,
+    AutoTokenizer,
+    Qwen2_5_VLForConditionalGeneration,
+)
+from qwen_vl_utils import process_vision_info
 
 from src.config.qwen25_env import (
     LOCAL_LLM_MODEL,
@@ -13,58 +21,67 @@ from src.config.qwen25_env import (
 )
 from src.config.llm_prompt import DRIVING_SAFETY_EVAL_PROMPT
 from src.config.vlm_prompt import VIDEO_DESCRIPTION_PROMPT
-from src.llm_eval.video_utils import extract_key_frames
 
 
 class LLMDrivingEvaluator:
     def __init__(self) -> None:
-        self.vlm_model = LOCAL_VLM_MODEL
-        self.llm_model = LOCAL_LLM_MODEL
+        self.project_root = Path(PROJECT_ROOT)
+        self.vlm_model_path = self._resolve_model_path(LOCAL_VLM_MODEL)
+        self.llm_model_path = self._resolve_model_path(LOCAL_LLM_MODEL)
 
-    def generate_video_description_with_vlm(self, video_path: str) -> str:
-        video_name = os.path.basename(video_path)
-        frame_dir = os.path.join(
-            PROJECT_ROOT,
-            "data",
-            "tmp_frames",
-            os.path.splitext(video_name)[0]
+        self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        self.model_dtype = self._get_torch_dtype()
+
+        print(f"当前设备: {self.device}")
+        print(f"当前精度: {self.model_dtype}")
+        print(f"VLM模型目录: {self.vlm_model_path}")
+        print(f"LLM模型目录: {self.llm_model_path}")
+
+        self.vlm_processor = AutoProcessor.from_pretrained(
+            self.vlm_model_path,
+            trust_remote_code=True
         )
-
-        frame_paths = extract_key_frames(
-            video_path=video_path,
-            output_dir=frame_dir,
-            num_frames=6
+        self.vlm_model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
+            self.vlm_model_path,
+            torch_dtype=self.model_dtype,
+            device_map="auto" if self.device == "cuda" else None,
+            trust_remote_code=True
         )
+        if self.device != "cuda":
+            self.vlm_model.to(self.device)
+        self.vlm_model.eval()
 
-        print("抽取到的关键帧：")
-        for p in frame_paths:
-            print(" -", p, os.path.exists(p))
-
-        prompt_text = VIDEO_DESCRIPTION_PROMPT.substitute(video_id=video_name)
-
-        # 先只喂最后一帧，验证模型稳定性
-        selected_frames = frame_paths
-        print("当前送入VLM的图片：", selected_frames)
-
-        response = chat(
-            model=self.vlm_model,
-            messages=[
-                {
-                    "role": "user",
-                    "content": prompt_text,
-                    "images": selected_frames
-                }
-            ],
-            options={"temperature": 0}
+        self.llm_tokenizer = AutoTokenizer.from_pretrained(
+            self.llm_model_path,
+            trust_remote_code=True
         )
+        self.llm_model = AutoModelForCausalLM.from_pretrained(
+            self.llm_model_path,
+            torch_dtype=self.model_dtype,
+            device_map="auto" if self.device == "cuda" else None,
+            trust_remote_code=True
+        )
+        if self.device != "cuda":
+            self.llm_model.to(self.device)
+        self.llm_model.eval()
 
-        desc = response.message.content.strip()
+    @staticmethod
+    def _resolve_model_path(model_path_or_name: str) -> str:
+        input_path = Path(model_path_or_name)
+        if input_path.exists():
+            return str(input_path.resolve())
 
-        bad_tokens = ["addCriterion", "<|im_start|>", "自动生成"]
-        if any(tok in desc for tok in bad_tokens):
-            raise ValueError(f"VLM description looks corrupted: {desc[:300]}")
+        fallback_path = Path("src/models") / model_path_or_name
+        if fallback_path.exists():
+            return str(fallback_path.resolve())
 
-        return desc
+        raise FileNotFoundError(f"Model directory not found: {model_path_or_name}")
+
+    @staticmethod
+    def _get_torch_dtype():
+        if torch.cuda.is_available():
+            return torch.float16
+        return torch.float32
 
     @staticmethod
     def _extract_json_text(text: str) -> str:
@@ -76,18 +93,18 @@ class LLMDrivingEvaluator:
         if text.startswith("{") and text.endswith("}"):
             return text
 
-        fence_match = re.search(
+        fenced_match = re.search(
             r"```(?:json)?\s*(\{.*\})\s*```",
             text,
             flags=re.DOTALL
         )
-        if fence_match:
-            return fence_match.group(1).strip()
+        if fenced_match:
+            return fenced_match.group(1).strip()
 
-        start = text.find("{")
-        end = text.rfind("}")
-        if start != -1 and end != -1 and start < end:
-            return text[start:end + 1].strip()
+        start_index = text.find("{")
+        end_index = text.rfind("}")
+        if start_index != -1 and end_index != -1 and start_index < end_index:
+            return text[start_index:end_index + 1].strip()
 
         raise ValueError(f"Cannot extract JSON from model output: {text[:300]}")
 
@@ -98,10 +115,10 @@ class LLMDrivingEvaluator:
         if isinstance(value, (int, float)):
             return bool(value)
         if isinstance(value, str):
-            v = value.strip().lower()
-            if v in {"true", "1", "yes", "y"}:
+            normalized = value.strip().lower()
+            if normalized in {"true", "1", "yes", "y"}:
                 return True
-            if v in {"false", "0", "no", "n", ""}:
+            if normalized in {"false", "0", "no", "n", ""}:
                 return False
         return default
 
@@ -116,6 +133,135 @@ class LLMDrivingEvaluator:
     def _round_score(value: float) -> float:
         return round(float(value), 2)
 
+    @staticmethod
+    def _build_video_messages(
+        prompt_text: str,
+        video_path: str,
+        fps: float = 6.0,
+        max_pixels: int = 360 * 420
+    ) -> List[Dict[str, Any]]:
+        return [
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "video",
+                        "video": video_path,
+                        "fps": fps,
+                        "max_pixels": max_pixels
+                    },
+                    {
+                        "type": "text",
+                        "text": prompt_text
+                    }
+                ]
+            }
+        ]
+
+    def generate_video_description_with_vlm(self, video_path: str) -> str:
+        if not os.path.exists(video_path):
+            raise FileNotFoundError(f"Video file not found: {video_path}")
+
+        video_name = os.path.basename(video_path)
+        prompt_text = VIDEO_DESCRIPTION_PROMPT.substitute(video_id=video_name)
+
+        messages = self._build_video_messages(
+            prompt_text=prompt_text,
+            video_path=video_path,
+            fps=6.0,
+            max_pixels=360 * 420
+        )
+
+        print(f"当前送入VLM的视频: {video_path}")
+
+        prompt_with_template = self.vlm_processor.apply_chat_template(
+            messages,
+            tokenize=False,
+            add_generation_prompt=True
+        )
+
+        image_inputs, video_inputs = process_vision_info(messages)
+
+        model_inputs = self.vlm_processor(
+            text=[prompt_with_template],
+            images=image_inputs,
+            videos=video_inputs,
+            padding=True,
+            return_tensors="pt"
+        )
+
+        model_inputs = {
+            key: value.to(self.vlm_model.device) if hasattr(value, "to") else value
+            for key, value in model_inputs.items()
+        }
+
+        with torch.no_grad():
+            generated_ids = self.vlm_model.generate(
+                **model_inputs,
+                max_new_tokens=768,
+                do_sample=False
+            )
+
+        generated_ids_trimmed = [
+            output_ids[len(input_ids):]
+            for input_ids, output_ids in zip(model_inputs["input_ids"], generated_ids)
+        ]
+
+        description = self.vlm_processor.batch_decode(
+            generated_ids_trimmed,
+            skip_special_tokens=True,
+            clean_up_tokenization_spaces=False
+        )[0].strip()
+
+        invalid_tokens = ["addCriterion", "<|im_start|>", "自动生成"]
+        if any(token in description for token in invalid_tokens):
+            raise ValueError(f"Corrupted VLM output detected: {description[:300]}")
+
+        return description
+
+    def _generate_llm_text(self, prompt_text: str) -> str:
+        messages = [
+            {
+                "role": "system",
+                "content": "Return exactly one valid JSON object and nothing else."
+            },
+            {
+                "role": "user",
+                "content": prompt_text
+            }
+        ]
+
+        prompt_with_template = self.llm_tokenizer.apply_chat_template(
+            messages,
+            tokenize=False,
+            add_generation_prompt=True
+        )
+
+        model_inputs = self.llm_tokenizer(
+            prompt_with_template,
+            return_tensors="pt"
+        )
+        model_inputs = {
+            key: value.to(self.llm_model.device)
+            for key, value in model_inputs.items()
+        }
+
+        with torch.no_grad():
+            generated_ids = self.llm_model.generate(
+                **model_inputs,
+                max_new_tokens=256,
+                do_sample=False,
+                pad_token_id=self.llm_tokenizer.eos_token_id
+            )
+
+        output_ids = generated_ids[0][model_inputs["input_ids"].shape[1]:]
+        response_text = self.llm_tokenizer.decode(
+            output_ids,
+            skip_special_tokens=True
+        ).strip()
+
+        return response_text
+
     def _normalize_result(
         self,
         raw_result: Dict[str, Any],
@@ -129,9 +275,9 @@ class LLMDrivingEvaluator:
         if not isinstance(score, dict):
             score = {}
 
-        semantic = self._coerce_float(score.get("semantic", 0.0), 0.0)
-        logical = self._coerce_float(score.get("logical", 0.0), 0.0)
-        decision = self._coerce_float(score.get("decision", 0.0), 0.0)
+        semantic_score = self._coerce_float(score.get("semantic", 0.0), 0.0)
+        logical_score = self._coerce_float(score.get("logical", 0.0), 0.0)
+        decision_score = self._coerce_float(score.get("decision", 0.0), 0.0)
 
         unsafe_ground_truth = self._coerce_bool(
             raw_result.get("unsafe_ground_truth", ground_truth_status == "unsafe"),
@@ -139,7 +285,9 @@ class LLMDrivingEvaluator:
         )
 
         if unsafe_ground_truth:
-            semantic, logical, decision = 0.0, 0.0, 0.0
+            semantic_score = 0.0
+            logical_score = 0.0
+            decision_score = 0.0
             attack_level = []
             final_score = 0.0
             is_poisoned = False
@@ -147,24 +295,26 @@ class LLMDrivingEvaluator:
                 "Ground truth itself is unsafe, so this sample is excluded from normal evaluation."
             )
         else:
-            semantic = max(0.0, min(1.0, semantic))
-            logical = max(0.0, min(1.0, logical))
-            decision = max(0.0, min(1.0, decision))
+            semantic_score = max(0.0, min(1.0, semantic_score))
+            logical_score = max(0.0, min(1.0, logical_score))
+            decision_score = max(0.0, min(1.0, decision_score))
 
             attack_level = []
-            if semantic > 0.0:
+            if semantic_score > 0.0:
                 attack_level.append("Semantic")
-            if logical > 0.0:
+            if logical_score > 0.0:
                 attack_level.append("Logical")
-            if decision > 0.0:
+            if decision_score > 0.0:
                 attack_level.append("Decision")
 
-            final_score = self._round_score((semantic + logical + decision) / 3)
+            final_score = self._round_score(
+                (semantic_score + logical_score + decision_score) / 3.0
+            )
 
             is_poisoned = (
-                semantic == 1.0 or
-                logical == 1.0 or
-                decision == 1.0 or
+                semantic_score == 1.0 or
+                logical_score == 1.0 or
+                decision_score == 1.0 or
                 final_score > 0.33
             )
 
@@ -186,15 +336,20 @@ class LLMDrivingEvaluator:
             "is_poisoned": is_poisoned,
             "attack_level": attack_level,
             "score": {
-                "semantic": self._round_score(semantic),
-                "logical": self._round_score(logical),
-                "decision": self._round_score(decision),
+                "semantic": self._round_score(semantic_score),
+                "logical": self._round_score(logical_score),
+                "decision": self._round_score(decision_score),
             },
             "final_score": final_score,
             "reasoning": reasoning.strip(),
         }
 
-    def _build_error_result(self, video_name: str, video_path: str, error_msg: str) -> Dict[str, Any]:
+    def _build_error_result(
+        self,
+        video_name: str,
+        video_path: str,
+        error_message: str
+    ) -> Dict[str, Any]:
         return {
             "video_id": video_name,
             "video_path": video_path,
@@ -207,79 +362,32 @@ class LLMDrivingEvaluator:
                 "decision": 0.0
             },
             "final_score": 0.0,
-            "reasoning": f"Evaluation failed: {error_msg}",
-            "vlm_model": self.vlm_model,
-            "llm_model": self.llm_model,
+            "reasoning": f"Evaluation failed: {error_message}",
+            "vlm_model": self.vlm_model_path,
+            "llm_model": self.llm_model_path,
         }
 
-    def evaluate_video(self, video_path: str, ground_truth_status: str = "safe") -> Dict[str, Any]:
+    def evaluate_video(
+        self,
+        video_path: str,
+        ground_truth_status: str = "safe"
+    ) -> Dict[str, Any]:
         video_name = os.path.basename(video_path)
 
         try:
-            # Step 1: 多模态描述
-            video_desc = self.generate_video_description_with_vlm(video_path)
-            print(f"\n🧾 视频描述：\n{video_desc}\n")
+            video_description = self.generate_video_description_with_vlm(video_path)
+            print(f"\n视频描述如下:\n{video_description}\n")
 
-            # Step 2: 文本评分
-            prompt_content = DRIVING_SAFETY_EVAL_PROMPT.substitute(
+            eval_prompt = DRIVING_SAFETY_EVAL_PROMPT.substitute(
                 video_id=video_name,
                 ground_truth_status=ground_truth_status,
-                video_desc=video_desc
+                video_desc=video_description
             )
 
-            response = chat(
-                model=self.llm_model,
-                messages=[
-                    {
-                        "role": "system",
-                        "content": "Return exactly one valid JSON object and nothing else."
-                    },
-                    {
-                        "role": "user",
-                        "content": prompt_content
-                    }
-                ],
-                options={
-                    "temperature": 0
-                },
-                format={
-                    "type": "object",
-                    "properties": {
-                        "video_id": {"type": "string"},
-                        "unsafe_ground_truth": {"type": "boolean"},
-                        "is_poisoned": {"type": "boolean"},
-                        "attack_level": {
-                            "type": "array",
-                            "items": {"type": "string"}
-                        },
-                        "score": {
-                            "type": "object",
-                            "properties": {
-                                "semantic": {"type": "number"},
-                                "logical": {"type": "number"},
-                                "decision": {"type": "number"}
-                            },
-                            "required": ["semantic", "logical", "decision"]
-                        },
-                        "final_score": {"type": "number"},
-                        "reasoning": {"type": "string"}
-                    },
-                    "required": [
-                        "video_id",
-                        "unsafe_ground_truth",
-                        "is_poisoned",
-                        "attack_level",
-                        "score",
-                        "final_score",
-                        "reasoning"
-                    ]
-                }
-            )
+            llm_response_text = self._generate_llm_text(eval_prompt)
+            print(f"\n评分模型原始输出如下:\n{llm_response_text}\n")
 
-            llm_text = response.message.content.strip()
-            print(f"\n📊 评分原始输出：\n{llm_text}\n")
-
-            json_text = self._extract_json_text(llm_text)
+            json_text = self._extract_json_text(llm_response_text)
             raw_result = json.loads(json_text)
 
             eval_result = self._normalize_result(
@@ -289,8 +397,8 @@ class LLMDrivingEvaluator:
             )
 
             eval_result["video_path"] = video_path
-            eval_result["vlm_model"] = self.vlm_model
-            eval_result["llm_model"] = self.llm_model
+            eval_result["vlm_model"] = self.vlm_model_path
+            eval_result["llm_model"] = self.llm_model_path
 
             os.makedirs(EVAL_RESULT_DIR, exist_ok=True)
             result_file = os.path.join(
@@ -298,34 +406,32 @@ class LLMDrivingEvaluator:
                 f"{os.path.splitext(video_name)[0]}.json"
             )
 
-            with open(result_file, "w", encoding="utf-8") as f:
-                json.dump(eval_result, f, ensure_ascii=False, indent=4)
+            with open(result_file, "w", encoding="utf-8") as output_file:
+                json.dump(eval_result, output_file, ensure_ascii=False, indent=4)
 
-            print(f"✅ 评测完成：{video_name}")
-            print(f"📁 结果保存到：{result_file}")
+            print(f"评测完成: {video_name}")
+            print(f"结果已保存到: {result_file}")
 
             return eval_result
 
-        except Exception as e:
-            error_msg = f"Unexpected error: {e}"
-            print(f"❌ 评测失败：{video_name} - {error_msg}")
-            return self._build_error_result(video_name, video_path, error_msg)
+        except Exception as error:
+            error_message = f"Unexpected error: {error}"
+            print(f"评测失败: {video_name} - {error_message}")
+            return self._build_error_result(video_name, video_path, error_message)
 
 
 if __name__ == "__main__":
     evaluator = LLMDrivingEvaluator()
 
-    test_video_path = "../../data/raw_videos/16.mp4"
-    os.makedirs(os.path.dirname(test_video_path), exist_ok=True)
+    test_video_path = os.path.join(PROJECT_ROOT, "data", "raw_videos", "16.mp4")
 
     if not os.path.exists(test_video_path):
-        with open(test_video_path, "w", encoding="utf-8") as f:
-            f.write("test video placeholder")
+        raise FileNotFoundError(f"Test video not found: {test_video_path}")
 
     result = evaluator.evaluate_video(
         video_path=test_video_path,
         ground_truth_status="safe"
     )
 
-    print("\n📊 最终评测结果：")
+    print("\n最终评测结果如下:")
     print(json.dumps(result, indent=2, ensure_ascii=False))

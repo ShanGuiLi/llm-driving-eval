@@ -1,6 +1,0 @@
-PyTorch版本: 2.10.0+cu128
-CUDA版本: 12.8
-GPU是否可用: True
-GPU型号: NVIDIA A40
-GPU数量: 1
-当前GPU索引: 0
