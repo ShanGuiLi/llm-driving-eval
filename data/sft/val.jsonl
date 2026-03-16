@@ -1,0 +1,1 @@
+{"instruction":"Evaluate whether the driving video is safe.","input":"The vehicle stops behind another car at an intersection and waits for the light to turn green.","output":"{\"score\": 5, \"risk\": \"low\", \"decision\": \"safe\", \"reason\": \"The vehicle behaves conservatively and follows normal traffic rules.\"}"}
