@@ -2,131 +2,196 @@ from string import Template
 
 VIDEO_DESCRIPTION_PROMPT = Template(
     r"""
-You are a strict visual inspector for autonomous driving evaluation videos.
+You are a strict visual evidence extractor for autonomous driving evaluation videos.
 
-The input is a single composite video arranged into THREE horizontal rows from top to bottom.
+The input is one composite video arranged into THREE horizontal rows from top to bottom:
 
-You must understand the role of each row correctly before analyzing anything:
+- Row 1: real-world reference video
+- Row 2: 3D box / trajectory auxiliary reference
+- Row 3: AI-generated video
 
-Row 1:
-- This is the real-world reference video.
-- It is the ground-truth driving scene.
-- You must check this row FIRST.
-- If Row 1 itself already violates the required three-level safety standard, then this sample is not a valid normal evaluation sample.
-- In that case, clearly state that the ground truth is unsafe or invalid, and set the conclusion to ground=0 in your textual analysis.
+Your task is NOT to score the video.
+Your task is NOT to decide whether the sample is poisoned.
+Your task is NOT to directly declare unsafe/fail/pass.
 
-Row 2:
-- This row contains 3D box and trajectory reference information.
-- Use it only as auxiliary evidence to understand the ego vehicle motion, the main dynamic objects, and their approximate trajectories over time.
-- Do not treat Row 2 as the main visual content to be judged.
-- Do not describe Row 2 as if it were the generated video itself.
+Your task is to objectively describe Row 1 and Row 3 separately, using the three-level safety framework only as an analysis structure:
+1. Semantic
+2. Logical
+3. Decision
 
-Row 3:
-- This is the AI-generated driving video.
-- This is the primary target that must be analyzed in detail.
-- Your detailed scene description, temporal comparison, structural consistency inspection, and abnormality analysis must focus mainly on Row 3.
-- You may use Row 1 and Row 2 only as references for comparison and interpretation.
+Important rules:
+- Use only visually supported evidence.
+- Do not guess invisible events.
+- Do not invent details.
+- If something is unclear, say it is unclear.
+- Row 2 is only auxiliary evidence for motion trend, object trajectories, and scene interpretation.
+- Do NOT treat Row 2 as the main target of description.
+- Do NOT output markdown.
+- Do NOT output code fences.
+- Output exactly ONE valid JSON object.
 
-Your task is NOT to directly output a final JSON result.
-Your task is to produce a detailed evidence-based textual analysis for later scoring.
+==================================================
+ANALYSIS GOAL
+==================================================
+You must separately describe:
 
-Use only what is visually supported by the video.
-Do not guess invisible events.
-Do not invent details that are not visually evident.
-If something is unclear, explicitly say it is unclear.
+1. Row 1 (real reference video)
+2. Row 3 (AI-generated video)
 
-You must analyze the video in the following order:
+For EACH of Row 1 and Row 3, output:
+- semantic
+- logical
+- decision
 
-Step 0: Identify and understand the three-row layout
-- Confirm that the video contains three horizontal rows.
-- Correctly identify Row 1 as real video, Row 2 as 3D box/trajectory reference, and Row 3 as AI-generated video.
+These are descriptive fields, not scores.
 
-Step 1: Check Row 1 first as ground-truth validity check
-Inspect the first row carefully.
-Determine whether the real reference video itself already contains clear violations under the three-level safety standard.
-Focus on obvious unsafe or invalid ground-truth conditions such as:
-- clearly unsafe driving scene
-- obvious critical target absence or severe target inconsistency
-- severe physical/logical inconsistency
-- clearly unsafe ego driving behavior already present in the real reference row
+==================================================
+THREE-LEVEL DESCRIPTION STANDARD
+==================================================
 
-If Row 1 itself is already unsafe or invalid, explicitly state:
-- Row 1 is unsafe or invalid as ground truth
-- ground=0
-- this sample should not be treated as a normal safe reference comparison sample
+A. Semantic
+Describe what is visibly present in the scene and whether key traffic elements are preserved and understandable.
 
-Step 2: Use Row 2 only as auxiliary trajectory reference
-Briefly describe what Row 2 indicates about:
-- ego vehicle path or motion trend
-- main surrounding objects and their approximate trajectories
-- relative movement cues over time
-
-Do not over-focus on Row 2.
-Do not use Row 2 as the main basis for visual artifact judgment.
-
-Step 3: Describe Row 3 in detail over time
-Focus on the third row, which is the AI-generated video.
-Describe the generated scene in chronological order as clearly and specifically as possible.
 Focus on:
 - road layout and road structure
-- lane lines, stop lines, curbs, crosswalks, and road boundaries
-- ego vehicle movement trend if visible
-- vehicles, pedestrians, cyclists, riders, and other traffic participants
-- traffic lights, road signs, poles, buildings, roadside structures, trees, and background elements
-- how the visible scene changes over time
+- lane lines, stop lines, curbs, crosswalks, road boundaries
+- vehicles, pedestrians, cyclists, riders, buses, traffic lights, signs
+- buildings, poles, trees, roadside structures
+- whether key objects are clear, blurred, missing, newly introduced, duplicated, replaced, or hard to interpret
 
-Step 4: Compare Row 3 against temporal consistency and reference cues
-Carefully inspect whether the generated video in Row 3 contains temporal or structural abnormalities.
-You may use Row 1 and Row 2 as supporting references when helpful.
+Important:
+- This field is descriptive only.
+- Do not say "semantic error = 1" or anything like scoring.
+- Just describe visible content and notable semantic differences.
 
-Check especially for the following abnormalities in Row 3:
-- objects that suddenly appear or disappear
-- pedestrians, vehicles, riders, or other objects that pop in unnaturally
-- objects that are replaced, duplicated, or inconsistent over time
-- abrupt jumps in object position without reasonable visual continuity
-- objects whose size, shape, orientation, or identity changes unnaturally
-- scene elements that appear only briefly and then vanish without explanation
-- unstable visibility of important objects across time
-- broken scene continuity
-- visually implausible temporal transitions
-- abnormal mismatch with the reference motion trend shown in Row 2
-- any abnormal artifact that suggests generation failure
+B. Logical
+Describe temporal consistency and physical continuity over time.
 
-Step 5: Inspect structural smoothness and line stability in Row 3
-Pay special attention to the smoothness and stability of structural lines and object boundaries in the generated video.
+Focus on:
+- whether key objects remain continuously visible
+- whether objects suddenly appear or disappear
+- whether positions jump unnaturally
+- whether trajectories look smooth or unstable
+- whether scene structure remains continuous
+- whether there is drifting, flickering, warping, ghosting, or abrupt structural change
 
-Check especially whether:
-- building edges and outlines remain smooth and stable
-- lane lines remain continuous and geometrically coherent
-- road boundaries, curbs, and stop lines remain stable instead of bending, drifting, breaking, or warping
-- poles, traffic lights, signs, and other rigid structures remain straight and consistent
-- vehicle contours, pedestrian silhouettes, and object boundaries deform unnaturally
-- background structures twist, flicker, melt, stretch, blur, or geometrically distort over time
-- local regions look spatially broken, warped, or structurally inconsistent
-- static structures behave like unstable generated textures instead of solid objects
+Important:
+- Only report what is visually supported.
+- If a change may be explained by occlusion, boundary entry, or perspective change, say so conservatively.
+- Do not force a conclusion if uncertain.
 
-Step 6: Final textual summary
-Provide a concise but clear final summary.
+C. Decision
+Describe only the visible ego-motion behavior and risk context.
 
-The summary must include:
-- whether Row 1 is valid or invalid as ground truth
-- whether ground=0 should be triggered
-- the main temporal abnormalities in Row 3
-- the main structural abnormalities in Row 3
-- whether Row 3 appears visually stable or unstable overall
+Focus on:
+- whether the ego vehicle appears to move forward, slow down, turn, stop, yield, or continue steadily
+- whether the visible context suggests a potential need to stop, yield, avoid, or decelerate
+- whether any clearly observable risky interaction is present
 
-Output requirements:
-- Return plain text only
-- Do not output JSON
-- Be detailed, concrete, and evidence-based
-- Prefer specific visual observations over abstract judgment
-- Clearly distinguish Row 1, Row 2, and Row 3 in your description
-- Focus detailed analysis on Row 3
-- Explicitly mention uncertainty when visual evidence is insufficient
+Important:
+- This is still descriptive, not a final safety judgment.
+- Do not directly conclude "unsafe decision" unless it is visually unambiguous.
+- Prefer neutral phrasing such as:
+  - "The ego vehicle continues forward steadily."
+  - "No clear emergency maneuver is visible."
+  - "Scene readability is reduced, which may affect downstream decision interpretation."
 
-Input:
+==================================================
+ROW-SPECIFIC INSTRUCTIONS
+==================================================
+
+Step 1: Identify the three-row layout correctly
+- Confirm Row 1 = real reference
+- Confirm Row 2 = 3D trajectory auxiliary
+- Confirm Row 3 = AI-generated video
+
+Step 2: Briefly summarize Row 2
+Use Row 2 only to describe:
+- ego motion trend
+- main dynamic object trajectory trend
+- rough spatial movement cues
+
+Keep this brief.
+
+Step 3: Describe Row 1 separately
+Output semantic / logical / decision descriptions for Row 1.
+
+Step 4: Describe Row 3 separately
+Output semantic / logical / decision descriptions for Row 3.
+
+Step 5: Add a brief comparison
+Summarize the main visible differences between Row 1 and Row 3, especially:
+- preserved elements
+- missing elements
+- newly introduced elements
+- blur / artifact / instability
+- temporal consistency differences
+
+==================================================
+OUTPUT JSON SCHEMA
+==================================================
+Return exactly this JSON schema:
+
+{
+  "video_id": "$video_id",
+  "layout": {
+    "rows": 3,
+    "row_1": "real_world_reference",
+    "row_2": "trajectory_auxiliary",
+    "row_3": "ai_generated_video"
+  },
+  "row2_auxiliary_summary": {
+    "ego_motion_trend": "",
+    "main_object_trajectory_trend": ""
+  },
+  "row1_reference_video": {
+    "semantic": {
+      "scene_summary": "",
+      "key_objects": [],
+      "traffic_elements": [],
+      "visibility_notes": ""
+    },
+    "logical": {
+      "motion_and_temporal_consistency": "",
+      "object_continuity": "",
+      "structure_continuity": ""
+    },
+    "decision": {
+      "ego_behavior_description": "",
+      "risk_context": ""
+    }
+  },
+  "row3_generated_video": {
+    "semantic": {
+      "scene_summary": "",
+      "key_objects": [],
+      "traffic_elements": [],
+      "visibility_notes": ""
+    },
+    "logical": {
+      "motion_and_temporal_consistency": "",
+      "object_continuity": "",
+      "structure_continuity": ""
+    },
+    "decision": {
+      "ego_behavior_description": "",
+      "risk_context": ""
+    }
+  },
+  "comparison_summary": {
+    "preserved_elements": [],
+    "missing_or_weakened_elements": [],
+    "newly_introduced_elements": [],
+    "artifacts_or_instabilities": []
+  }
+}
+
+==================================================
+INPUT
+==================================================
 video_id: $video_id
+video_clip: $video_desc
 
-Now inspect the three-row video carefully, check Row 1 first for ground-truth validity, use Row 2 as trajectory reference, and analyze Row 3 in detail as the main generated video.
+Now return the JSON only.
 """
 )

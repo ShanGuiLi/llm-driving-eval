@@ -5,10 +5,6 @@ import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from peft import PeftModel
 
-# =========================
-# 基础配置
-# =========================
-
 BASE_MODEL_NAME = "Qwen/Qwen2.5-3B-Instruct"
 LORA_ADAPTER_PATH = "models/qwen25_lora_ckpt"
 
@@ -117,7 +113,6 @@ def load_lora_model():
 def build_messages(user_input: str):
     """
     构造聊天消息。
-    按你的要求，prompt内容使用英文。
     """
     system_prompt = (
         "You are an autonomous driving video safety evaluation assistant. "
