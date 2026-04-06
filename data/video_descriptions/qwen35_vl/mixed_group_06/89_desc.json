@@ -1,0 +1,83 @@
+{
+    "video_id": "89",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/89.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a straight industrial road.",
+        "main_object_trajectory_trend": "No significant dynamic objects detected; static environment."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A forward-moving view of an industrial area with large white warehouse buildings on both sides. The road is paved with yellow lane markings and parking lines visible on the left.",
+            "key_objects": [
+                "parked cars in distance",
+                "large dumpsters",
+                "pedestrian near loading dock"
+            ],
+            "traffic_elements": [
+                "yellow lane dividers",
+                "parking bay lines",
+                "curbs",
+                "loading dock doors"
+            ],
+            "visibility_notes": "Clear visibility of road structure and building details. Pedestrian is small but distinguishable."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward progression. No sudden jumps or discontinuities in object positions.",
+            "object_continuity": "Objects remain consistent in size and position relative to ego motion. Pedestrian remains visible throughout frames.",
+            "structure_continuity": "Building facades and road geometry maintain consistent perspective and alignment."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily along the road.",
+            "risk_context": "Low risk context; no immediate obstacles or traffic interactions observed."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar industrial setting with white buildings and road layout. However, visual fidelity is reduced compared to Row 1.",
+            "key_objects": [
+                "parked cars (less distinct)",
+                "dumpsters (blurred)",
+                "pedestrian (faint or missing)"
+            ],
+            "traffic_elements": [
+                "lane markings (faded or inconsistent)",
+                "curbs (less defined)"
+            ],
+            "visibility_notes": "Key objects are less sharp. Pedestrian may be partially obscured or artifacted. Road markings appear smeared."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion appears smooth but with slight temporal jitter in object rendering. Some flickering in texture details.",
+            "object_continuity": "Objects persist across frames but show minor positional drift or morphing artifacts. Pedestrian presence is unstable.",
+            "structure_continuity": "Building structures remain generally aligned but exhibit warping or blurring at edges."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward, though scene clarity is degraded.",
+            "risk_context": "Scene readability is reduced due to artifacts, which may affect downstream decision interpretation. No clear emergency maneuver needed based on current frame."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "road layout",
+            "building placement",
+            "general forward motion"
+        ],
+        "missing_or_weakened_elements": [
+            "pedestrian clarity",
+            "sharpness of road markings",
+            "detail in dumpster textures"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "texture blurring",
+            "minor object morphing",
+            "reduced edge definition in buildings"
+        ]
+    }
+}

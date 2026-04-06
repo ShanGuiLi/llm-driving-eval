@@ -59,3 +59,10 @@ decision：unsafe behavior
 4）强约束输出结构，必须输出 JSON，防止 LLM发散。
 
 ## Prompt Engineering
+
+## LoRA微调
+针对边界场景Qwen2.5判定不准的情况，我们
+
+## 调试问题汇总
+1、vlm对视频描述不准
+修改vlm prompt，从整体画面描述，细分为包含关键物体捕捉，三级安全标准，分别描述视频。

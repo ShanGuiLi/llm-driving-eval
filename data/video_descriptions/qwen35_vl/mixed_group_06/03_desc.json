@@ -1,0 +1,101 @@
+{
+    "video_id": "03",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/03.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a city street with slight rightward drift.",
+        "main_object_trajectory_trend": "Vehicles ahead maintain forward trajectories; pedestrians on the right cross or stand near the curb."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene during daytime with clear visibility. Multiple lanes, traffic lights, parked and moving vehicles, construction zones, and pedestrians are visible.",
+            "key_objects": [
+                "white pickup truck (left)",
+                "construction equipment",
+                "white RV/trailer",
+                "sedans",
+                "pedestrians on sidewalk",
+                "traffic signals",
+                "buildings",
+                "trees",
+                "fences"
+            ],
+            "traffic_elements": [
+                "lane markings",
+                "stop lines",
+                "traffic lights",
+                "crosswalks",
+                "curbs",
+                "road signs"
+            ],
+            "visibility_notes": "All key objects are clearly visible with no significant occlusion or blur. Scene structure is coherent and stable across frames."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Objects move smoothly over time without abrupt jumps or disappearances. Ego vehicle progresses steadily forward.",
+            "object_continuity": "Vehicles and pedestrians remain continuously visible unless partially occluded by perspective or distance. No ghosting or duplication observed.",
+            "structure_continuity": "Road layout, buildings, and infrastructure remain consistent in position and shape throughout the sequence."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward at moderate speed, following lane alignment.",
+            "risk_context": "No immediate hazards detected. Pedestrians are on sidewalks or crossing safely; traffic flow appears orderly."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street scene but with noticeable degradation in object clarity and structural fidelity. Some elements appear distorted or missing.",
+            "key_objects": [
+                "white pickup truck (partially blurred)",
+                "RV/trailer (less defined edges)",
+                "sedans (some appear merged or duplicated)",
+                "pedestrians (less distinct, some missing limbs or faces)",
+                "traffic signals (colors may be inconsistent)",
+                "buildings (edges warped or simplified)"
+            ],
+            "traffic_elements": [
+                "lane markings (faint or broken)",
+                "stop lines (inconsistent width or position)",
+                "traffic lights (may flicker or change color unnaturally)",
+                "curbs (sometimes misaligned)"
+            ],
+            "visibility_notes": "Many objects suffer from blurring, edge distortion, or partial disappearance. Pedestrian features are often indistinct. Road boundaries occasionally shift unexpectedly."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Some objects exhibit jittery motion or sudden appearance/disappearance. Trajectories of vehicles and pedestrians show minor instability compared to Row 1.",
+            "object_continuity": "Certain objects vanish briefly or reappear with altered geometry. Pedestrians sometimes lose body parts or merge with background.",
+            "structure_continuity": "Building facades and road structures show warping or snapping between frames. Lane lines may drift or break discontinuously."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle still moves forward, but path stability is reduced due to visual artifacts affecting perception of lane boundaries.",
+            "risk_context": "Reduced scene readability may impair downstream decision-making. Potential for misjudging pedestrian positions or obstacle distances due to artifact-induced ambiguity."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "general road layout",
+            "presence of major vehicles and pedestrians",
+            "overall direction of ego motion"
+        ],
+        "missing_or_weakened_elements": [
+            "clear pedestrian facial/body details",
+            "precise lane marking continuity",
+            "sharp building edges",
+            "consistent traffic light states"
+        ],
+        "newly_introduced_elements": [
+            "ghosting around moving objects",
+            "warped architectural lines",
+            "merged vehicle silhouettes"
+        ],
+        "artifacts_or_instabilities": [
+            "temporal flickering of small objects",
+            "geometric distortion of static structures",
+            "inconsistent object persistence across frames"
+        ]
+    }
+}

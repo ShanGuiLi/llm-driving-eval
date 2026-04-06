@@ -1,0 +1,89 @@
+{
+    "video_id": "92",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/92.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a straight road with slight lane adjustments.",
+        "main_object_trajectory_trend": "A white truck is stationary or moving slowly on the right side; pedestrians are visible near building entrances."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene with modern buildings, paved roads, and clear lane markings. A white box truck is parked or stopped on the right side of the road. Pedestrians are visible near building entrances on both sides.",
+            "key_objects": [
+                "White box truck",
+                "Pedestrians (multiple)",
+                "Modern buildings",
+                "Roadway infrastructure"
+            ],
+            "traffic_elements": [
+                "Lane lines",
+                "Stop lines / crosswalk markings",
+                "Curbs",
+                "Traffic cones in distance"
+            ],
+            "visibility_notes": "All objects are clearly visible with natural lighting and sharp detail. No occlusions obscure key elements."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward camera motion consistent with vehicle travel. Objects maintain stable positions relative to each other over time.",
+            "object_continuity": "Truck remains stationary throughout frames. Pedestrians show minimal movement, consistent with standing or slow walking.",
+            "structure_continuity": "Road geometry and building facades remain structurally consistent without warping or discontinuities."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily along the lane.",
+            "risk_context": "No immediate hazards detected. Truck is stationary off-lane; pedestrians are not entering roadway. Scene suggests low-risk driving environment."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street scene with buildings and road. White truck and pedestrians are present but appear slightly distorted or less defined compared to Row 1.",
+            "key_objects": [
+                "White box truck (slightly blurred)",
+                "Pedestrians (less distinct features)",
+                "Buildings (some structural inconsistencies)",
+                "Roadway infrastructure"
+            ],
+            "traffic_elements": [
+                "Lane lines (faint or inconsistent)",
+                "Stop lines (partially missing or warped)",
+                "Curbs (less precise edges)"
+            ],
+            "visibility_notes": "Objects retain general form but exhibit reduced clarity. Some details like text on truck or pedestrian clothing are indistinct or altered."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Camera motion appears smooth but may have minor jitter or drift. Object transitions are generally continuous but lack fine-grained stability.",
+            "object_continuity": "Truck and pedestrians persist across frames but show subtle positional shifts or morphing artifacts not seen in real footage.",
+            "structure_continuity": "Building lines and road boundaries occasionally warp or flicker, especially at frame edges or under perspective change."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle appears to continue forward, though trajectory may be slightly unstable due to generation artifacts.",
+            "risk_context": "Reduced scene readability due to object distortion and structural instability may impair downstream decision-making. No overt hazard, but confidence in perception is lower than Row 1."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "General layout of road and buildings",
+            "Presence of white truck and pedestrians",
+            "Overall direction of ego motion"
+        ],
+        "missing_or_weakened_elements": [
+            "Sharpness of traffic markings",
+            "Detail fidelity on vehicles and people",
+            "Precision of building edge definitions"
+        ],
+        "newly_introduced_elements": [
+            "Minor ghosting or blending artifacts around object boundaries",
+            "Slight warping of linear structures (e.g., curbs, poles)"
+        ],
+        "artifacts_or_instabilities": [
+            "Temporal flickering in static objects",
+            "Inconsistent texture rendering on surfaces",
+            "Subtle positional drift between consecutive frames"
+        ]
+    }
+}

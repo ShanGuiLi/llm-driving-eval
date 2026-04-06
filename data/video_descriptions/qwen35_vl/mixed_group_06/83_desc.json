@@ -1,0 +1,91 @@
+{
+    "video_id": "83",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/83.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a straight road with slight curvature to the right.",
+        "main_object_trajectory_trend": "No distinct dynamic objects detected; trajectory lines suggest lane boundaries and forward path."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A multi-lane urban road scene captured from a moving vehicle. The environment includes modern buildings, construction barriers, trees, and overhead pedestrian bridges.",
+            "key_objects": [
+                "construction barriers",
+                "trees",
+                "buildings",
+                "overhead bridge"
+            ],
+            "traffic_elements": [
+                "lane markings",
+                "curbs",
+                "road surface"
+            ],
+            "visibility_notes": "Clear visibility of road structure and surrounding infrastructure. No pedestrians or vehicles in immediate vicinity."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward progression with consistent perspective changes. No abrupt jumps or discontinuities observed.",
+            "object_continuity": "Static objects (barriers, buildings) remain stable in position relative to ego motion. No sudden appearances or disappearances.",
+            "structure_continuity": "Road geometry and environmental structures maintain continuity throughout the sequence."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily along the road.",
+            "risk_context": "No immediate hazards or risky interactions visible. Road appears clear for continued travel."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "AI-generated version of the same urban road scene. Features similar elements including buildings, barriers, and road layout but with noticeable rendering artifacts.",
+            "key_objects": [
+                "construction barriers",
+                "trees",
+                "buildings",
+                "overhead bridge"
+            ],
+            "traffic_elements": [
+                "lane markings",
+                "curbs",
+                "road surface"
+            ],
+            "visibility_notes": "Some elements appear slightly distorted or less defined compared to real reference. Overall scene structure is preserved but with reduced clarity."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion is present but exhibits minor flickering and warping effects, particularly around static structures.",
+            "object_continuity": "Most objects remain continuously visible, though some show slight positional drift or instability over time.",
+            "structure_continuity": "Basic road and building structures are maintained, but exhibit subtle distortions and inconsistencies in edge definition."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle appears to move forward similarly to reference, though motion may be slightly less smooth due to generation artifacts.",
+            "risk_context": "Scene readability is somewhat reduced by visual artifacts, which could potentially affect downstream decision interpretation, though no clear emergency situation is depicted."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "road layout",
+            "building positions",
+            "barrier placement",
+            "bridge structure",
+            "general traffic flow direction"
+        ],
+        "missing_or_weakened_elements": [
+            "fine detail clarity",
+            "sharp edge definitions",
+            "consistent texture quality"
+        ],
+        "newly_introduced_elements": [
+            "rendering artifacts",
+            "minor geometric distortions",
+            "flickering effects on static objects"
+        ],
+        "artifacts_or_instabilities": [
+            "slight warping of building edges",
+            "temporal flickering in barrier textures",
+            "reduced sharpness in distant objects"
+        ]
+    }
+}

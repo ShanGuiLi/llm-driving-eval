@@ -1,0 +1,93 @@
+{
+    "video_id": "41",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/41.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "The ego vehicle is moving forward along a curved road path, approaching an intersection.",
+        "main_object_trajectory_trend": "A large truck is stationary on the left side of the road. Pedestrians are visible near the truck and crossing the road."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A real-world driving scene showing a multi-lane road curving to the right. A large blue truck is parked or stopped on the left shoulder with its rear doors open. Several pedestrians are interacting near the truck and crossing the street. The environment includes modern office buildings, trees, and clear road markings.",
+            "key_objects": [
+                "Blue truck",
+                "Pedestrians (multiple)",
+                "Office buildings",
+                "Trees",
+                "Road signs"
+            ],
+            "traffic_elements": [
+                "Yellow box junction markings",
+                "Lane dividers",
+                "Curbs",
+                "Traffic signs"
+            ],
+            "visibility_notes": "All objects are clearly visible with natural lighting and sharp details. No occlusions obscure critical elements."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "The video shows smooth temporal progression. Pedestrians move naturally across the frame. The camera moves steadily forward without jitter.",
+            "object_continuity": "The truck remains stationary throughout the sequence. Pedestrians maintain continuous presence and movement paths.",
+            "structure_continuity": "Road geometry and building structures remain consistent and stable across frames."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily, maintaining lane position while approaching the intersection.",
+            "risk_context": "Presence of pedestrians near the roadway and a stationary truck on the shoulder creates a context requiring caution, though no immediate collision risk is evident."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "An AI-generated version of the same scene. The general layout of the road, buildings, and truck is preserved but rendered with lower fidelity. The truck appears distorted and partially merged with the background. Pedestrians are less distinct and appear as blurry shapes.",
+            "key_objects": [
+                "Distorted truck shape",
+                "Blurry pedestrian figures",
+                "Buildings (simplified)",
+                "Road markings (faint)"
+            ],
+            "traffic_elements": [
+                "Faded yellow markings",
+                "Indistinct lane lines",
+                "Missing or unclear signs"
+            ],
+            "visibility_notes": "Significant blurring and artifacting reduce clarity. The truck's structure is compromised, appearing as a smeared mass rather than a defined vehicle. Pedestrians lack anatomical definition."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Temporal consistency is degraded. Objects exhibit flickering and morphing artifacts. The truck appears to shift shape unnaturally between frames.",
+            "object_continuity": "Pedestrian continuity is broken; figures appear and disappear or change form abruptly. The truck does not maintain a coherent identity.",
+            "structure_continuity": "Road boundaries and building edges show warping and instability. The scene structure drifts slightly over time."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego motion trend mimics forward movement but lacks stability due to visual noise.",
+            "risk_context": "Scene readability is significantly reduced by artifacts, making it difficult to assess pedestrian positions or vehicle boundaries accurately. This degradation may impair downstream decision-making."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "General road curvature",
+            "Building locations",
+            "Truck position relative to road"
+        ],
+        "missing_or_weakened_elements": [
+            "Clear truck structure",
+            "Distinct pedestrian features",
+            "Sharp road markings",
+            "Readable traffic signs"
+        ],
+        "newly_introduced_elements": [
+            "Morphing artifacts on truck",
+            "Blurred pedestrian silhouettes",
+            "Warping in building facades"
+        ],
+        "artifacts_or_instabilities": [
+            "Severe blurring",
+            "Object morphing",
+            "Temporal flickering",
+            "Structural warping"
+        ]
+    }
+}

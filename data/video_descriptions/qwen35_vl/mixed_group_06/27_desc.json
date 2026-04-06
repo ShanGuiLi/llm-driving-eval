@@ -1,0 +1,101 @@
+{
+    "video_id": "27",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/27.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a curved road with slight rightward drift.",
+        "main_object_trajectory_trend": "Blue bus moving left to right across the intersection; white car and truck moving forward in adjacent lanes."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban driving scene showing an intersection with multiple lanes, traffic lights, and surrounding greenery. A blue bus is crossing the intersection from left to right. White vehicles are visible ahead.",
+            "key_objects": [
+                "blue bus",
+                "white sedan",
+                "truck",
+                "pedestrians near crosswalk",
+                "traffic light pole",
+                "trees",
+                "buildings"
+            ],
+            "traffic_elements": [
+                "crosswalk markings",
+                "lane dividers",
+                "stop lines",
+                "traffic signals",
+                "curbs",
+                "roadside vegetation"
+            ],
+            "visibility_notes": "All key objects are clearly visible with natural lighting and sharp detail. No occlusions obscure critical elements."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion appears smooth and continuous. The bus moves steadily across the frame without abrupt jumps or distortions.",
+            "object_continuity": "Vehicles maintain consistent size and position relative to perspective changes. Pedestrians remain stable in location until exiting frame naturally.",
+            "structure_continuity": "Road geometry, lane markings, and background structures remain fixed and coherent throughout the sequence."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle proceeds forward at moderate speed, approaching the intersection while maintaining lane discipline.",
+            "risk_context": "No immediate hazard detected. Traffic flow is orderly; no sudden stops or evasive maneuvers required."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "AI-generated version of the same urban driving scene. Features similar layout but with noticeable degradation in object clarity and texture fidelity.",
+            "key_objects": [
+                "blurred blue bus",
+                "indistinct white sedan",
+                "faint truck outline",
+                "unclear pedestrian figures",
+                "simplified traffic poles",
+                "low-detail trees"
+            ],
+            "traffic_elements": [
+                "faded crosswalk lines",
+                "inconsistent lane markers",
+                "missing stop lines",
+                "ambiguous traffic signals",
+                "warping curbs"
+            ],
+            "visibility_notes": "Objects appear smeared or partially missing. Textures lack realism. Some elements (e.g., pedestrians) are barely discernible."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Movement shows minor jitter and inconsistent scaling. Bus trajectory has slight wobble compared to reference.",
+            "object_continuity": "Some objects flicker or vanish briefly during transitions. Pedestrian positions shift unnaturally between frames.",
+            "structure_continuity": "Road boundaries show subtle warping. Lane lines occasionally break or merge incorrectly due to generation artifacts."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward similarly to Row 1, though path alignment appears slightly less precise.",
+            "risk_context": "Reduced scene readability may impair downstream decision-making. No overt collision risk visible, but ambiguity increases uncertainty."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "overall road layout",
+            "presence of major vehicles",
+            "general direction of travel",
+            "background building silhouettes"
+        ],
+        "missing_or_weakened_elements": [
+            "clear pedestrian details",
+            "precise lane marking continuity",
+            "sharp traffic signal visibility",
+            "natural texture on surfaces"
+        ],
+        "newly_introduced_elements": [
+            "minor ghosting around moving objects",
+            "slight color bleeding near edges",
+            "artificial smoothing of foliage"
+        ],
+        "artifacts_or_instabilities": [
+            "temporal flickering of small objects",
+            "geometric distortion in road curves",
+            "loss of fine structural detail in signs/poles"
+        ]
+    }
+}

@@ -31,3 +31,4 @@ export LD_LIBRARY_PATH="$CONDA_ENV_PATH/lib:$LD_LIBRARY_PATH"
 python -m src.llm_eval.qwen25_local_eval
 # python -m src.training.train_qwen25_lora
 # python -m src.llm_eval.qwen25_lora_eval
+# python -m src.llm_eval.qwen35_api_eval

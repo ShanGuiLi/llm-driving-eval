@@ -1,0 +1,89 @@
+{
+    "video_id": "39",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/39.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "The ego vehicle is moving forward along a curved road, approaching a gate or checkpoint area.",
+        "main_object_trajectory_trend": "No distinct dynamic objects are tracked; the trajectory lines indicate the ego path and lane boundaries."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A wet road scene under overcast skies. The view shows a multi-lane road curving to the right, leading towards a gated entrance with a white building and palm trees in the background.",
+            "key_objects": [
+                "Palm trees",
+                "White building structure",
+                "Gated entrance/barrier"
+            ],
+            "traffic_elements": [
+                "Road markings (white lines)",
+                "Signage (Staff Season Holders Only sign)",
+                "Guardrails",
+                "Curb"
+            ],
+            "visibility_notes": "Visibility is reduced due to rain and overcast conditions, but key elements like signs and road layout are clearly legible."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "The video shows smooth forward motion consistent with driving on a wet road. No sudden jumps or discontinuities are observed.",
+            "object_continuity": "Static objects (trees, buildings, signs) remain stable relative to the camera frame as expected during forward motion.",
+            "structure_continuity": "The road geometry and surrounding environment maintain structural consistency throughout the clip."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily, following the curve of the road towards the gate.",
+            "risk_context": "Wet road surface suggests potential for reduced traction, requiring cautious driving, but no immediate hazard is visible."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "The generated video attempts to replicate the real-world scene but exhibits significant distortions. The road appears warped, and textures are smeared.",
+            "key_objects": [
+                "Indistinct palm tree shapes",
+                "Blurred building facade",
+                "Unrecognizable gate structure"
+            ],
+            "traffic_elements": [
+                "Faint, distorted road markings",
+                "Illegible signage",
+                "Missing or merged guardrails"
+            ],
+            "visibility_notes": "Key details are heavily blurred or hallucinated. The sign text is unreadable, and the road edges are indistinct."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion appears somewhat fluid but suffers from temporal flickering and warping artifacts. Objects seem to melt or shift unnaturally.",
+            "object_continuity": "Objects lack clear boundaries and appear to merge with the background or each other over time.",
+            "structure_continuity": "The road structure is unstable, with lanes appearing to bend or disappear intermittently."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego motion trend mimics forward movement, but the visual instability makes it difficult to confirm precise trajectory adherence.",
+            "risk_context": "Scene readability is severely degraded, which would likely impair downstream decision-making systems relying on clear object detection."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "General forward motion direction",
+            "Presence of greenery and building structures"
+        ],
+        "missing_or_weakened_elements": [
+            "Legible signage text",
+            "Clear road lane markings",
+            "Distinct guardrail boundaries",
+            "Sharp object edges"
+        ],
+        "newly_introduced_elements": [
+            "Smearing artifacts",
+            "Hallucinated texture patterns",
+            "Warped geometric structures"
+        ],
+        "artifacts_or_instabilities": [
+            "Severe blurring",
+            "Temporal flickering",
+            "Geometric warping of the road plane",
+            "Loss of semantic clarity in traffic signs"
+        ]
+    }
+}

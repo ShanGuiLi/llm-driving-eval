@@ -1,0 +1,96 @@
+{
+    "video_id": "91",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/91.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a city street with slight lane adjustments.",
+        "main_object_trajectory_trend": "Vehicles on the left and right appear to be moving parallel or stationary; no abrupt trajectory changes detected."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene on an overcast day. Wet pavement indicates rain. Multi-lane road with crosswalks, sidewalks, buildings, parked cars, and moving traffic.",
+            "key_objects": [
+                "White SUV (left)",
+                "Blue sedan (right)",
+                "Parked cars along curb",
+                "Pedestrian crossing area",
+                "Street signs and poles"
+            ],
+            "traffic_elements": [
+                "Crosswalk markings",
+                "Lane dividers",
+                "Stop lines",
+                "Traffic signals (distant)",
+                "Sidewalk curbs"
+            ],
+            "visibility_notes": "Clear visibility despite weather. Objects are well-defined with natural reflections on wet surfaces."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward motion of ego vehicle. Vehicles move consistently with expected urban traffic flow. No sudden jumps or disappearances.",
+            "object_continuity": "All objects remain visible across frames unless occluded by perspective or distance. Motion is continuous and physically plausible.",
+            "structure_continuity": "Road geometry, building facades, and infrastructure remain stable and consistent throughout the sequence."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle proceeds forward steadily, maintaining lane position. No immediate need for braking or turning observed.",
+            "risk_context": "Low-risk environment. Wet roads may require caution, but no imminent hazards are visible."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street scene with wet pavement and overcast sky. Buildings, vehicles, and road elements present but with noticeable artifacts.",
+            "key_objects": [
+                "White SUV (left) - slightly distorted",
+                "Blue sedan (right) - less defined",
+                "Parked cars - some appear merged or blurred",
+                "Street signs - partially obscured or misaligned"
+            ],
+            "traffic_elements": [
+                "Crosswalk markings - faint or inconsistent",
+                "Lane dividers - sometimes broken or warped",
+                "Stop lines - occasionally missing or misplaced",
+                "Sidewalk curbs - irregular in places"
+            ],
+            "visibility_notes": "Reduced clarity due to generation artifacts. Some objects show blending, warping, or loss of detail."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion appears generally smooth but exhibits minor flickering or jitter in object boundaries. Some vehicles show unnatural smoothing or stuttering.",
+            "object_continuity": "Most objects persist across frames, but some exhibit partial disappearance/reappearance or morphing between frames.",
+            "structure_continuity": "Road structure remains largely intact but shows occasional warping or misalignment, especially near edges and intersections."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward, though path stability is slightly compromised by visual inconsistencies.",
+            "risk_context": "Moderate risk context due to reduced scene readability. Artifacts may obscure critical details needed for safe decision-making."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "General road layout",
+            "Building positions",
+            "Vehicle presence and approximate locations",
+            "Weather conditions (rain/wet surface)"
+        ],
+        "missing_or_weakened_elements": [
+            "Sharpness of traffic markings",
+            "Clarity of pedestrian zones",
+            "Precision of vehicle outlines",
+            "Consistency of sign legibility"
+        ],
+        "newly_introduced_elements": [
+            "Morphing artifacts around vehicle edges",
+            "Flickering in static structures",
+            "Blurring at frame transitions"
+        ],
+        "artifacts_or_instabilities": [
+            "Warping of road lines",
+            "Inconsistent object boundaries",
+            "Temporal jitter in moving vehicles",
+            "Loss of fine texture detail"
+        ]
+    }
+}

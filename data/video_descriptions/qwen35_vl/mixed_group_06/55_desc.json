@@ -1,0 +1,95 @@
+{
+    "video_id": "55",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/55.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a city street with slight rightward drift or lane change.",
+        "main_object_trajectory_trend": "A white delivery truck is present on the left side in early frames and moves out of view; other vehicles maintain steady trajectories."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene with multi-lane road, brick buildings, sidewalks, and traffic infrastructure. A white USPS delivery truck is visible on the left initially.",
+            "key_objects": [
+                "White USPS delivery truck",
+                "Pedestrians on sidewalk",
+                "Bicycle parked near corner",
+                "Distant cars",
+                "Traffic lights and signs"
+            ],
+            "traffic_elements": [
+                "Crosswalk markings",
+                "Lane dividers",
+                "Stop lines",
+                "Street signs",
+                "Traffic signals"
+            ],
+            "visibility_notes": "All objects are clearly defined with natural lighting and shadows. No occlusion issues affecting key elements."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward motion of ego vehicle. The delivery truck exits frame naturally as ego passes it. Pedestrians move at normal walking pace.",
+            "object_continuity": "Objects remain consistently visible until they exit frame due to perspective or occlusion. No sudden appearances or disappearances.",
+            "structure_continuity": "Road geometry, building facades, and signage remain stable and coherent throughout the sequence."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle proceeds forward steadily, maintaining lane position with minor adjustments.",
+            "risk_context": "No immediate hazards detected. Pedestrians are on sidewalk; no crossing behavior observed. Traffic flow appears calm."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street layout but with noticeable degradation in object clarity and texture fidelity. Buildings appear slightly warped or blurred.",
+            "key_objects": [
+                "White delivery truck (less distinct)",
+                "Pedestrians (blurry or indistinct)",
+                "Bicycle (partially obscured or missing in some frames)",
+                "Distant cars (faint or merged with background)"
+            ],
+            "traffic_elements": [
+                "Crosswalk markings (faded or inconsistent)",
+                "Lane dividers (sometimes broken or misaligned)",
+                "Signs (text illegible or distorted)"
+            ],
+            "visibility_notes": "Reduced sharpness and detail compared to Row 1. Some objects blend into background or exhibit ghosting artifacts."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion preserved but exhibits slight jitter or warping in static structures. Object transitions less smooth than Row 1.",
+            "object_continuity": "Some objects flicker or partially vanish/reappear between frames. Delivery truck’s presence is intermittent or morphs unnaturally.",
+            "structure_continuity": "Building edges and road boundaries show minor instability or bending, especially near frame edges."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward, though trajectory may appear slightly unstable due to visual artifacts.",
+            "risk_context": "Scene readability reduced; potential for misinterpretation of pedestrian positions or lane boundaries. No explicit collision risk visible, but confidence in perception is lower."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "General road layout",
+            "Presence of delivery truck (though degraded)",
+            "Basic building structure",
+            "Ego forward motion trend"
+        ],
+        "missing_or_weakened_elements": [
+            "Clear definition of pedestrians",
+            "Legibility of traffic signs",
+            "Sharpness of crosswalk and lane markings",
+            "Consistent visibility of bicycle"
+        ],
+        "newly_introduced_elements": [
+            "Ghosting artifacts around moving objects",
+            "Warping of building facades",
+            "Flickering of static structures"
+        ],
+        "artifacts_or_instabilities": [
+            "Temporal flicker in object presence",
+            "Spatial warping of architectural lines",
+            "Blurring and loss of fine detail",
+            "Inconsistent rendering of textures and shadows"
+        ]
+    }
+}

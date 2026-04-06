@@ -1,0 +1,99 @@
+{
+    "video_id": "68",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/68.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a road with construction barriers on the right.",
+        "main_object_trajectory_trend": "Vehicles ahead maintain forward trajectories; static objects (barriers, buildings) remain fixed relative to ego."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban driving scene under overcast sky. Road is flanked by concrete barriers and chain-link fencing enclosing a construction zone on the right. Multiple vehicles are visible ahead in adjacent lanes. A large modern building with curved architecture is on the left.",
+            "key_objects": [
+                "white SUV (left lane)",
+                "silver sedan (center lane)",
+                "black sedan (right side)",
+                "construction barriers",
+                "chain-link fence",
+                "modern building (left)"
+            ],
+            "traffic_elements": [
+                "lane markings",
+                "concrete barriers",
+                "orange traffic cones",
+                "crosswalk (far left)"
+            ],
+            "visibility_notes": "All key objects are clearly visible with no significant occlusion or distortion. Scene structure is coherent and stable."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward progression of ego vehicle. Vehicles ahead move consistently without abrupt jumps or disappearances. Barriers and fences remain structurally continuous across frames.",
+            "object_continuity": "Vehicles maintain presence and relative positions. No sudden appearance/disappearance of objects. Trajectories appear physically plausible.",
+            "structure_continuity": "Road layout, barriers, and background buildings remain consistent. No warping, flickering, or structural drift observed."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily within its lane, maintaining safe distance from adjacent vehicles.",
+            "risk_context": "No immediate risk detected. Construction zone is separated by barriers. Traffic flow appears orderly. No emergency maneuver required."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban driving scene but with noticeable degradation in object clarity and structural fidelity. Vehicles and barriers are present but exhibit blurring and artifacting. Building details are less defined.",
+            "key_objects": [
+                "white SUV (blurred)",
+                "silver sedan (faint)",
+                "black sedan (partially obscured)",
+                "construction barriers (distorted)",
+                "chain-link fence (inconsistent)",
+                "modern building (simplified)"
+            ],
+            "traffic_elements": [
+                "lane markings (faded)",
+                "concrete barriers (warped)",
+                "orange traffic cones (missing or misplaced)",
+                "crosswalk (unclear)"
+            ],
+            "visibility_notes": "Key objects are degraded — blurred, duplicated, or partially missing. Structural elements like fences and barriers show instability. Some objects appear ghosted or smeared."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion appears generally smooth but with intermittent jitter and frame-to-frame inconsistency. Objects may flicker or shift position unnaturally. Temporal coherence is reduced compared to Row 1.",
+            "object_continuity": "Some vehicles vanish or reappear inconsistently. Barriers and fences show discontinuities — segments may disappear or warp between frames. Object boundaries are unstable.",
+            "structure_continuity": "Road structure and background elements exhibit warping and drifting. Fences and barriers do not maintain rigid geometry. Overall scene stability is compromised."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle appears to continue forward, but trajectory may be slightly erratic due to visual artifacts affecting perception.",
+            "risk_context": "Scene readability is significantly reduced. Degraded visibility of barriers, lane markings, and other vehicles may impair downstream decision-making. Potential for misinterpretation of spatial relationships."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "general road layout",
+            "presence of vehicles ahead",
+            "construction zone on right",
+            "building on left"
+        ],
+        "missing_or_weakened_elements": [
+            "clear lane markings",
+            "distinct traffic cones",
+            "sharp barrier edges",
+            "detailed building features",
+            "stable fence structure"
+        ],
+        "newly_introduced_elements": [
+            "ghosting artifacts around vehicles",
+            "warping of barriers and fences",
+            "smearing effects on moving objects"
+        ],
+        "artifacts_or_instabilities": [
+            "temporal flickering of objects",
+            "structural warping of static elements",
+            "loss of fine detail in all objects",
+            "inconsistent object boundaries across frames"
+        ]
+    }
+}

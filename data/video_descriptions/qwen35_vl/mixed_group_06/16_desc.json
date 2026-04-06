@@ -1,0 +1,83 @@
+{
+    "video_id": "16",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/16.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a curved road path, indicated by the blue trajectory line.",
+        "main_object_trajectory_trend": "A large vehicle (bus) is detected ahead on the left side of the lane."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A forward-facing view of a paved road in an urban or campus environment with buildings and trees on both sides. The weather appears overcast.",
+            "key_objects": [
+                "Green bus",
+                "Pedestrian (visible briefly on the right sidewalk)",
+                "Buildings",
+                "Trees"
+            ],
+            "traffic_elements": [
+                "Lane markings",
+                "Curbs",
+                "Road signs"
+            ],
+            "visibility_notes": "The scene is clear. The green bus is distinct. A pedestrian is visible walking on the sidewalk to the right."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "The camera moves forward smoothly. The bus maintains its position relative to the road geometry. The pedestrian walks at a consistent pace.",
+            "object_continuity": "Objects remain stable and continuous without sudden jumps or disappearances.",
+            "structure_continuity": "The road structure and surrounding buildings maintain consistent perspective and alignment."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily, following the road curve.",
+            "risk_context": "No immediate risk is visible. The bus is ahead in the same direction, and the pedestrian is on the sidewalk."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar forward view of the road and surroundings. However, visual fidelity is lower compared to Row 1.",
+            "key_objects": [
+                "Green bus (present but less defined)",
+                "Buildings",
+                "Trees"
+            ],
+            "traffic_elements": [
+                "Lane markings (faint)",
+                "Curbs"
+            ],
+            "visibility_notes": "The pedestrian seen in Row 1 is not clearly visible or is missing. The bus appears slightly distorted or blurred."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion is generally smooth, but there are slight artifacts in the texture rendering of the road and foliage.",
+            "object_continuity": "The bus remains present throughout the sequence. The absence of the pedestrian is a deviation from the reference.",
+            "structure_continuity": "The overall scene structure is preserved, though some details like building windows and tree leaves appear smeared or indistinct."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily, mirroring the reference video's path.",
+            "risk_context": "No immediate risk is visible, though the reduced clarity of peripheral elements (like the pedestrian) may affect situational awareness."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "Road layout",
+            "Green bus presence",
+            "General forward motion",
+            "Building structures"
+        ],
+        "missing_or_weakened_elements": [
+            "Pedestrian on the right sidewalk",
+            "Fine details of foliage",
+            "Clarity of traffic signs"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "Blurring/smearing of textures in generated video",
+            "Reduced sharpness of distant objects"
+        ]
+    }
+}

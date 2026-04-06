@@ -1,0 +1,87 @@
+{
+    "video_id": "35",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/35.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a curved road path.",
+        "main_object_trajectory_trend": "Red box indicates a vehicle ahead on the left; blue line suggests ego trajectory following the lane curve."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A forward-moving view of a paved road curving to the right, flanked by trees and multi-story buildings. A worker in a high-visibility vest is visible on the sidewalk near a building corner.",
+            "key_objects": [
+                "Worker in yellow vest",
+                "Parked red car (visible in later frames)",
+                "Trees",
+                "Buildings"
+            ],
+            "traffic_elements": [
+                "White directional arrow on road surface",
+                "Lane markings",
+                "Curbs"
+            ],
+            "visibility_notes": "Clear visibility of road structure and static objects. The worker is distinct and stationary relative to the background."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward motion consistent with driving. Objects scale naturally as the camera approaches them.",
+            "object_continuity": "The worker remains visible throughout the sequence until occluded or out of frame. The parked car appears as the ego vehicle passes it.",
+            "structure_continuity": "Road geometry and building facades remain stable without warping or flickering."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle follows the road curvature steadily.",
+            "risk_context": "No immediate hazards detected. The worker is on the sidewalk, not in the roadway."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar layout to Row 1 but with significant visual degradation. Buildings appear distorted and washed out. The worker is barely distinguishable or missing in some frames.",
+            "key_objects": [
+                "Faint outline of worker (sometimes missing)",
+                "Indistinct vehicles",
+                "Trees (blurred)"
+            ],
+            "traffic_elements": [
+                "Arrow on road is faint or missing",
+                "Lane lines are inconsistent"
+            ],
+            "visibility_notes": "Heavy blurring and ghosting artifacts obscure details. Structural elements like windows and walls lack definition."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion appears jittery with temporal instability. Objects seem to fade in and out rather than move smoothly.",
+            "object_continuity": "The worker disappears intermittently. The red car is not clearly tracked or is replaced by noise.",
+            "structure_continuity": "Building edges warp and shift unnaturally. Road surface texture fluctuates rapidly."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego motion direction matches Row 1 but appears less stable due to rendering artifacts.",
+            "risk_context": "Scene readability is significantly reduced, making hazard detection difficult."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "General road curvature",
+            "Presence of trees and buildings",
+            "Direction of travel"
+        ],
+        "missing_or_weakened_elements": [
+            "Clear definition of the worker",
+            "Distinct vehicle features",
+            "Sharp road markings"
+        ],
+        "newly_introduced_elements": [
+            "Ghosting artifacts",
+            "Warping of building structures",
+            "Noise patterns"
+        ],
+        "artifacts_or_instabilities": [
+            "Significant blurring in Row 3",
+            "Temporal flickering of objects",
+            "Loss of fine detail compared to Row 1"
+        ]
+    }
+}

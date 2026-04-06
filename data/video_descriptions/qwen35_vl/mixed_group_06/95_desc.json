@@ -1,0 +1,90 @@
+{
+    "video_id": "95",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/95.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a multi-lane urban road.",
+        "main_object_trajectory_trend": "White van on the right moves forward and slightly left relative to ego; silver sedan ahead maintains lane; black SUV in distance approaches."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene with multiple lanes, buildings on both sides, and moderate traffic. The view is from an ego vehicle moving forward.",
+            "key_objects": [
+                "white van (right lane)",
+                "silver sedan (center-left lane)",
+                "black SUV (distant center lane)",
+                "parked cars (far right)",
+                "buildings",
+                "streetlights",
+                "trees"
+            ],
+            "traffic_elements": [
+                "lane markings",
+                "curbs",
+                "road boundaries"
+            ],
+            "visibility_notes": "All key objects are clearly visible with natural lighting and no occlusion issues. Road structure is well-defined."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward progression of ego vehicle. Vehicles maintain consistent relative positions and speeds without abrupt changes.",
+            "object_continuity": "Vehicles remain continuously visible across frames. No sudden appearances or disappearances.",
+            "structure_continuity": "Road geometry, building facades, and roadside elements remain stable and continuous over time."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily in its lane.",
+            "risk_context": "No immediate hazards detected. Traffic flow appears orderly with sufficient spacing between vehicles."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene similar to Row 1 but with noticeable visual artifacts and reduced clarity. Objects appear less defined.",
+            "key_objects": [
+                "white van (right lane) - partially blurred",
+                "silver sedan (center-left lane) - slightly distorted",
+                "black SUV (distant center lane) - fainter than in Row 1",
+                "buildings - edges softened",
+                "streetlights - less distinct"
+            ],
+            "traffic_elements": [
+                "lane markings - some fading or inconsistency",
+                "curbs - less sharp definition"
+            ],
+            "visibility_notes": "Key objects are present but exhibit blurring, slight warping, and reduced contrast compared to Row 1. Some details are harder to interpret due to generation artifacts."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Overall motion trend matches Row 1, but minor flickering or instability may be present in object boundaries. Trajectories appear generally smooth but less precise.",
+            "object_continuity": "Objects remain visible throughout, though their shapes and edges show occasional instability or morphing effects.",
+            "structure_continuity": "Scene structure is preserved overall, but fine details like building lines and road markings show slight waviness or distortion over time."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily, consistent with Row 1.",
+            "risk_context": "No clear emergency maneuver required. However, reduced visual fidelity may affect downstream perception reliability."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "overall scene layout",
+            "vehicle presence and general positions",
+            "building structures",
+            "road direction and lane configuration"
+        ],
+        "missing_or_weakened_elements": [
+            "sharpness of object boundaries",
+            "clarity of road markings",
+            "detail resolution in distant objects"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "blurring around vehicle edges",
+            "slight warping of vertical structures",
+            "reduced contrast in background elements",
+            "minor temporal flickering in object contours"
+        ]
+    }
+}

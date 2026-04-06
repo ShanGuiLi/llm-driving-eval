@@ -1,0 +1,94 @@
+{
+    "video_id": "64",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/64.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a straight road with slight curvature to the right.",
+        "main_object_trajectory_trend": "Red boxes indicate static or slow-moving objects (parked vehicles, structures) on the sides; blue lines suggest lane boundaries and trajectory paths."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A daytime driving scene on a paved two-lane road in an urban or campus environment. Trees line both sides, buildings are visible in the background, and covered walkways appear on the left.",
+            "key_objects": [
+                "trees",
+                "buildings",
+                "covered walkway",
+                "road signs",
+                "curbs",
+                "paved road surface"
+            ],
+            "traffic_elements": [
+                "white lane markings",
+                "black-and-white curbs",
+                "orange diamond-shaped sign",
+                "pedestrian crossing area (implied by curb design)"
+            ],
+            "visibility_notes": "All elements are clearly visible with natural lighting and no significant occlusions."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward motion without abrupt changes. Objects remain stable in position relative to ego vehicle as expected during steady driving.",
+            "object_continuity": "No sudden appearance or disappearance of objects. Pedestrians and parked vehicles maintain consistent presence across frames.",
+            "structure_continuity": "Road geometry, building positions, and tree placements evolve naturally with perspective change."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily along the road.",
+            "risk_context": "No immediate hazards or risky interactions observed. Road ahead is clear for continued travel."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Visually similar to Row 1: same road layout, trees, buildings, and covered walkway. However, some details appear slightly distorted or less defined.",
+            "key_objects": [
+                "trees",
+                "buildings",
+                "covered walkway",
+                "road signs",
+                "curbs",
+                "paved road surface"
+            ],
+            "traffic_elements": [
+                "white lane markings",
+                "black-and-white curbs",
+                "orange diamond-shaped sign",
+                "pedestrian crossing area (implied)"
+            ],
+            "visibility_notes": "Some edges and textures are softer or blurred compared to Row 1. The orange sign appears slightly misaligned or warped in later frames."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion is preserved but exhibits minor jitter or instability in object boundaries. Some structures show slight warping over time.",
+            "object_continuity": "Most objects persist correctly, but certain features (e.g., sign shape, curb alignment) drift slightly between frames.",
+            "structure_continuity": "Overall scene structure remains coherent, though minor geometric distortions occur near edges and distant objects."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily, matching Row 1’s trajectory.",
+            "risk_context": "No clear emergency maneuver required. Minor visual artifacts do not obscure critical decision-making elements."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "road layout",
+            "tree placement",
+            "building positions",
+            "covered walkway",
+            "lane markings",
+            "curb patterns",
+            "general traffic context"
+        ],
+        "missing_or_weakened_elements": [
+            "sharpness of fine details (signs, text)",
+            "precise edge definition of curbs and poles"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "slight warping of road signs",
+            "minor boundary jitter in generated video",
+            "reduced texture fidelity in distant objects"
+        ]
+    }
+}

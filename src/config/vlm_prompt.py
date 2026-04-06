@@ -190,8 +190,6 @@ Return exactly this JSON schema:
 INPUT
 ==================================================
 video_id: $video_id
-video_clip: $video_desc
-
 Now return the JSON only.
 """
 )

@@ -1,0 +1,92 @@
+{
+    "video_id": "69",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/69.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a straight road with slight rightward drift.",
+        "main_object_trajectory_trend": "White sedan moving from left to right across the field of view; pedestrians walking on sidewalks."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene with multi-lane road, sidewalks, trees, and buildings. A white sedan is visible in the middle lane. Pedestrians are present on the sidewalk near a building entrance.",
+            "key_objects": [
+                "white sedan",
+                "pedestrians",
+                "trees",
+                "buildings",
+                "road signs",
+                "bollards"
+            ],
+            "traffic_elements": [
+                "lane markings",
+                "curbs",
+                "sidewalks",
+                "traffic bollards",
+                "road signs"
+            ],
+            "visibility_notes": "All objects are clearly visible with natural lighting and sharp details. No occlusions obscure critical elements."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward motion of ego vehicle. The white sedan moves consistently across frames without abrupt jumps. Pedestrians walk at steady pace.",
+            "object_continuity": "Objects remain continuously visible throughout the sequence. No sudden appearances or disappearances.",
+            "structure_continuity": "Road structure, buildings, and roadside elements maintain consistent geometry and perspective over time."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily along the road.",
+            "risk_context": "No immediate hazards detected. The white sedan is moving away laterally, posing no direct conflict. Pedestrians are on sidewalks, not entering the roadway."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street scene but with noticeable degradation in object clarity and detail. White sedan appears distorted and less defined. Pedestrians are faint or partially missing.",
+            "key_objects": [
+                "distorted white sedan",
+                "faint pedestrians",
+                "blurred trees",
+                "indistinct buildings"
+            ],
+            "traffic_elements": [
+                "faded lane markings",
+                "unclear curbs",
+                "missing or blurred bollards"
+            ],
+            "visibility_notes": "Significant blurring and loss of fine detail. Some objects appear merged or ghosted. Road boundaries are less distinct."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion appears smoother than real video but unnaturally so. Object trajectories lack micro-variations seen in real footage. Some frames show slight warping or flickering around edges.",
+            "object_continuity": "Objects persist but degrade in definition over time. Pedestrians may vanish or reappear inconsistently due to generation artifacts.",
+            "structure_continuity": "Overall scene structure is preserved but exhibits subtle warping and instability, especially near object boundaries and distant structures."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward, though motion feels slightly artificial due to smoothing effects.",
+            "risk_context": "Reduced scene readability may impair downstream decision-making. Distorted vehicles and faded traffic elements could lead to misinterpretation of spatial relationships."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "general road layout",
+            "presence of white sedan",
+            "building silhouettes",
+            "tree positions"
+        ],
+        "missing_or_weakened_elements": [
+            "clear pedestrian figures",
+            "sharp lane markings",
+            "distinct bollards",
+            "fine architectural details"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "blurring and loss of edge definition",
+            "ghosting around moving objects",
+            "unnatural motion smoothness",
+            "slight geometric warping in background structures"
+        ]
+    }
+}

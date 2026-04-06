@@ -1,0 +1,90 @@
+{
+    "video_id": "79",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/79.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a curved road path.",
+        "main_object_trajectory_trend": "White SUV ahead moving forward; blue bus on the left stationary or moving slowly."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A multi-lane urban road scene with trees lining both sides. A white SUV is driving ahead in the same lane. A blue bus is visible on the left side near an intersection. Buildings and covered walkways are present on the right.",
+            "key_objects": [
+                "white SUV",
+                "blue bus",
+                "pedestrians (small figures)",
+                "trees",
+                "buildings",
+                "covered walkway"
+            ],
+            "traffic_elements": [
+                "lane markings",
+                "curbs",
+                "road signs (unidentifiable details)"
+            ],
+            "visibility_notes": "All key objects are clearly visible. The scene is well-lit with natural daylight."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "The video shows smooth forward motion of the ego vehicle. The white SUV maintains its position relative to the ego vehicle, indicating consistent speed. No sudden jumps or disappearances occur.",
+            "object_continuity": "Objects remain continuously visible throughout the frames. Pedestrians appear briefly but consistently within their expected locations.",
+            "structure_continuity": "Road structure, curbs, and roadside elements remain stable and continuous without warping or flickering."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily, following the road curvature.",
+            "risk_context": "No immediate risk is visible. The white SUV ahead is at a safe distance. The bus on the left does not appear to be entering the ego lane."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban road scene with trees, buildings, and a covered walkway. A white SUV is present ahead. A blue bus is visible on the left.",
+            "key_objects": [
+                "white SUV",
+                "blue bus",
+                "trees",
+                "buildings",
+                "covered walkway"
+            ],
+            "traffic_elements": [
+                "lane markings",
+                "curbs"
+            ],
+            "visibility_notes": "Key objects are generally identifiable but exhibit some blurring and loss of fine detail compared to Row 1. The bus appears slightly distorted."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion appears smooth overall, but there are subtle artifacts in texture rendering that may suggest minor instability. The white SUV's movement is consistent with Row 1.",
+            "object_continuity": "Objects remain visible, though some edges appear softer or less defined than in the reference. No abrupt disappearances.",
+            "structure_continuity": "Road structure remains largely intact, but some areas show slight warping or blending artifacts, particularly around tree trunks and building edges."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily, mirroring the behavior in Row 1.",
+            "risk_context": "No clear emergency maneuver is visible. Scene readability is slightly reduced due to blurring, which may affect downstream decision interpretation."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "white SUV",
+            "blue bus",
+            "road layout",
+            "trees",
+            "buildings",
+            "covered walkway"
+        ],
+        "missing_or_weakened_elements": [
+            "fine textural details",
+            "sharpness of object boundaries",
+            "pedestrian clarity"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "blurring in generated video",
+            "slight warping around static structures",
+            "reduced contrast in certain areas"
+        ]
+    }
+}

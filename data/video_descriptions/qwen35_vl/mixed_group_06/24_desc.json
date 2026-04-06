@@ -1,0 +1,90 @@
+{
+    "video_id": "24",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/24.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a straight urban road with slight lane adjustments.",
+        "main_object_trajectory_trend": "Vehicles on the left and right appear to be moving parallel or stationary; red boxes indicate detected vehicle bounding boxes tracking forward."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene during rainy weather. Wet asphalt reflects surroundings. Multi-lane road with traffic lights, parked cars, and buildings lining both sides.",
+            "key_objects": [
+                "multiple vehicles (sedans, SUVs)",
+                "traffic lights",
+                "street poles",
+                "trees",
+                "buildings"
+            ],
+            "traffic_elements": [
+                "lane markings",
+                "stop lines",
+                "crosswalks (faintly visible)",
+                "traffic signals"
+            ],
+            "visibility_notes": "Rain reduces visibility slightly; reflections on wet road obscure some details but key elements remain interpretable."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward progression of ego vehicle; other vehicles move consistently with expected traffic flow. No abrupt jumps or disappearances.",
+            "object_continuity": "Vehicles maintain presence across frames; no sudden appearance/disappearance except due to occlusion or exit from frame.",
+            "structure_continuity": "Road structure, curbs, and building facades remain stable and continuous over time."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily at moderate speed, maintaining lane position.",
+            "risk_context": "Wet road conditions may increase stopping distance; no immediate hazard or emergency maneuver required based on visible context."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban rainy street scene with comparable layout: multi-lane road, vehicles, buildings, trees, and traffic infrastructure.",
+            "key_objects": [
+                "vehicles (some shapes less defined)",
+                "traffic lights",
+                "poles",
+                "buildings",
+                "trees"
+            ],
+            "traffic_elements": [
+                "lane markings (sometimes blurred or inconsistent)",
+                "curbs",
+                "road boundaries"
+            ],
+            "visibility_notes": "Some objects show reduced clarity or slight morphing; rain effects are present but may lack fine detail consistency."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Overall smooth motion; however, some vehicle shapes exhibit minor warping or flickering between frames. Trajectories generally follow real-world expectations.",
+            "object_continuity": "Most objects persist across frames; occasional slight shape distortion or edge blurring observed in generated vehicles.",
+            "structure_continuity": "Road geometry and background structures remain largely consistent; minor artifacts near object edges or distant features."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle moves forward steadily, mirroring reference behavior.",
+            "risk_context": "No clear risky interaction visible; scene readability is slightly degraded by generation artifacts but sufficient for basic navigation interpretation."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "overall scene layout",
+            "vehicle positions and trajectories",
+            "traffic light locations",
+            "building silhouettes",
+            "rainy atmosphere"
+        ],
+        "missing_or_weakened_elements": [
+            "fine texture details on vehicles and road surface",
+            "precise definition of lane markings in some frames",
+            "sharpness of distant objects"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "minor shape warping in generated vehicles",
+            "slight flickering or blurring around object boundaries",
+            "reduced contrast in some regions compared to real video"
+        ]
+    }
+}

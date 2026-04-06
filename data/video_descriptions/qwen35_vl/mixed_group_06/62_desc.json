@@ -1,0 +1,79 @@
+{
+    "video_id": "62",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/62.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a straight road with slight lane adjustments.",
+        "main_object_trajectory_trend": "A grey sedan is detected on the right side, moving parallel to the ego vehicle. A white van is visible further ahead in the center lane."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A daytime driving scene on a multi-lane urban road lined with trees and sidewalks. The view includes a bus stop on the right and buildings in the distance.",
+            "key_objects": [
+                "Grey sedan (right lane)",
+                "White van (center lane, distant)"
+            ],
+            "traffic_elements": [
+                "Yellow chevron markings on the road surface",
+                "Bus stop shelter",
+                "Green metal fence",
+                "Street lamps",
+                "Trees"
+            ],
+            "visibility_notes": "High visibility. Objects are sharp and clearly defined. Lighting is consistent with daylight."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion is smooth and continuous. The relative positions of the grey sedan and the white van change naturally as the ego vehicle moves forward.",
+            "object_continuity": "The grey sedan remains visible throughout the sequence without sudden disappearance or duplication.",
+            "structure_continuity": "Road markings, curbs, and background structures remain stable and aligned correctly with perspective."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily, maintaining its lane position.",
+            "risk_context": "No immediate risk is visible. The grey sedan is at a safe lateral distance, and the road ahead appears clear."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Visually similar to Row 1, depicting the same urban road scene with trees, a bus stop, and vehicles.",
+            "key_objects": [
+                "Grey sedan (right lane)",
+                "White van (center lane, distant)"
+            ],
+            "traffic_elements": [
+                "Yellow chevron markings",
+                "Bus stop shelter",
+                "Fence",
+                "Trees"
+            ],
+            "visibility_notes": "Overall clarity is good, but some fine details on the fence and distant buildings appear slightly softer compared to Row 1."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Temporal consistency is maintained. The movement of the grey sedan and the ego vehicle progression aligns with the reference video.",
+            "object_continuity": "Objects persist through the frames without abrupt jumps or flickering.",
+            "structure_continuity": "Road geometry and environmental structures remain consistent with the real-world reference."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle exhibits steady forward motion consistent with the reference.",
+            "risk_context": "No risky interactions are visually apparent. The scene layout supports standard driving behavior."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "Road layout and markings",
+            "Vehicle presence and general trajectory",
+            "Environmental features (trees, bus stop, fence)"
+        ],
+        "missing_or_weakened_elements": [],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "Slight reduction in texture sharpness for distant objects in Row 3 compared to Row 1",
+            "Minor blurring on the fence structure in Row 3"
+        ]
+    }
+}

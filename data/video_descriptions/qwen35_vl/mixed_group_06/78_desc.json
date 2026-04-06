@@ -1,0 +1,91 @@
+{
+    "video_id": "78",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/78.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a straight urban road with slight lane adjustments.",
+        "main_object_trajectory_trend": "A blue SUV on the left and a silver SUV on the right are moving in parallel or slightly diverging paths; distant vehicles maintain steady trajectories."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene during rainy weather. The view shows a multi-lane road with wet pavement reflecting surroundings. Buildings line both sides of the street.",
+            "key_objects": [
+                "Blue SUV (left side)",
+                "Silver SUV (right side)",
+                "Distant vehicles",
+                "Parked cars",
+                "Pedestrians near crosswalks"
+            ],
+            "traffic_elements": [
+                "Lane markings",
+                "Crosswalk lines",
+                "Traffic lights",
+                "Street signs",
+                "Curbs"
+            ],
+            "visibility_notes": "Visibility is reduced due to rain and overcast conditions. Reflections on the wet road surface are prominent. Objects are generally clear but slightly softened by weather."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion appears smooth and continuous. Vehicles move at consistent speeds relative to each other. No sudden jumps or disappearances.",
+            "object_continuity": "Key objects (blue SUV, silver SUV) remain visible throughout the sequence without abrupt changes in position or identity.",
+            "structure_continuity": "Road structure, buildings, and infrastructure remain stable and consistent across frames."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily along the lane.",
+            "risk_context": "No immediate high-risk interactions are visible. Wet road conditions may require caution, but no emergency maneuvers are observed."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street scene with wet pavement and buildings. However, visual fidelity is lower compared to Row 1.",
+            "key_objects": [
+                "Blue SUV (left side)",
+                "Silver SUV (right side)",
+                "Distant vehicles",
+                "Parked cars"
+            ],
+            "traffic_elements": [
+                "Lane markings",
+                "Crosswalk lines",
+                "Traffic lights",
+                "Street signs"
+            ],
+            "visibility_notes": "Significant blurring and loss of detail. Some objects appear smeared or distorted. Rain effects are present but less realistic."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion is somewhat preserved but exhibits instability. Objects show slight warping or flickering. Trajectories are roughly correct but lack precision.",
+            "object_continuity": "Most key objects remain identifiable, though some exhibit ghosting or partial disappearance/reappearance artifacts.",
+            "structure_continuity": "Road and building structures are recognizable but suffer from distortion, especially near edges and moving objects."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego motion appears to continue forward, consistent with Row 1.",
+            "risk_context": "Scene readability is degraded due to artifacts and blur, which may affect downstream decision interpretation. No clear emergency maneuver is visible."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "General road layout",
+            "Presence of main vehicles (blue and silver SUVs)",
+            "Building silhouettes",
+            "Rainy weather context"
+        ],
+        "missing_or_weakened_elements": [
+            "Fine details on vehicles and pedestrians",
+            "Clarity of traffic signs and signals",
+            "Realistic reflections on wet road"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "Blurring and smearing of moving objects",
+            "Ghosting effects around vehicles",
+            "Warping of static structures",
+            "Reduced texture fidelity"
+        ]
+    }
+}

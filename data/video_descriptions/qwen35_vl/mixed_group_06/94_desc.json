@@ -1,0 +1,85 @@
+{
+    "video_id": "94",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/94.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a straight road with slight rightward drift.",
+        "main_object_trajectory_trend": "A white shuttle bus is stationary or moving slowly on the right; a pedestrian crosses from left to right in the middle distance."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene on an overcast day with wet pavement. The view includes a multi-lane road, sidewalks, buildings, and parked bicycles.",
+            "key_objects": [
+                "White shuttle bus (right side)",
+                "Pedestrian crossing the street",
+                "Dark vehicle ahead in the lane",
+                "Bicycle racks on both sides of the road"
+            ],
+            "traffic_elements": [
+                "Lane markings",
+                "Crosswalk lines",
+                "Sidewalk curbs",
+                "Street lights"
+            ],
+            "visibility_notes": "Visibility is reduced due to rain and overcast conditions. Objects are clearly distinguishable despite weather."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion appears smooth and continuous. The pedestrian moves naturally across the frame. The ego vehicle advances steadily.",
+            "object_continuity": "All objects remain visible and track consistently without sudden jumps or disappearances.",
+            "structure_continuity": "Road geometry and building structures remain stable and coherent throughout the sequence."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward at a moderate speed, maintaining its lane position.",
+            "risk_context": "No immediate high-risk interaction is visible. The pedestrian crossing is observed but does not appear to require emergency braking."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street scene with wet pavement and overcast sky. Key elements like the bus, pedestrian, and bicycle racks are present.",
+            "key_objects": [
+                "White shuttle bus (right side)",
+                "Pedestrian crossing the street",
+                "Dark vehicle ahead",
+                "Bicycle racks"
+            ],
+            "traffic_elements": [
+                "Lane markings",
+                "Crosswalk lines",
+                "Sidewalk curbs"
+            ],
+            "visibility_notes": "Image quality shows some blurring and softness compared to Row 1. Details are less sharp, particularly around edges of vehicles and pedestrians."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion trends match Row 1, but there is noticeable temporal instability. The pedestrian's movement appears slightly jerky or interpolated rather than fluid.",
+            "object_continuity": "Objects generally persist, but the pedestrian exhibits minor flickering or shape distortion during the crossing motion.",
+            "structure_continuity": "Building facades and road boundaries show slight warping or drifting artifacts, especially near the edges of the frame."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego motion mimics forward progression consistent with Row 1, though with less stability in perspective rendering.",
+            "risk_context": "Scene readability is degraded by artifacts, which may obscure fine details necessary for precise decision-making, though no explicit hazard is generated."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "Overall scene layout",
+            "Presence of shuttle bus and pedestrian",
+            "Bicycle racks and general infrastructure"
+        ],
+        "missing_or_weakened_elements": [
+            "Sharpness of object edges",
+            "Clarity of distant background details"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "Temporal flickering of the pedestrian",
+            "Slight warping of static structures",
+            "General blurring reducing texture fidelity"
+        ]
+    }
+}

@@ -1,0 +1,94 @@
+{
+    "video_id": "82",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/82.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a straight road with slight curvature to the right.",
+        "main_object_trajectory_trend": "Pedestrians crossing from left to right; vehicles parked or moving slowly in adjacent lanes."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene with multi-lane road, crosswalks, modern buildings, and active pedestrian/vehicle traffic.",
+            "key_objects": [
+                "pedestrians crossing street",
+                "parked cars",
+                "moving vehicle (white SUV)",
+                "blue shipping container structure",
+                "traffic signs (crosswalk warning)"
+            ],
+            "traffic_elements": [
+                "zebra crosswalk markings",
+                "lane dividers",
+                "curbs",
+                "sidewalks",
+                "street poles",
+                "building facades"
+            ],
+            "visibility_notes": "All elements clearly visible under daylight conditions. No occlusions obscure critical objects."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth temporal progression. Pedestrians move continuously across crosswalk. Vehicle movement is steady without abrupt changes.",
+            "object_continuity": "Objects remain consistently present and identifiable throughout frames. No sudden appearances or disappearances.",
+            "structure_continuity": "Road geometry, building positions, and environmental features maintain spatial coherence over time."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle proceeds forward at moderate speed, maintaining lane position.",
+            "risk_context": "Low-risk scenario. Crosswalk activity requires attention but no immediate hazard detected. Clear visibility supports safe navigation."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street layout with crosswalks, buildings, and vehicles. Some structural details appear less defined than Row 1.",
+            "key_objects": [
+                "pedestrians (less detailed)",
+                "vehicles (some appear slightly distorted)",
+                "buildings (facade textures simplified)",
+                "road markings (partially blurred)"
+            ],
+            "traffic_elements": [
+                "crosswalk lines (faint in some areas)",
+                "lane boundaries (occasionally inconsistent)",
+                "curbs (less sharp edges)",
+                "signage (reduced clarity)"
+            ],
+            "visibility_notes": "Overall scene recognizable but with reduced texture fidelity. Some objects show minor morphing or softening of edges."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Temporal flow generally smooth. Minor flickering observed in pedestrian limbs and vehicle contours. Trajectories follow expected paths but with slight jitter.",
+            "object_continuity": "Most objects persist across frames. Occasional blending or ghosting effects on moving pedestrians and distant vehicles.",
+            "structure_continuity": "Global scene structure preserved. Local inconsistencies in edge definition and surface continuity, particularly around complex geometries like building corners and road curbs."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily, mirroring Row 1 behavior.",
+            "risk_context": "No clear emergency maneuver required. Reduced visual clarity may impair precise object tracking for downstream systems, though no immediate collision risk is evident."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "overall road layout",
+            "presence of pedestrians and vehicles",
+            "building silhouettes",
+            "crosswalk location",
+            "general traffic flow direction"
+        ],
+        "missing_or_weakened_elements": [
+            "fine textural detail on surfaces",
+            "sharpness of road markings",
+            "clarity of signage content",
+            "precise limb articulation of pedestrians"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "minor ghosting on moving objects",
+            "softened edges on static structures",
+            "slight contour warping on vehicles",
+            "reduced contrast in shadowed regions"
+        ]
+    }
+}

@@ -1,0 +1,86 @@
+{
+    "video_id": "67",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/67.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "The ego vehicle is navigating a curved road to the right, maintaining a steady forward trajectory.",
+        "main_object_trajectory_trend": "A white car is visible on the left side in the early frames, appearing stationary or moving slowly relative to the ego path."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A real-world driving scene showing a paved road curving to the right through a built-up area with buildings and vegetation. The weather appears overcast.",
+            "key_objects": [
+                "White car (left side)",
+                "Motorcycle/scooter (distance)",
+                "Buildings",
+                "Trees and bushes"
+            ],
+            "traffic_elements": [
+                "Road lane markings",
+                "Curbs",
+                "Manhole covers"
+            ],
+            "visibility_notes": "Visual clarity is consistent with standard camera footage. Objects are distinct and well-defined."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion is smooth and continuous. The perspective changes naturally as the vehicle follows the curve of the road.",
+            "object_continuity": "Objects such as the white car and roadside structures remain stable and do not flicker or disappear unexpectedly.",
+            "structure_continuity": "The road geometry and surrounding environment maintain physical consistency throughout the sequence."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily along the curved road.",
+            "risk_context": "No immediate hazards or risky interactions are visually apparent. The scene is clear for navigation."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "An AI-generated simulation of the same driving scene. It depicts a road curving right with similar building and vegetation elements.",
+            "key_objects": [
+                "White car (left side - distorted)",
+                "Buildings",
+                "Trees"
+            ],
+            "traffic_elements": [
+                "Faint road markings",
+                "Indistinct curbs"
+            ],
+            "visibility_notes": "Images exhibit significant blurring and warping. Object boundaries are soft and often indistinct compared to the reference."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Temporal consistency is degraded. There is noticeable flickering and morphing of textures, particularly on the road surface and foliage.",
+            "object_continuity": "The white car on the left appears unstable, changing shape and position unnaturally between frames. Some objects seem to merge with the background.",
+            "structure_continuity": "Structural integrity is compromised; buildings and poles appear to bend or warp slightly, indicating generative artifacts rather than rigid physical reality."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego motion trend mimics the forward movement along the curve, but the visual feedback is noisy.",
+            "risk_context": "Scene readability is significantly reduced due to artifacts. While no explicit collision is shown, the instability makes reliable decision interpretation difficult."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "General road layout and curvature",
+            "Presence of buildings and greenery",
+            "Ego vehicle trajectory direction"
+        ],
+        "missing_or_weakened_elements": [
+            "Clear definition of traffic signs and markings",
+            "Sharpness of object edges",
+            "Distinct separation between foreground and background"
+        ],
+        "newly_introduced_elements": [
+            "Morphing/warping artifacts on static objects",
+            "Flickering textures on the road surface"
+        ],
+        "artifacts_or_instabilities": [
+            "Significant blurring in Row 3",
+            "Unnatural deformation of the white car",
+            "Loss of structural rigidity in buildings"
+        ]
+    }
+}

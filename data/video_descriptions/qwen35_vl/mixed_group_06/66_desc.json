@@ -1,0 +1,92 @@
+{
+    "video_id": "66",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/66.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "The ego vehicle appears to be moving forward through an intersection and then continuing straight along a city street.",
+        "main_object_trajectory_trend": "Red boxes indicate vehicles ahead; green lines suggest lane boundaries or path planning; blue lines may represent other trajectories. The trajectory shows a smooth forward progression."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A real-world urban driving scene captured from a vehicle's perspective. The view includes a multi-lane road with clear markings, intersections, buildings on both sides, traffic lights, and parked or moving vehicles.",
+            "key_objects": [
+                "vehicles (cars, possibly buses)",
+                "traffic lights",
+                "pedestrians (distant)",
+                "buildings",
+                "road signs"
+            ],
+            "traffic_elements": [
+                "lane lines",
+                "crosswalks",
+                "stop lines",
+                "traffic signals",
+                "curbs"
+            ],
+            "visibility_notes": "All elements are clearly visible with natural lighting and shadows. No significant occlusions or distortions observed."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion is smooth and continuous across frames. Objects move naturally without abrupt jumps or disappearances.",
+            "object_continuity": "Vehicles and infrastructure remain consistently present and correctly positioned relative to each other over time.",
+            "structure_continuity": "Road geometry, building facades, and environmental features maintain structural integrity throughout the sequence."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle proceeds forward steadily through the intersection and continues along the road.",
+            "risk_context": "No immediate hazards or risky interactions are visually apparent. Traffic flow appears orderly."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "An AI-generated version of the same urban driving scene. It replicates the general layout but exhibits some visual artifacts and inconsistencies in object rendering.",
+            "key_objects": [
+                "vehicles (some appear distorted or duplicated)",
+                "traffic lights (less distinct)",
+                "buildings (slightly warped textures)",
+                "road markings (partially blurred)"
+            ],
+            "traffic_elements": [
+                "lane lines (faint or inconsistent)",
+                "crosswalks (less defined)",
+                "curbs (occasionally misaligned)"
+            ],
+            "visibility_notes": "Some objects show blurring, duplication, or texture warping. Lighting and shadow consistency is slightly off compared to Row 1."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Most motion is smooth, but occasional flickering or slight positional jitter occurs in certain objects (e.g., distant cars).",
+            "object_continuity": "Most objects persist across frames, though some exhibit minor disappearance/reappearance cycles or shape deformation.",
+            "structure_continuity": "Overall structure remains intact, but subtle warping or stretching of buildings and roads can be seen in some frames."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego motion mimics the reference — forward movement through the intersection and continuation down the street.",
+            "risk_context": "No overt risk indicators, but reduced clarity in traffic elements may affect downstream interpretation reliability."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "general road layout",
+            "building positions",
+            "vehicle presence",
+            "traffic signal locations"
+        ],
+        "missing_or_weakened_elements": [
+            "sharpness of road markings",
+            "clarity of pedestrian figures",
+            "precision of vehicle outlines"
+        ],
+        "newly_introduced_elements": [
+            "minor ghosting effects around moving vehicles",
+            "texture warping on building surfaces"
+        ],
+        "artifacts_or_instabilities": [
+            "blurred lane lines",
+            "slight frame-to-frame jitter in object positions",
+            "inconsistent shadow rendering"
+        ]
+    }
+}

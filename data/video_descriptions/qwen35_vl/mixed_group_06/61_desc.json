@@ -1,0 +1,87 @@
+{
+    "video_id": "61",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/61.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a curved road path.",
+        "main_object_trajectory_trend": "A vehicle ahead is moving forward in the same lane; trajectory lines indicate smooth following."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Nighttime driving scene on a wet urban road with street lighting. The view is from an ego vehicle following traffic.",
+            "key_objects": [
+                "Vehicle ahead (white sedan)",
+                "Another vehicle further ahead",
+                "Streetlights",
+                "Roadside trees and structures"
+            ],
+            "traffic_elements": [
+                "Lane markings (dashed white lines)",
+                "Double yellow lines on the left edge",
+                "Wet road surface reflecting lights"
+            ],
+            "visibility_notes": "Visibility is reduced due to darkness and rain/wet conditions, but key objects like the lead vehicle and road boundaries are distinguishable."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion appears continuous and consistent with driving at night. No sudden jumps or disappearances of objects.",
+            "object_continuity": "The lead vehicle remains visible throughout the sequence, maintaining relative position.",
+            "structure_continuity": "Road structure and environment remain stable without abrupt changes."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily, maintaining distance from the lead vehicle.",
+            "risk_context": "Low immediate risk; wet road conditions require caution but no emergency maneuver is evident."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Nighttime driving scene similar to Row 1, but with noticeable visual artifacts and distortions.",
+            "key_objects": [
+                "Vehicle ahead (appears distorted or partially missing in some frames)",
+                "Streetlights (blurred or smeared)",
+                "Roadside elements (less distinct)"
+            ],
+            "traffic_elements": [
+                "Lane markings (faint or inconsistent)",
+                "Road edges (sometimes indistinct)"
+            ],
+            "visibility_notes": "Significant blurring and ghosting effects reduce clarity. Some objects appear duplicated or warped."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Temporal inconsistencies present: objects flicker, blur, or shift unnaturally between frames.",
+            "object_continuity": "Lead vehicle visibility fluctuates; sometimes it appears fragmented or displaced.",
+            "structure_continuity": "Road structure shows warping and instability, especially near edges and under light sources."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego motion seems forward but context readability is compromised by visual noise.",
+            "risk_context": "Scene degradation may impair downstream decision-making; no clear emergency action visible but reliability is low."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "General road layout",
+            "Presence of lead vehicle",
+            "Streetlight positions"
+        ],
+        "missing_or_weakened_elements": [
+            "Clear lane markings",
+            "Sharp object boundaries",
+            "Consistent lighting reflections"
+        ],
+        "newly_introduced_elements": [
+            "Ghosting artifacts",
+            "Smeared light sources",
+            "Distorted vehicle shapes"
+        ],
+        "artifacts_or_instabilities": [
+            "Frame-to-frame flickering",
+            "Object displacement",
+            "Blur and warping around bright areas"
+        ]
+    }
+}

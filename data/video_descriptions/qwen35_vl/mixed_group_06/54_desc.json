@@ -1,0 +1,93 @@
+{
+    "video_id": "54",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/54.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a road with slight rightward drift or lane change indicated by red box trajectory.",
+        "main_object_trajectory_trend": "A large truck on the left moves forward parallel to ego; a parked car on the right remains static relative to the scene."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "An urban street scene captured from a moving vehicle. The view includes a large delivery truck on the left, a chain-link fence with parked cars behind it in the center, and a brick building on the right. A white van is visible further down the road on the right side.",
+            "key_objects": [
+                "Large beige delivery truck (left)",
+                "Parked cars behind fence (center)",
+                "Dark sedan (right foreground)",
+                "White van (right background)",
+                "Brick buildings",
+                "Chain-link fence"
+            ],
+            "traffic_elements": [
+                "Road surface",
+                "Lane markings (faint)",
+                "Curbs"
+            ],
+            "visibility_notes": "Clear visibility of all major objects. Lighting is overcast but sufficient for detail recognition."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "The camera moves forward steadily. The truck on the left recedes slightly as the ego vehicle passes it. The parked cars remain stationary. The white van appears to be driving away or stopped further down.",
+            "object_continuity": "All objects maintain consistent presence and position relative to the ego motion without sudden jumps or disappearances.",
+            "structure_continuity": "The road layout, fence line, and building facades remain continuous and stable throughout the sequence."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward at a moderate speed, maintaining its lane position between the truck and the curb/building area.",
+            "risk_context": "No immediate risk factors are visible. The path ahead appears clear of obstacles requiring evasive action."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "The generated video attempts to replicate the real-world scene but exhibits significant structural distortions. The truck on the left appears fragmented and morphs into an indistinct shape. The fence and parked cars are heavily blurred and lack definition. The building on the right loses architectural details.",
+            "key_objects": [
+                "Fragmented truck-like shape (left)",
+                "Blurred dark shapes resembling cars (center)",
+                "Indistinct vehicle shape (right)",
+                "Morphed building structure (right)"
+            ],
+            "traffic_elements": [
+                "Undefined road surface",
+                "Missing or distorted lane markings",
+                "Faded curbs"
+            ],
+            "visibility_notes": "Severe loss of detail. Objects are often unrecognizable due to blurring, warping, and artifacting. The spatial relationship between objects is ambiguous."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion is present but erratic. Objects appear to warp and shift unnaturally rather than translating smoothly. The truck seems to dissolve or change form mid-sequence.",
+            "object_continuity": "Objects do not maintain consistent identity. The truck transforms into a different shape, and the background elements flicker or smear.",
+            "structure_continuity": "The scene structure is unstable. Lines that should be straight (fence, building edges) curve and break. The overall geometry of the environment degrades over time."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego motion is implied by the shifting perspective, but the visual flow is disrupted by artifacts, making precise behavior interpretation difficult.",
+            "risk_context": "Scene readability is severely compromised. The inability to clearly identify objects or boundaries creates high uncertainty for any downstream decision-making process."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "General forward motion direction",
+            "Rough placement of truck on left and building on right"
+        ],
+        "missing_or_weakened_elements": [
+            "Clear definition of the truck",
+            "Visible details of parked cars",
+            "Sharpness of the white van",
+            "Architectural details of buildings",
+            "Clear lane markings"
+        ],
+        "newly_introduced_elements": [
+            "Warping artifacts around the truck",
+            "Smearing effects on the fence",
+            "Unnatural color bleeding and blending"
+        ],
+        "artifacts_or_instabilities": [
+            "Severe blurring and loss of texture",
+            "Geometric distortion of linear structures",
+            "Object morphing and identity loss",
+            "Temporal flickering of background elements"
+        ]
+    }
+}

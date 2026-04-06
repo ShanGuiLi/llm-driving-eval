@@ -1,0 +1,84 @@
+{
+    "video_id": "40",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/40.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a straight road with slight rightward drift.",
+        "main_object_trajectory_trend": "Static construction barriers and parked cars on the sides; no dynamic objects in immediate path."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene under overcast weather conditions. Road is wet, indicating recent or ongoing rain. Construction scaffolding lines the left side of the road. Parked vehicles are visible on both sides further down the street.",
+            "key_objects": [
+                "construction scaffolding",
+                "parked cars",
+                "wet asphalt road",
+                "buildings in background"
+            ],
+            "traffic_elements": [
+                "road markings (faint due to wetness)",
+                "curbs",
+                "sidewalks"
+            ],
+            "visibility_notes": "Visibility is reduced due to rain and overcast sky. Objects are generally clear but slightly blurred by motion and weather."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward progression. No sudden jumps or discontinuities in object positions relative to ego motion.",
+            "object_continuity": "Construction structures and parked cars remain consistently visible throughout the sequence without disappearing or reappearing.",
+            "structure_continuity": "Road geometry and building alignment remain stable and continuous across frames."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle moves forward steadily along the lane, maintaining consistent speed and direction.",
+            "risk_context": "No immediate hazards detected. Wet road surface may require caution, but no active risk interaction is visible."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street scene with construction scaffolding and parked cars. Weather appears overcast and roads are wet, matching Row 1.",
+            "key_objects": [
+                "construction scaffolding",
+                "parked cars",
+                "wet road",
+                "background buildings"
+            ],
+            "traffic_elements": [
+                "road edges",
+                "curbs"
+            ],
+            "visibility_notes": "Objects appear slightly more blurred or smeared compared to Row 1, especially during motion transitions. Some structural details are less defined."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion is present but exhibits minor temporal inconsistencies — some frames show slight warping or ghosting around moving elements like scaffolding poles.",
+            "object_continuity": "Most objects persist across frames, but occasional flickering or partial disappearance occurs, particularly near edges of construction barriers.",
+            "structure_continuity": "Overall structure remains coherent, but minor distortions occur at boundaries between static and dynamic regions."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward with similar trajectory to Row 1, though motion appears slightly less smooth due to generation artifacts.",
+            "risk_context": "No explicit risky behavior observed. Reduced clarity in object boundaries may affect downstream perception reliability."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "construction scaffolding layout",
+            "parked car positions",
+            "road wetness and weather condition",
+            "general forward motion trend"
+        ],
+        "missing_or_weakened_elements": [
+            "fine detail clarity in scaffolding and vehicles",
+            "sharpness of road markings and curbs"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "slight blurring and smearing in generated video",
+            "minor frame-to-frame flickering around object edges",
+            "reduced definition in structural boundaries"
+        ]
+    }
+}

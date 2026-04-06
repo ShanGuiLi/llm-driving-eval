@@ -1,0 +1,84 @@
+{
+    "video_id": "57",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/57.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a city street with slight lane adjustments.",
+        "main_object_trajectory_trend": "A red vehicle is detected moving laterally across the ego path from left to right."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A rainy urban street scene captured from a vehicle perspective. The environment includes multi-story buildings, wet asphalt roads, and parked cars.",
+            "key_objects": [
+                "Red sedan (moving)",
+                "Parked vehicles on the left",
+                "Pedestrian crossing area",
+                "Street infrastructure (poles, signs)"
+            ],
+            "traffic_elements": [
+                "Lane markings",
+                "Crosswalk lines",
+                "Traffic lights (distant)",
+                "Road curbs"
+            ],
+            "visibility_notes": "Visibility is reduced due to rain and overcast conditions. Water droplets are visible on the lens or windshield."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "The video shows continuous forward motion of the ego vehicle. The red car moves smoothly across the frame from left to right without sudden jumps.",
+            "object_continuity": "The red car remains visible throughout its trajectory. Other static objects like buildings and parked cars maintain their relative positions consistent with ego motion.",
+            "structure_continuity": "The road structure and building facades remain stable and coherent. No structural warping or flickering is observed."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily, maintaining its lane position.",
+            "risk_context": "The presence of a crossing vehicle (red sedan) requires attention, but no immediate collision risk is visually unambiguous as the vehicle appears to be passing in front."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "A generated version of the same rainy urban street scene. Buildings and road layout are generally preserved but appear slightly distorted.",
+            "key_objects": [
+                "Red sedan (moving)",
+                "Parked vehicles (less distinct)",
+                "General street furniture"
+            ],
+            "traffic_elements": [
+                "Faint lane markings",
+                "Indistinct crosswalks"
+            ],
+            "visibility_notes": "Objects appear blurrier and less defined compared to the reference. The red car retains its color but lacks sharp edges."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "The ego motion trend matches the reference. The red car's movement is present but exhibits some jitteriness and less smoothness than the real video.",
+            "object_continuity": "The red car is tracked but occasionally loses definition. Background elements show minor instability or 'melting' artifacts typical of generative models.",
+            "structure_continuity": "Building lines and road boundaries are somewhat wobbly. There is noticeable temporal flickering in the texture of the wet road surface."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle appears to move forward similarly to the reference.",
+            "risk_context": "Scene readability is reduced due to blurring and artifacts, which may affect downstream decision interpretation regarding the crossing vehicle."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "Overall scene layout (buildings, road)",
+            "Presence and general trajectory of the red sedan",
+            "Ego vehicle forward motion"
+        ],
+        "missing_or_weakened_elements": [
+            "Sharpness of traffic signs and signals",
+            "Clarity of lane markings",
+            "Distinctness of parked vehicles"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "Blurring of object edges in Row 3",
+            "Temporal flickering in road textures",
+            "Slight warping of vertical structures (buildings/poles) in Row 3"
+        ]
+    }
+}

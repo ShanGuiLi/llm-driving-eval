@@ -1,0 +1,88 @@
+{
+    "video_id": "96",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/96.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a multi-lane urban road.",
+        "main_object_trajectory_trend": "White van on the right is moving forward in the adjacent lane; silver sedan ahead is maintaining lane position."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene with multiple lanes, buildings on both sides, and moderate traffic. The view includes a white van to the right and a silver sedan ahead.",
+            "key_objects": [
+                "white van",
+                "silver sedan",
+                "black SUV (distant)",
+                "parked cars",
+                "buildings",
+                "streetlights"
+            ],
+            "traffic_elements": [
+                "lane markings",
+                "curbs",
+                "sidewalks"
+            ],
+            "visibility_notes": "All objects are clearly visible with natural lighting and sharp details. No occlusions obscure critical elements."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Objects move smoothly consistent with vehicle speed. No sudden jumps or disappearances observed.",
+            "object_continuity": "Vehicles maintain continuous presence across frames without abrupt changes in shape or position.",
+            "structure_continuity": "Road structure, buildings, and infrastructure remain stable and coherent throughout the sequence."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily within its lane.",
+            "risk_context": "No immediate hazards detected; traffic flow appears normal and predictable."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene similar to Row 1 but with noticeable visual artifacts. Key objects like vehicles and buildings are present but appear distorted or blurred.",
+            "key_objects": [
+                "white van (distorted)",
+                "silver sedan (blurred)",
+                "buildings (warping)"
+            ],
+            "traffic_elements": [
+                "faint lane markings",
+                "indistinct curbs"
+            ],
+            "visibility_notes": "Key objects suffer from blurring and structural warping. Some details are lost due to generation artifacts."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion trends are preserved but appear less smooth. Minor flickering and warping occur around vehicle edges.",
+            "object_continuity": "Vehicles remain visible but exhibit slight instability in shape and position over time.",
+            "structure_continuity": "Building lines and road boundaries show minor warping and inconsistency compared to real reference."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle appears to continue forward, though motion may be slightly exaggerated or unstable due to artifacts.",
+            "risk_context": "Scene readability is reduced by artifacts, which may affect downstream decision interpretation, though no clear emergency is visible."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "overall scene layout",
+            "presence of main vehicles",
+            "general traffic flow direction"
+        ],
+        "missing_or_weakened_elements": [
+            "sharpness of object boundaries",
+            "clarity of lane markings",
+            "detail fidelity in distant objects"
+        ],
+        "newly_introduced_elements": [
+            "visual warping around vehicles",
+            "blurring effects on static structures"
+        ],
+        "artifacts_or_instabilities": [
+            "edge distortion on white van",
+            "minor flickering in building facades",
+            "reduced texture clarity in generated video"
+        ]
+    }
+}

@@ -1,0 +1,86 @@
+{
+    "video_id": "53",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/53.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a straight road with slight leftward drift or lane change preparation.",
+        "main_object_trajectory_trend": "A white vehicle ahead maintains forward trajectory; red boxes indicate detected objects (likely vehicles) in the distance and to the sides."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A daytime driving scene on a multi-lane urban road. The view includes a covered walkway/bus stop structure on the left, trees lining the road, and buildings in the background. Road markings are clearly visible.",
+            "key_objects": [
+                "White van/car ahead in the left lane",
+                "Covered walkway structure on the left",
+                "Trees and greenery",
+                "Buildings in the distance"
+            ],
+            "traffic_elements": [
+                "Yellow box junction markings",
+                "Lane dividers (dashed and solid)",
+                "Curbs",
+                "Traffic signs/poles"
+            ],
+            "visibility_notes": "High visibility. Objects are distinct and well-defined. No significant occlusion of key elements."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward motion. The white vehicle ahead moves consistently away from the camera. No sudden jumps or disappearances.",
+            "object_continuity": "The white vehicle remains continuously visible throughout the sequence. Road structures remain stable.",
+            "structure_continuity": "Road geometry and surrounding environment remain consistent without warping or flickering."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily, following the lane. There is no indication of braking or sharp turning.",
+            "risk_context": "Low risk context. The road ahead is clear except for the distant vehicle. No immediate hazards are visible."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban road scene with covered walkway on the left and trees. However, visual fidelity is lower compared to Row 1. Some details appear blurred or less defined.",
+            "key_objects": [
+                "White vehicle ahead (less distinct)",
+                "Covered walkway structure",
+                "Trees",
+                "Buildings"
+            ],
+            "traffic_elements": [
+                "Road markings (fainter)",
+                "Lane dividers",
+                "Curbs"
+            ],
+            "visibility_notes": "Reduced clarity. The white vehicle appears slightly more diffuse. Road markings are present but less sharp than in Row 1."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion appears smooth and consistent with Row 1. The white vehicle moves forward similarly. No obvious temporal glitches.",
+            "object_continuity": "Objects remain visible and continuous. The white vehicle does not disappear or jump unexpectedly.",
+            "structure_continuity": "Scene structure is maintained. No major warping or structural collapse observed, though some blurring is present."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily, mirroring the behavior in Row 1.",
+            "risk_context": "Risk context appears similar to Row 1, though reduced image quality might make fine-grained hazard detection slightly harder."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "Road layout and lane structure",
+            "Covered walkway on the left",
+            "White vehicle ahead",
+            "General tree line and building background"
+        ],
+        "missing_or_weakened_elements": [
+            "Sharpness of road markings",
+            "Detail definition on the white vehicle",
+            "Clarity of distant traffic signs"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "Slight blurring in Row 3 compared to Row 1",
+            "Reduced texture detail in generated video"
+        ]
+    }
+}

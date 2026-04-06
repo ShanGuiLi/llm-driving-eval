@@ -1,0 +1,89 @@
+{
+    "video_id": "71",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/71.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a straight road with slight curvature to the right.",
+        "main_object_trajectory_trend": "A white vehicle is visible ahead in the same lane, maintaining distance."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A daytime driving scene on a multi-lane road. The view includes a bus stop shelter on the left, trees lining the road, and a large industrial-style building on the right side.",
+            "key_objects": [
+                "White van/car ahead",
+                "Bus stop shelter (left)",
+                "Trees",
+                "Building facade"
+            ],
+            "traffic_elements": [
+                "Lane markings (dashed white lines)",
+                "Curbs",
+                "Road signs (yellow/black warning sign)"
+            ],
+            "visibility_notes": "Clear visibility of all elements. No occlusions or blurring affecting object identification."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward progression. Objects move consistently with perspective changes. No sudden jumps or disappearances.",
+            "object_continuity": "The white vehicle remains visible and maintains relative position. Bus stop structure stays consistent as the ego passes it.",
+            "structure_continuity": "Road geometry and surrounding structures remain stable and continuous throughout the sequence."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily in its lane.",
+            "risk_context": "No immediate hazards or risky interactions observed. Road ahead appears clear."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar layout to Row 1: road, bus stop, trees, and building. However, visual fidelity is lower with noticeable artifacts.",
+            "key_objects": [
+                "White van/car ahead (less distinct)",
+                "Bus stop shelter (distorted edges)",
+                "Trees (blurred/flickering)",
+                "Building facade (texture inconsistencies)"
+            ],
+            "traffic_elements": [
+                "Lane markings (faint or broken in places)",
+                "Curbs (sometimes misaligned)",
+                "Road signs (partially missing or distorted)"
+            ],
+            "visibility_notes": "Reduced clarity due to generation artifacts. Some objects appear smeared or duplicated at frame boundaries."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Generally smooth but exhibits minor flickering and warping, especially around tree lines and building edges. Object positions are mostly consistent but show slight jitter.",
+            "object_continuity": "Main objects persist across frames but occasionally deform or lose definition. The white vehicle’s shape fluctuates slightly.",
+            "structure_continuity": "Road structure remains largely intact but shows occasional bending or misalignment near curbs and lane dividers."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily, matching real-world trajectory.",
+            "risk_context": "No explicit risk indicators; however, reduced visual clarity may impair downstream perception systems."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "Overall road layout",
+            "Presence of bus stop and building",
+            "White vehicle ahead",
+            "General direction of travel"
+        ],
+        "missing_or_weakened_elements": [
+            "Sharpness of lane markings",
+            "Clarity of roadside signs",
+            "Textural detail on building and trees"
+        ],
+        "newly_introduced_elements": [
+            "Flickering artifacts around foliage",
+            "Slight duplication or smearing at frame transitions"
+        ],
+        "artifacts_or_instabilities": [
+            "Edge distortion on static structures",
+            "Minor positional jitter of distant objects",
+            "Reduced contrast and texture fidelity"
+        ]
+    }
+}

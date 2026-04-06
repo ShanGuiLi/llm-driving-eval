@@ -1,0 +1,94 @@
+{
+    "video_id": "18",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/18.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a straight road with slight leftward drift or lane change indicated by red trajectory line.",
+        "main_object_trajectory_trend": "Red boxes indicate static or slow-moving objects (buildings, poles) and one moving object (blue box) ahead on the road."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene with multi-lane road, trees lining both sides, industrial/commercial buildings, bus stop shelter, and clear sky. Road markings including 'SLOW' text and directional arrows are visible.",
+            "key_objects": [
+                "trees",
+                "bus stop shelter",
+                "industrial building",
+                "road signs",
+                "fences"
+            ],
+            "traffic_elements": [
+                "lane lines",
+                "SLOW road marking",
+                "directional arrow",
+                "curb",
+                "sidewalk"
+            ],
+            "visibility_notes": "All elements are clearly visible with natural lighting and sharp detail. No occlusions or distortions observed."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward motion of ego vehicle; no sudden jumps or discontinuities in scenery progression.",
+            "object_continuity": "Static objects (buildings, trees, poles) remain consistently positioned relative to camera movement; no ghosting or duplication.",
+            "structure_continuity": "Road geometry, building facades, and overhead structures maintain consistent perspective and alignment throughout frames."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle moves forward steadily along the road, maintaining lane position without abrupt maneuvers.",
+            "risk_context": "No immediate hazards or risky interactions visible; environment appears calm and predictable for driving."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street layout with trees, buildings, and road markings. However, visual fidelity is reduced compared to Row 1; some details appear blurred or smeared.",
+            "key_objects": [
+                "trees",
+                "building",
+                "road markings",
+                "bus stop structure"
+            ],
+            "traffic_elements": [
+                "lane lines",
+                "SLOW marking",
+                "arrow"
+            ],
+            "visibility_notes": "Objects are present but less defined; edges may be soft or slightly distorted. Some textures appear artificially smoothed or inconsistent."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion is preserved but exhibits minor flickering or warping in texture transitions between frames. Object positions track reasonably well but show slight instability.",
+            "object_continuity": "Most static objects persist across frames, though some exhibit subtle shape deformation or positional jitter. No complete disappearance or reappearance of major objects.",
+            "structure_continuity": "Overall scene structure remains coherent, but fine architectural details (e.g., window patterns, fence links) show temporal inconsistency or blurring artifacts."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward with similar trajectory as Row 1, though perceived smoothness is degraded due to generation artifacts.",
+            "risk_context": "No explicit risk indicators, but reduced clarity and stability may impair downstream perception systems’ ability to reliably detect or classify objects."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "road layout",
+            "tree positions",
+            "building silhouettes",
+            "road markings",
+            "bus stop location"
+        ],
+        "missing_or_weakened_elements": [
+            "fine texture detail on buildings and fences",
+            "sharpness of road surface markings",
+            "clarity of distant signage"
+        ],
+        "newly_introduced_elements": [
+            "slight motion blur artifacts",
+            "texture smearing around tree trunks and poles",
+            "minor geometric warping near building corners"
+        ],
+        "artifacts_or_instabilities": [
+            "temporal flickering in foliage and pavement textures",
+            "softened object boundaries",
+            "occasional misalignment of linear features like curbs and lane lines"
+        ]
+    }
+}

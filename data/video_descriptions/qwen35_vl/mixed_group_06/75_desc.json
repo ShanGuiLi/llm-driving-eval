@@ -1,0 +1,82 @@
+{
+    "video_id": "75",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/75.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a straight road with slight curvature to the right.",
+        "main_object_trajectory_trend": "A white box truck is stationary on the left side; pedestrians are walking on the sidewalk; other vehicles are moving in the distance."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "An urban street scene under overcast skies. The view includes a multi-lane road, sidewalks, buildings, and parked/stationary vehicles.",
+            "key_objects": [
+                "White box truck (stationary on left)",
+                "Pedestrians on sidewalk",
+                "Distant cars",
+                "Construction site on far left"
+            ],
+            "traffic_elements": [
+                "Lane markings",
+                "Road curbs",
+                "Sidewalks"
+            ],
+            "visibility_notes": "Objects are clearly defined with natural lighting and shadows. No significant occlusions or distortions."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward progression of the camera. Objects maintain consistent relative positions and sizes as expected during forward motion.",
+            "object_continuity": "The white truck remains visible throughout the sequence without sudden appearance/disappearance. Pedestrians move naturally.",
+            "structure_continuity": "Road geometry and building structures remain stable and continuous across frames."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle moves forward steadily along the lane.",
+            "risk_context": "No immediate hazards detected. The stationary truck is on the shoulder/sidewalk area, not obstructing the driving lane."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street scene with comparable layout: road, buildings, and vehicles. However, visual fidelity differs from real footage.",
+            "key_objects": [
+                "White box truck (appears slightly distorted or less detailed)",
+                "Pedestrians (less distinct features)",
+                "Distant cars (blurry or indistinct)"
+            ],
+            "traffic_elements": [
+                "Lane markings (present but may lack sharpness)",
+                "Curbs and sidewalks (visible but potentially warped)"
+            ],
+            "visibility_notes": "Some objects appear softer or less defined compared to Row 1. Textures on buildings and vehicles show generative artifacts."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion is preserved, but some frames exhibit minor flickering or warping in static elements like poles or building edges.",
+            "object_continuity": "Major objects (truck, pedestrians) persist across frames, though their shapes may deform slightly due to generation instability.",
+            "structure_continuity": "Overall scene structure is maintained, but fine details (e.g., windows, signs) show inconsistencies or blending errors."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward, mimicking the trajectory of the reference video.",
+            "risk_context": "No clear risk indicators, but reduced clarity of object boundaries may affect precise decision-making if used for control."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "Road layout and direction",
+            "Presence of white truck and pedestrians",
+            "General building structures"
+        ],
+        "missing_or_weakened_elements": [
+            "Fine texture details on vehicles and buildings",
+            "Sharpness of lane markings and signage"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "Slight warping of vertical structures (poles, building corners)",
+            "Blurring or softening of distant objects",
+            "Minor frame-to-frame flicker in static regions"
+        ]
+    }
+}

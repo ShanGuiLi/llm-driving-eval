@@ -1,0 +1,93 @@
+{
+    "video_id": "59",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/59.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "The ego vehicle appears to be moving forward along a city street with slight lateral adjustments.",
+        "main_object_trajectory_trend": "A large white cement truck is positioned on the left side of the road, appearing stationary or moving slowly. Other vehicles are visible further down the road."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A daytime urban street scene captured from a vehicle's perspective. The view includes multi-story buildings, a construction zone on the right sidewalk, and traffic on the road.",
+            "key_objects": [
+                "White cement mixer truck (left)",
+                "Silver sedan (center-left)",
+                "Black car (right lane)",
+                "Construction barriers and cones",
+                "Pedestrian (distant, near center)"
+            ],
+            "traffic_elements": [
+                "Orange construction fencing",
+                "Traffic cones",
+                "Lane markings (faint)",
+                "Sidewalk curbs"
+            ],
+            "visibility_notes": "All objects are clearly defined with natural lighting and shadows. No significant occlusions prevent identification of key elements."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "The scene shows consistent motion over time. The camera moves forward smoothly. Objects maintain their relative positions and sizes as expected for forward motion.",
+            "object_continuity": "Vehicles remain continuously visible without sudden appearance or disappearance. The cement truck stays in its lane position.",
+            "structure_continuity": "Buildings, road edges, and construction barriers maintain structural integrity throughout the frames. No warping or ghosting is observed."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily, maintaining its lane position between the construction zone and oncoming traffic.",
+            "risk_context": "The presence of a large truck nearby and active construction requires attention, but no immediate collision risk is visually apparent."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "An AI-generated version of the same urban street scene. It attempts to replicate the real-world reference but exhibits noticeable artifacts and distortions.",
+            "key_objects": [
+                "White cement mixer truck (distorted shape)",
+                "Silver sedan (less distinct)",
+                "Black car (visible but slightly warped)",
+                "Construction barriers (irregular shapes)",
+                "Pedestrian (unclear or missing)"
+            ],
+            "traffic_elements": [
+                "Orange construction fencing (wavy/blurry)",
+                "Traffic cones (some missing or misshapen)",
+                "Lane markings (faded or inconsistent)",
+                "Sidewalk curbs (discontinuous)"
+            ],
+            "visibility_notes": "Key objects are present but suffer from blurring, geometric distortion, and loss of fine detail. Some elements appear merged or duplicated."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Temporal consistency is reduced compared to Row 1. Some objects flicker or change shape slightly between frames. Motion appears less smooth due to generation artifacts.",
+            "object_continuity": "While most objects persist across frames, their shapes and positions show minor instability. The cement truck's form fluctuates slightly.",
+            "structure_continuity": "Building lines and road structures show slight warping and discontinuities, particularly near the construction zone where geometry becomes irregular."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle appears to continue forward, though the generated motion may feel slightly less stable than the real reference.",
+            "risk_context": "Reduced clarity of object boundaries and potential artifacts may obscure precise spatial relationships, potentially affecting downstream decision interpretation."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "General scene layout (buildings, road, construction zone)",
+            "Presence of major vehicles (truck, cars)",
+            "Overall color scheme and lighting conditions"
+        ],
+        "missing_or_weakened_elements": [
+            "Fine details on vehicles and buildings",
+            "Clear definition of pedestrian",
+            "Sharpness of lane markings and barriers"
+        ],
+        "newly_introduced_elements": [
+            "Geometric distortions in vehicle shapes",
+            "Wavy or broken lines in construction fencing",
+            "Minor ghosting or blending artifacts around object edges"
+        ],
+        "artifacts_or_instabilities": [
+            "Blurring and loss of texture detail",
+            "Slight shape fluctuations in dynamic objects",
+            "Inconsistent rendering of small objects like cones"
+        ]
+    }
+}

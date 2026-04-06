@@ -1,0 +1,99 @@
+{
+    "video_id": "70",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/70.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a multi-lane road with slight rightward drift or lane change.",
+        "main_object_trajectory_trend": "A black car on the left moves forward and slightly right; a white bus ahead maintains straight trajectory; construction barriers remain static."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene with modern buildings, active traffic, and roadside construction. Road has multiple lanes with clear markings.",
+            "key_objects": [
+                "black sedan (left)",
+                "white bus (center distance)",
+                "construction excavator",
+                "orange barriers",
+                "pedestrians (right sidewalk)"
+            ],
+            "traffic_elements": [
+                "yellow cross-hatched lines",
+                "lane dividers",
+                "traffic lights (distant)",
+                "curbs",
+                "sidewalks"
+            ],
+            "visibility_notes": "All objects are clearly visible with natural lighting and sharp detail. No occlusions obscure critical elements."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth motion of vehicles; no sudden jumps or discontinuities. Temporal flow is consistent across frames.",
+            "object_continuity": "Vehicles maintain continuous presence without disappearance or duplication. Pedestrians move naturally along sidewalk.",
+            "structure_continuity": "Road geometry, building facades, and barrier positions remain stable and coherent over time."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle proceeds forward steadily, maintaining lane position with minor adjustments.",
+            "risk_context": "No immediate hazards detected. Construction zone is bordered by barriers; pedestrian activity is distant and non-interfering."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street layout but with reduced clarity and some structural distortions. Buildings and roads appear slightly warped.",
+            "key_objects": [
+                "black sedan (left)",
+                "white bus (center distance)",
+                "construction excavator",
+                "orange barriers",
+                "pedestrians (right sidewalk)"
+            ],
+            "traffic_elements": [
+                "yellow cross-hatched lines",
+                "lane dividers",
+                "traffic lights (distant)",
+                "curbs",
+                "sidewalks"
+            ],
+            "visibility_notes": "Objects are present but exhibit blurring, edge softening, and occasional ghosting. Some details (e.g., text on signs, fine textures) are lost."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion appears generally smooth but exhibits subtle flickering in object edges and background structures. Minor temporal jitter observed.",
+            "object_continuity": "Most objects persist continuously, though some show slight positional drift or shape deformation between frames.",
+            "structure_continuity": "Road and building outlines occasionally warp or bend unnaturally, especially near horizon and distant structures."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward with similar trajectory to reference, though path may appear slightly less stable due to visual artifacts.",
+            "risk_context": "Reduced scene readability due to artifacts may impair downstream perception systems. No overt risk event visible, but confidence in object detection may be lowered."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "vehicle positions and trajectories",
+            "road layout and lane markings",
+            "building silhouettes",
+            "barrier placement",
+            "pedestrian locations"
+        ],
+        "missing_or_weakened_elements": [
+            "fine texture details",
+            "sharp object boundaries",
+            "clear signage text",
+            "precise depth cues"
+        ],
+        "newly_introduced_elements": [
+            "ghosting artifacts around moving vehicles",
+            "warping of distant structures",
+            "flicker in static backgrounds"
+        ],
+        "artifacts_or_instabilities": [
+            "edge blurring",
+            "temporal jitter",
+            "structural warping",
+            "reduced contrast in shadows and highlights"
+        ]
+    }
+}

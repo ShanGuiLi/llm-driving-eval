@@ -1,0 +1,81 @@
+{
+    "video_id": "12",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/12.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a curved road, maintaining lane position.",
+        "main_object_trajectory_trend": "A vehicle ahead is moving forward in the same lane; trajectory lines indicate smooth following."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Nighttime driving scene on a two-lane road with street lighting. The environment includes curbs, grassy verges, and distant buildings.",
+            "key_objects": [
+                "Vehicle ahead (white/silver sedan)",
+                "Streetlights"
+            ],
+            "traffic_elements": [
+                "Lane markings (faint but visible)",
+                "Road boundaries/curbs"
+            ],
+            "visibility_notes": "Visibility is moderate due to darkness; headlights illuminate the road surface and the vehicle ahead clearly."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward progression of the ego vehicle. The vehicle ahead maintains consistent distance and speed relative to the camera.",
+            "object_continuity": "The lead vehicle remains continuously visible without sudden appearance or disappearance.",
+            "structure_continuity": "Road geometry and surrounding structures remain stable and continuous throughout the frames."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily, following the curve of the road.",
+            "risk_context": "No immediate risk factors visible; standard night driving conditions apply."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Nighttime driving scene similar to Row 1, showing a road with streetlights and a vehicle ahead.",
+            "key_objects": [
+                "Vehicle ahead (appears as bright lights)",
+                "Streetlights"
+            ],
+            "traffic_elements": [
+                "Lane markings (less distinct than real video)",
+                "Road edges"
+            ],
+            "visibility_notes": "Image quality is lower; details are blurred. The vehicle ahead appears as indistinct light sources rather than a defined shape."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion appears generally smooth but exhibits slight jitter or instability in the rendering of static elements like poles and curbs.",
+            "object_continuity": "The lead vehicle's representation fluctuates between a solid shape and abstract light blobs, indicating temporal inconsistency in object generation.",
+            "structure_continuity": "Road structure is preserved but suffers from warping and blurring artifacts, especially at the periphery."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle appears to move forward, though the path seems slightly less defined due to visual noise.",
+            "risk_context": "Reduced scene clarity may obscure potential hazards; however, no specific risky interaction is visually evident."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "General road layout",
+            "Presence of a vehicle ahead",
+            "Streetlight positions"
+        ],
+        "missing_or_weakened_elements": [
+            "Clear definition of the lead vehicle's body",
+            "Sharpness of lane markings",
+            "Detail in roadside vegetation/buildings"
+        ],
+        "newly_introduced_elements": [
+            "None significant, though some ghosting artifacts appear around lights"
+        ],
+        "artifacts_or_instabilities": [
+            "Significant blurring in Row 3",
+            "Temporal flickering of the lead vehicle's appearance",
+            "Warping of static background elements"
+        ]
+    }
+}

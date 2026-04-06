@@ -1,0 +1,91 @@
+{
+    "video_id": "11",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/11.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a straight road with slight curvature to the right.",
+        "main_object_trajectory_trend": "Red bounding boxes indicate static or slow-moving objects on the roadside and curbs; no dynamic vehicle trajectories are prominent."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A daytime urban street scene with modern buildings, trees, and paved roads. The view includes multiple camera angles stitched together showing a continuous forward path.",
+            "key_objects": [
+                "Road signs (orange construction sign)",
+                "Trees and shrubs",
+                "Buildings with glass facades",
+                "Paved road with lane markings",
+                "Pedestrians in distance (rightmost frame)"
+            ],
+            "traffic_elements": [
+                "Lane lines (yellow and white)",
+                "Curbs",
+                "Construction signage",
+                "Sidewalks"
+            ],
+            "visibility_notes": "All elements are clearly visible with natural lighting and sharp detail. No occlusions obscure critical traffic features."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward progression across frames with consistent perspective changes. Objects maintain stable positions relative to ego motion.",
+            "object_continuity": "Static objects (buildings, trees, signs) remain consistently positioned without sudden jumps or disappearances.",
+            "structure_continuity": "Road geometry and building structures align continuously across frames without warping or structural breaks."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle moves steadily forward along the road, maintaining lane position.",
+            "risk_context": "No immediate hazards or risky interactions are visible. Road ahead is clear for continued forward travel."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street scene as Row 1 but with noticeable blurring and reduced clarity. Buildings, trees, and road elements are present but less defined.",
+            "key_objects": [
+                "Blurred road signs",
+                "Indistinct trees and shrubs",
+                "Faint building outlines",
+                "Paved road with faint lane markings",
+                "Unclear pedestrian shapes (rightmost frame)"
+            ],
+            "traffic_elements": [
+                "Faint lane lines",
+                "Blurry curbs",
+                "Obscured construction signage",
+                "Low-contrast sidewalks"
+            ],
+            "visibility_notes": "Significant blur reduces visibility of fine details. Traffic elements are present but harder to interpret due to loss of sharpness."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion appears smooth but with temporal instability—objects exhibit slight flickering or ghosting effects between frames.",
+            "object_continuity": "Most objects persist across frames but show minor positional drift or morphing artifacts, especially near edges of frames.",
+            "structure_continuity": "Overall structure remains coherent but exhibits subtle warping and softening of architectural lines and road boundaries."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward at similar speed, though visual degradation may affect precise navigation.",
+            "risk_context": "Reduced scene readability could impair downstream decision-making; no explicit risk event is visible, but confidence in hazard detection is lowered."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "General road layout and direction",
+            "Presence of buildings and vegetation",
+            "Basic traffic infrastructure (curbs, signs)"
+        ],
+        "missing_or_weakened_elements": [
+            "Sharpness of lane markings",
+            "Clarity of pedestrian figures",
+            "Detail in building textures and windows",
+            "Contrast of road signs"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "Temporal flickering in object positions",
+            "Spatial warping of vertical structures",
+            "Ghosting around moving or edge objects",
+            "Overall image blur reducing semantic clarity"
+        ]
+    }
+}

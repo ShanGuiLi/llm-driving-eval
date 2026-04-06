@@ -1,0 +1,92 @@
+{
+    "video_id": "46",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/46.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a city street with slight rightward drift.",
+        "main_object_trajectory_trend": "A red minivan is visible ahead in the center lane, moving forward. Construction barriers and buildings are static."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban driving scene on an overcast day. The road is wide with multiple lanes. To the left, there is a large construction site with scaffolding and unfinished building structures. To the right, there are concrete barriers, temporary fencing, and parked vehicles. In the distance, other city buildings and traffic infrastructure are visible.",
+            "key_objects": [
+                "Red minivan",
+                "Construction scaffolding",
+                "Concrete barriers",
+                "Parked white truck",
+                "Street lights",
+                "Traffic cones"
+            ],
+            "traffic_elements": [
+                "Lane markings (faint)",
+                "Crosswalk lines",
+                "Stop lines",
+                "Construction signage"
+            ],
+            "visibility_notes": "Visibility is clear despite overcast weather. Objects are distinct and well-defined."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "The camera moves forward smoothly. The red minivan maintains its position relative to the road and moves away slightly as the ego vehicle approaches. No sudden jumps or disappearances occur.",
+            "object_continuity": "All objects remain consistent throughout the frames. The construction site and barriers persist without morphing.",
+            "structure_continuity": "Road geometry and building structures remain stable and continuous."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily, following the lane towards the intersection or construction zone.",
+            "risk_context": "No immediate high-risk interactions are visible. The presence of construction suggests potential hazards but no active conflict is observed."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban driving scene with construction on the left and barriers on the right. However, visual fidelity is lower compared to Row 1. The sky appears more uniform and less detailed.",
+            "key_objects": [
+                "Red minivan (less distinct)",
+                "Construction scaffolding (simplified)",
+                "Concrete barriers (blurred edges)",
+                "Parked vehicles (indistinct)"
+            ],
+            "traffic_elements": [
+                "Lane markings (very faint or missing in some areas)",
+                "Crosswalk lines (hard to distinguish)",
+                "Signage (illegible)"
+            ],
+            "visibility_notes": "Objects appear softer and less sharp. Some details like text on signs or specific features of the construction site are lost."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion appears generally smooth but exhibits slight warping or blurring artifacts, particularly around moving objects like the minivan. The transition between frames shows minor instability in object boundaries.",
+            "object_continuity": "Major objects persist, but their shapes fluctuate slightly due to generation artifacts. The red minivan's form changes subtly across frames.",
+            "structure_continuity": "Building structures and barriers maintain general layout but show some texture distortion and edge softening."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle appears to move forward similarly to Row 1, though the path seems slightly less defined due to reduced clarity of road markings.",
+            "risk_context": "Reduced visibility of fine details (like exact lane boundaries or distant signals) may obscure subtle risks, but no obvious dangerous maneuver is depicted."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "General road layout",
+            "Presence of construction site on left",
+            "Barriers on right",
+            "Red minivan location",
+            "Sky condition (overcast)"
+        ],
+        "missing_or_weakened_elements": [
+            "Sharpness of road markings",
+            "Legibility of signs",
+            "Detail in construction scaffolding",
+            "Texture of vehicles and barriers"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "Blurring of object edges in Row 3",
+            "Slight warping of the minivan shape",
+            "Loss of fine detail in background buildings",
+            "Softer contrast in generated video"
+        ]
+    }
+}

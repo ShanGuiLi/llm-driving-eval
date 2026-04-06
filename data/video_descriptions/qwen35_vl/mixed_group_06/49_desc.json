@@ -1,0 +1,87 @@
+{
+    "video_id": "49",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/49.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a straight road with slight curvature to the right.",
+        "main_object_trajectory_trend": "Red 3D boxes indicate static or slow-moving objects (buildings, poles) and potential dynamic objects on the road; trajectories appear consistent with forward ego motion."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A daytime urban street scene captured from a moving vehicle. The view includes a multi-lane road, sidewalks, trees, and buildings on both sides. A blue and white building is prominent in the center-left.",
+            "key_objects": [
+                "trees",
+                "buildings",
+                "sidewalks",
+                "road surface",
+                "fences",
+                "distant vehicles"
+            ],
+            "traffic_elements": [
+                "lane markings (yellow lines)",
+                "curbs",
+                "road boundaries"
+            ],
+            "visibility_notes": "Clear visibility of all major scene elements. No significant occlusions or blurring affecting object identification."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward motion with consistent perspective changes. Objects move naturally relative to the camera frame.",
+            "object_continuity": "Objects remain visible and maintain their structural integrity throughout the sequence.",
+            "structure_continuity": "Road layout, building positions, and tree placements are continuous and physically plausible."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle moves forward steadily along the road.",
+            "risk_context": "No immediate hazards or risky interactions are visible. The scene appears calm with no urgent need for evasive maneuvers."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street scene as Row 1, but with noticeable visual artifacts. The overall structure matches the real-world reference, including buildings, trees, and roads.",
+            "key_objects": [
+                "trees",
+                "buildings",
+                "sidewalks",
+                "road surface",
+                "fences"
+            ],
+            "traffic_elements": [
+                "lane markings",
+                "curbs"
+            ],
+            "visibility_notes": "Some elements appear slightly blurred or distorted compared to Row 1. Details like fence patterns and building windows show minor inconsistencies."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion is preserved, but some frames exhibit slight flickering or warping around edges of objects (e.g., tree trunks, building corners).",
+            "object_continuity": "Most objects remain continuous, though some show subtle shape distortions or texture smearing over time.",
+            "structure_continuity": "Overall scene structure is maintained, but minor geometric instabilities are present near object boundaries."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily, consistent with Row 1.",
+            "risk_context": "No clear emergency maneuver is required based on visible content. However, reduced clarity in certain areas may affect downstream decision interpretation."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "road layout",
+            "building structures",
+            "tree positions",
+            "general traffic flow context"
+        ],
+        "missing_or_weakened_elements": [
+            "fine details in fence patterns",
+            "sharpness of distant vehicle features"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "slight blurring around object edges",
+            "minor geometric warping in generated video",
+            "texture smearing on building facades"
+        ]
+    }
+}

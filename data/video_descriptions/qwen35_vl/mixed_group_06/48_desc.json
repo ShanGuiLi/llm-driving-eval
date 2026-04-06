@@ -1,0 +1,101 @@
+{
+    "video_id": "48",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/48.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a straight road with slight rightward drift.",
+        "main_object_trajectory_trend": "Static objects (parking structures, parked cars) remain stationary; ego vehicle trajectory indicated by red/blue lines shows forward progression."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene with multi-lane road, parking garage on left, industrial buildings on right, overcast sky. Road markings and curbs are clearly visible.",
+            "key_objects": [
+                "parked cars on both sides",
+                "multi-story parking structure",
+                "industrial building complex",
+                "trees lining the road",
+                "pedestrian crossing sign",
+                "blue parking sign near garage entrance"
+            ],
+            "traffic_elements": [
+                "double yellow center line",
+                "white lane dividers",
+                "crosswalk markings at intersection",
+                "curb edges",
+                "sidewalks"
+            ],
+            "visibility_notes": "All elements are sharp and well-defined. No occlusions or ambiguities in object identification."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward camera movement consistent with vehicle driving. Objects maintain relative positions without sudden jumps or disappearances.",
+            "object_continuity": "Parked vehicles, signs, and buildings remain continuously visible throughout frames. No ghosting or flickering observed.",
+            "structure_continuity": "Road geometry, building facades, and overhead power lines show stable perspective changes consistent with forward motion."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle moves forward steadily along the road, maintaining lane position.",
+            "risk_context": "No immediate hazards detected. Pedestrian visible on far right sidewalk but not entering roadway. Traffic appears light."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street layout as Row 1, but with noticeable blurring and distortion artifacts. Some structural details appear smeared or misaligned.",
+            "key_objects": [
+                "blurred parked cars",
+                "distorted parking structure",
+                "faint industrial building outlines",
+                "indistinct trees",
+                "partially visible pedestrian sign",
+                "unclear blue parking sign"
+            ],
+            "traffic_elements": [
+                "faded double yellow line",
+                "washed-out lane dividers",
+                "blurry crosswalk markings",
+                "soft curb edges",
+                "less defined sidewalks"
+            ],
+            "visibility_notes": "Significant loss of detail due to generation artifacts. Many objects lack clear boundaries. Colors appear desaturated compared to Row 1."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion present but accompanied by temporal instability — some objects exhibit slight warping or shifting between frames. Motion blur is inconsistent across scene depth.",
+            "object_continuity": "Most major objects persist across frames, but their shapes and positions show minor inconsistencies (e.g., car wheels appear slightly rotated or displaced).",
+            "structure_continuity": "Building lines and road edges show subtle undulations and misalignments, suggesting imperfect spatial coherence during generation."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward, though perceived speed may be altered by visual distortions.",
+            "risk_context": "Reduced scene clarity may impair hazard detection. Pedestrian location less certain. Road boundary definition weakened, potentially affecting lateral control interpretation."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "overall road layout",
+            "general building placement",
+            "presence of parked vehicles",
+            "direction of travel"
+        ],
+        "missing_or_weakened_elements": [
+            "sharpness of road markings",
+            "clarity of signage text/symbols",
+            "precise object boundaries",
+            "color fidelity",
+            "fine architectural details"
+        ],
+        "newly_introduced_elements": [
+            "temporal warping artifacts",
+            "spatial misalignment in static structures",
+            "inconsistent motion blur patterns"
+        ],
+        "artifacts_or_instabilities": [
+            "frame-to-frame shape deformation",
+            "edge bleeding around objects",
+            "loss of high-frequency texture",
+            "slight positional jitter in distant objects"
+        ]
+    }
+}

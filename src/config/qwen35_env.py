@@ -13,7 +13,7 @@ DASHSCOPE_BASE_URL = os.getenv(
 QWEN_MODEL = os.getenv("QWEN_MODEL", "qwen3.5-35b-a3b")
 
 RAW_VIDEO_DIR = os.path.join(PROJECT_ROOT, "data", "raw_videos")
-EVAL_RESULT_DIR = os.path.join(PROJECT_ROOT, "data", "eval_results")
+EVAL_RESULT_DIR = os.path.join(PROJECT_ROOT, "data", "eval_results", "qwen35")
 PROMPT_DIR = os.path.join(PROJECT_ROOT, "src/config")
 
 for d in [RAW_VIDEO_DIR, EVAL_RESULT_DIR, PROMPT_DIR]:

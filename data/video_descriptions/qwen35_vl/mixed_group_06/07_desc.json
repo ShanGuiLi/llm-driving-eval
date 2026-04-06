@@ -1,0 +1,95 @@
+{
+    "video_id": "07",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/07.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a wet urban road, approaching an intersection with traffic lights.",
+        "main_object_trajectory_trend": "Red boxes indicate static or slow-moving obstacles (construction barriers, parked cars) on the left and center; blue lines suggest lane boundaries; green line indicates forward path."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene under overcast, rainy conditions. Wet pavement reflects surroundings. Road has multiple lanes, crosswalks, and construction zones marked by orange cones and barriers.",
+            "key_objects": [
+                "parked cars on left",
+                "construction barriers",
+                "traffic lights",
+                "street poles",
+                "buildings on both sides",
+                "wet road surface"
+            ],
+            "traffic_elements": [
+                "red traffic lights visible ahead",
+                "crosswalk markings",
+                "lane dividers",
+                "curbs",
+                "orange traffic cones"
+            ],
+            "visibility_notes": "All elements are clearly visible despite rain. No major occlusions or distortions. Scene is coherent and physically plausible."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward motion consistent with vehicle driving at moderate speed. Objects maintain relative positions without sudden jumps or disappearances.",
+            "object_continuity": "Vehicles, barriers, and infrastructure remain continuously present across frames. No ghosting or duplication observed.",
+            "structure_continuity": "Road geometry, building facades, and overhead structures remain stable and aligned with perspective changes."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily toward intersection. No abrupt braking or steering evident.",
+            "risk_context": "Wet road may reduce traction; traffic light ahead is red — potential need to decelerate or stop. Construction zone requires caution but no immediate hazard detected."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street scene with wet pavement and overcast sky. Buildings, roads, and traffic elements appear structurally similar to Row 1 but exhibit subtle artifacts.",
+            "key_objects": [
+                "parked cars on left",
+                "construction barriers",
+                "traffic lights",
+                "street poles",
+                "buildings on both sides",
+                "wet road surface"
+            ],
+            "traffic_elements": [
+                "red traffic lights visible ahead",
+                "crosswalk markings",
+                "lane dividers",
+                "curbs",
+                "orange traffic cones"
+            ],
+            "visibility_notes": "Most elements preserved. Some minor blurring around moving objects (e.g., distant vehicles). Traffic light colors slightly less saturated than in Row 1. Cones show slight shape distortion in some frames."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion appears smooth overall. Minor flickering in reflections on wet road surface. No major object disappearance or teleportation.",
+            "object_continuity": "Objects generally persist across frames. Slight warping of barrier shapes near edges of frame. Distant car silhouettes occasionally merge or blur unnaturally.",
+            "structure_continuity": "Building lines and road edges remain mostly consistent. Overhead gantry structure shows minor bending/stretching in later frames compared to Row 1."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily, matching Row 1 trajectory. No deviation or erratic behavior observed.",
+            "risk_context": "Same risk context as Row 1: wet road, red light ahead, construction zone. Generated video does not introduce new hazards but may reduce clarity of fine details due to artifacting."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "road layout",
+            "building positions",
+            "traffic light locations",
+            "construction zone markers",
+            "overall scene composition"
+        ],
+        "missing_or_weakened_elements": [
+            "slight reduction in saturation of traffic lights",
+            "minor loss of sharpness in distant vehicle outlines"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "flickering reflections on wet road",
+            "slight warping of construction barriers near frame edges",
+            "occasional merging of distant vehicle silhouettes",
+            "minor stretching of overhead gantry structure in later frames"
+        ]
+    }
+}

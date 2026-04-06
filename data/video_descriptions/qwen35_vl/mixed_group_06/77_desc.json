@@ -1,0 +1,87 @@
+{
+    "video_id": "77",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/77.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a straight road with slight lane adjustments.",
+        "main_object_trajectory_trend": "A white truck is detected on the right side; red boxes indicate its bounding volume and trajectory relative to the ego vehicle."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene with multi-lane roads, modern buildings, and clear weather. The view includes a white box truck parked or moving slowly on the right side of the road.",
+            "key_objects": [
+                "White box truck",
+                "Pedestrians (visible in some frames)",
+                "Road markings",
+                "Buildings",
+                "Trees"
+            ],
+            "traffic_elements": [
+                "Lane lines",
+                "Stop lines",
+                "Curbs",
+                "Traffic cones (in distance)"
+            ],
+            "visibility_notes": "Objects are clearly visible with natural lighting and sharp details. No significant occlusions or distortions."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward progression of the camera. Objects maintain consistent positions relative to the ego vehicle's movement.",
+            "object_continuity": "The white truck remains continuously visible across frames without sudden appearance or disappearance.",
+            "structure_continuity": "Road structure, buildings, and environmental elements remain stable and coherent throughout the sequence."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle moves forward steadily along the road.",
+            "risk_context": "No immediate risk indicators; the scene appears calm with no urgent interactions requiring evasive action."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street scene but with noticeable degradation in visual quality. The white truck and surrounding environment are present but appear distorted.",
+            "key_objects": [
+                "White box truck (distorted)",
+                "Pedestrians (faint or missing)",
+                "Road markings (blurred)",
+                "Buildings (warped)"
+            ],
+            "traffic_elements": [
+                "Lane lines (less distinct)",
+                "Curbs (indistinct)"
+            ],
+            "visibility_notes": "Significant blurring, ghosting, and warping affect object clarity. Some elements like pedestrians are barely discernible."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion appears less smooth due to artifacts. Object positions show minor instability or flickering.",
+            "object_continuity": "The white truck is still detectable but exhibits shape changes and partial disappearances due to generation artifacts.",
+            "structure_continuity": "Road and building structures show warping and inconsistency, reducing structural coherence."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego motion seems to follow a similar forward path, though stability is compromised by visual artifacts.",
+            "risk_context": "Reduced scene readability may obscure potential hazards, increasing uncertainty for decision-making systems."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "General road layout",
+            "Presence of the white truck",
+            "Building silhouettes"
+        ],
+        "missing_or_weakened_elements": [
+            "Clear pedestrian visibility",
+            "Sharp road markings",
+            "Fine architectural details"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "Blurring and ghosting",
+            "Object warping",
+            "Flickering of static objects",
+            "Loss of texture detail"
+        ]
+    }
+}

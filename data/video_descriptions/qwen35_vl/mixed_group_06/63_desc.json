@@ -1,0 +1,94 @@
+{
+    "video_id": "63",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/63.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a straight urban road with slight lane adjustments.",
+        "main_object_trajectory_trend": "Static buildings and parked cars; moving vehicles follow standard road paths."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene with multi-lane roads, modern glass buildings, sidewalks, and traffic infrastructure.",
+            "key_objects": [
+                "parked cars",
+                "moving vehicles",
+                "motorcyclist",
+                "pedestrians (distant)",
+                "traffic lights",
+                "street poles"
+            ],
+            "traffic_elements": [
+                "lane markings",
+                "crosswalks",
+                "stop lines",
+                "curbs",
+                "traffic signals"
+            ],
+            "visibility_notes": "Clear visibility of all key elements; no significant occlusions or distortions."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward motion; objects transition naturally without abrupt jumps or disappearances.",
+            "object_continuity": "Vehicles maintain consistent trajectories; pedestrians and cyclists move realistically within their lanes.",
+            "structure_continuity": "Road geometry and building structures remain stable and continuous throughout the sequence."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle proceeds forward steadily, maintaining lane position.",
+            "risk_context": "No immediate hazards detected; traffic flow appears orderly and predictable."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street layout but with noticeable degradation in object clarity and texture fidelity.",
+            "key_objects": [
+                "blurred parked cars",
+                "indistinct moving vehicles",
+                "faint motorcyclist outline",
+                "missing or merged pedestrians",
+                "less defined traffic lights"
+            ],
+            "traffic_elements": [
+                "faded lane markings",
+                "unclear crosswalks",
+                "distorted curbs"
+            ],
+            "visibility_notes": "Many objects appear blurred, duplicated, or partially missing; reduced detail compared to reference."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Minor flickering in object boundaries; some vehicles show slight positional jitter or warping over time.",
+            "object_continuity": "Certain objects vanish or reappear inconsistently; trajectory smoothness is compromised in places.",
+            "structure_continuity": "Building edges and road surfaces exhibit minor warping or ghosting artifacts during motion."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward, though path stability may be slightly affected by visual noise.",
+            "risk_context": "Reduced scene readability could impair downstream decision-making; no overt collision risk visible."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "overall road layout",
+            "general building positions",
+            "presence of vehicles and infrastructure"
+        ],
+        "missing_or_weakened_elements": [
+            "clear pedestrian details",
+            "sharp traffic signal states",
+            "precise lane marking definitions"
+        ],
+        "newly_introduced_elements": [
+            "ghosting artifacts around moving objects",
+            "warping near building corners",
+            "blurred textures on vehicle surfaces"
+        ],
+        "artifacts_or_instabilities": [
+            "temporal flickering of object outlines",
+            "positional jitter in distant vehicles",
+            "structural distortion at road-building interfaces"
+        ]
+    }
+}

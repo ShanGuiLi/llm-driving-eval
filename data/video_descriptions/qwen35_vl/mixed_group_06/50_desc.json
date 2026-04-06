@@ -1,0 +1,80 @@
+{
+    "video_id": "50",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/50.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "The ego vehicle follows a curved path to the right, indicated by the red trajectory line.",
+        "main_object_trajectory_trend": "No distinct dynamic objects are clearly tracked in the auxiliary view; the focus is on the ego path."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A night-time driving scene on a wet road with street lighting. The environment includes trees, curbs, and road markings.",
+            "key_objects": [],
+            "traffic_elements": [
+                "street lights",
+                "wet asphalt",
+                "curb lines",
+                "road boundaries"
+            ],
+            "visibility_notes": "Visibility is low due to darkness and rain/fog. Reflections on the wet road surface obscure some details."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "The camera moves forward along a curve. Lighting conditions remain consistent throughout the sequence.",
+            "object_continuity": "No specific objects appear or disappear abruptly; the scene consists of static infrastructure.",
+            "structure_continuity": "Road geometry remains continuous and physically plausible."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily, following the curve of the road.",
+            "risk_context": "Reduced visibility due to weather and darkness may require caution, but no immediate hazards are visible."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "A generated night-time driving scene that mimics the real-world reference. It shows a wet road, street lights, and roadside vegetation.",
+            "key_objects": [],
+            "traffic_elements": [
+                "street lights",
+                "wet road surface",
+                "curbs",
+                "trees/bushes"
+            ],
+            "visibility_notes": "The scene appears slightly brighter and less noisy than the reference. Some textures look smoother or synthetic."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "The motion follows the same curve as the reference. However, there is noticeable flickering in the lighting and texture stability.",
+            "object_continuity": "Static elements like trees and poles show slight warping or morphing artifacts over time.",
+            "structure_continuity": "The road structure is generally preserved but exhibits minor geometric distortions and blurring at edges."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily, matching the trajectory of the reference video.",
+            "risk_context": "Visual artifacts and instability in the generated scene could potentially affect downstream perception reliability."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "road curvature",
+            "street light positions",
+            "general wet road appearance",
+            "side vegetation layout"
+        ],
+        "missing_or_weakened_elements": [
+            "fine texture details on the road surface",
+            "sharpness of distant objects"
+        ],
+        "newly_introduced_elements": [
+            "synthetic-looking lighting blooms",
+            "slight color shifts compared to reference"
+        ],
+        "artifacts_or_instabilities": [
+            "texture flickering in Row 3",
+            "minor warping of roadside structures in Row 3",
+            "smoother/less detailed rendering in Row 3"
+        ]
+    }
+}

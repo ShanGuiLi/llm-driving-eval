@@ -1,0 +1,90 @@
+{
+    "video_id": "47",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/47.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a city street with slight rightward drift or lane change indicated by trajectory lines.",
+        "main_object_trajectory_trend": "Vehicles on the left and right appear to be moving forward; bus on the right maintains relative position."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene during rainy weather. Wet pavement reflects surroundings. Multi-lane road with vehicles in adjacent lanes and parked cars.",
+            "key_objects": [
+                "black SUV (left)",
+                "silver sedan (center-left)",
+                "light blue SUV (right)",
+                "white transit bus (far right)",
+                "pedestrian near building entrance",
+                "buildings with murals",
+                "streetlights and poles"
+            ],
+            "traffic_elements": [
+                "lane markings (faint due to rain)",
+                "curbs",
+                "sidewalks",
+                "crosswalk indicators (implied by pedestrian presence)"
+            ],
+            "visibility_notes": "Rain reduces contrast and clarity. Reflections on wet road obscure some ground details. Pedestrian is partially visible but identifiable."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Objects move smoothly consistent with driving at moderate speed. No sudden jumps or disappearances. Rain streaks and motion blur are temporally coherent.",
+            "object_continuity": "All major vehicles remain continuously visible across frames. Pedestrian remains in same general area without abrupt displacement.",
+            "structure_continuity": "Road geometry, building facades, and infrastructure maintain spatial consistency throughout sequence."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle proceeds forward steadily, maintaining lane position with minor adjustments.",
+            "risk_context": "Reduced visibility due to rain may require cautious driving. No immediate collision risk observed from surrounding traffic."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street scene under rainy conditions. Layout and object types match Row 1 closely.",
+            "key_objects": [
+                "black SUV (left)",
+                "silver sedan (center-left)",
+                "light blue SUV (right)",
+                "white transit bus (far right)",
+                "building with mural",
+                "street elements"
+            ],
+            "traffic_elements": [
+                "road edges",
+                "curbs",
+                "sidewalk areas"
+            ],
+            "visibility_notes": "Pedestrian is absent or not clearly rendered. Some objects show slight blurring or softening compared to real reference. Overall scene structure preserved."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Temporal flow appears smooth. Object positions evolve consistently with ego motion. Minor artifacts in texture rendering do not disrupt continuity.",
+            "object_continuity": "Main vehicles persist across frames. Absence of pedestrian is notable but does not break continuity of other objects.",
+            "structure_continuity": "Buildings, roads, and static structures remain stable and aligned with perspective changes."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward with similar trajectory as Row 1.",
+            "risk_context": "Scene readability slightly reduced due to generation artifacts and missing pedestrian detail. No overt hazard detected."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "vehicle positions and types",
+            "road layout and curvature",
+            "building facades and murals",
+            "overall weather condition (rain)"
+        ],
+        "missing_or_weakened_elements": [
+            "pedestrian near building entrance (absent in Row 3)",
+            "fine detail in reflections and textures"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "slight softening/blurring of object boundaries in Row 3",
+            "minor inconsistency in pedestrian presence between rows"
+        ]
+    }
+}

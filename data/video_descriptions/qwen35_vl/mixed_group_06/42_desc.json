@@ -1,0 +1,91 @@
+{
+    "video_id": "42",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/42.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a straight road with slight lane adjustments.",
+        "main_object_trajectory_trend": "Parked vehicles on the right remain static; distant traffic moves forward."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A daytime urban street scene captured from a moving vehicle. The road is paved with double yellow lines. On the right, there are parked cars (SUVs and sedans) alongside a sidewalk with trees and a building. On the left, industrial buildings and utility poles are visible.",
+            "key_objects": [
+                "White SUV",
+                "Dark SUV",
+                "Sedans",
+                "Trees",
+                "Buildings",
+                "Utility poles"
+            ],
+            "traffic_elements": [
+                "Double yellow lines",
+                "Lane markings",
+                "Sidewalk curbs"
+            ],
+            "visibility_notes": "Clear visibility of all objects. No significant occlusions or blurring observed in the reference frames."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "The ego vehicle moves forward smoothly. Parked cars remain stationary relative to the ground. Background elements shift consistently with perspective.",
+            "object_continuity": "Vehicles maintain their positions without sudden jumps or disappearances. Trees and poles move naturally as the camera passes them.",
+            "structure_continuity": "Road geometry and building structures remain consistent throughout the sequence."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily within its lane.",
+            "risk_context": "No immediate hazards or risky interactions are visible. The scene appears calm with no pedestrians crossing or vehicles entering the path unexpectedly."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street scene with parked cars on the right and industrial buildings on the left. However, visual artifacts are present, particularly around vehicle edges and background structures.",
+            "key_objects": [
+                "White SUV",
+                "Dark SUV",
+                "Sedans",
+                "Trees",
+                "Buildings"
+            ],
+            "traffic_elements": [
+                "Double yellow lines",
+                "Lane markings"
+            ],
+            "visibility_notes": "Some objects appear slightly distorted or blurred compared to Row 1. Vehicle shapes show minor warping, especially near wheel wells and windows."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion appears generally smooth but exhibits subtle flickering in texture details of parked cars and roadside elements. Perspective changes are mostly consistent but occasionally jittery.",
+            "object_continuity": "Most objects persist across frames, though some exhibit slight morphing or ghosting effects, particularly on the white SUV's side profile.",
+            "structure_continuity": "Road structure remains largely intact, but building facades show minor instability in vertical alignment during motion."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward with steady trajectory, matching real-world motion pattern.",
+            "risk_context": "No clear emergency maneuvers required. Scene readability is slightly reduced due to generated artifacts, which may affect downstream perception systems."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "Road layout",
+            "Vehicle positions",
+            "Building locations",
+            "Tree placement"
+        ],
+        "missing_or_weakened_elements": [
+            "Sharpness of vehicle contours",
+            "Clarity of window reflections",
+            "Precision of curb definition"
+        ],
+        "newly_introduced_elements": [
+            "Minor ghosting artifacts around moving objects",
+            "Slight texture warping on vehicle surfaces"
+        ],
+        "artifacts_or_instabilities": [
+            "Flickering textures on parked cars",
+            "Subtle shape distortion on white SUV",
+            "Minor vertical drift in building lines"
+        ]
+    }
+}

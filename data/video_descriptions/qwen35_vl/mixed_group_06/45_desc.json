@@ -1,0 +1,93 @@
+{
+    "video_id": "45",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/45.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a city street with slight lane adjustments.",
+        "main_object_trajectory_trend": "Pedestrians crossing left to right; vehicles parked or moving slowly in adjacent lanes."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene during daytime with clear visibility. Multiple lanes, crosswalks, sidewalks, buildings, trees, and traffic infrastructure are present.",
+            "key_objects": [
+                "pedestrians on crosswalk",
+                "parked cars",
+                "moving vehicles",
+                "traffic lights",
+                "street signs",
+                "bicycles near curb"
+            ],
+            "traffic_elements": [
+                "crosswalk markings",
+                "lane dividers",
+                "stop lines",
+                "traffic signals",
+                "curbs",
+                "sidewalks"
+            ],
+            "visibility_notes": "All elements clearly visible with no significant occlusion or distortion."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward progression of ego vehicle; pedestrian movement is continuous and natural; vehicle positions change gradually over time.",
+            "object_continuity": "Objects remain consistently visible unless occluded by perspective or distance; no sudden appearances or disappearances.",
+            "structure_continuity": "Road geometry, building facades, and fixed structures maintain spatial consistency across frames."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle moves forward steadily through intersection while maintaining lane position.",
+            "risk_context": "No immediate hazards detected; pedestrians are within designated crosswalk area; no abrupt maneuvers observed."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street layout but with reduced clarity in some areas. Buildings, roads, and vehicles are recognizable but exhibit artifacts.",
+            "key_objects": [
+                "pedestrians (less defined)",
+                "cars (some blurred or distorted)",
+                "traffic lights (partially obscured)",
+                "buildings (slightly warped)"
+            ],
+            "traffic_elements": [
+                "crosswalk lines (faint or inconsistent)",
+                "lane markings (sometimes missing or misaligned)",
+                "curbs (occasionally indistinct)"
+            ],
+            "visibility_notes": "Some objects appear less sharp or partially merged; certain details like bicycle racks or signage may be ambiguous."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion appears consistent overall, but minor flickering or jittering occurs in object boundaries; pedestrian trajectories show slight instability.",
+            "object_continuity": "Most objects persist across frames, though some exhibit ghosting or partial disappearance/reappearance due to generation artifacts.",
+            "structure_continuity": "Road structure remains largely intact, but edge alignment between road and sidewalk occasionally drifts or warps slightly."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward at similar speed as reference, though path stability shows minor fluctuations.",
+            "risk_context": "Reduced scene readability may affect downstream decision-making; no overtly risky interactions visible, but ambiguity exists around pedestrian proximity and lane adherence."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "overall road layout",
+            "presence of pedestrians and vehicles",
+            "general direction of ego motion",
+            "building silhouettes"
+        ],
+        "missing_or_weakened_elements": [
+            "clear definition of crosswalk lines",
+            "sharpness of traffic signal states",
+            "distinct separation between curbs and sidewalks",
+            "fine detail on bicycles and small roadside objects"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "blurring of moving objects",
+            "minor geometric warping in building edges",
+            "flicker in static textures (e.g., pavement patterns)",
+            "ghost-like traces behind fast-moving entities"
+        ]
+    }
+}

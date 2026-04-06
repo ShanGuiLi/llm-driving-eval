@@ -1,0 +1,84 @@
+{
+    "video_id": "29",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/29.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a curved road path.",
+        "main_object_trajectory_trend": "Red trajectory lines indicate ego path and potential object paths; blue line suggests lane boundary or reference."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Nighttime driving scene on a two-lane residential road with streetlights illuminating the pavement. Road curves slightly to the right ahead.",
+            "key_objects": [
+                "distant vehicle headlights",
+                "streetlight poles"
+            ],
+            "traffic_elements": [
+                "white dashed lane markings",
+                "road curbs",
+                "sidewalks"
+            ],
+            "visibility_notes": "Low-light conditions reduce visibility of distant objects; some areas are obscured by darkness."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward progression; no abrupt jumps or flickering in static elements.",
+            "object_continuity": "Distant vehicle remains visible throughout frames without sudden disappearance or duplication.",
+            "structure_continuity": "Road geometry and lighting remain consistent across frames; minor compression artifacts present but do not disrupt structure."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily along the curved road.",
+            "risk_context": "No immediate hazards visible; low visibility may require cautious driving but no emergency maneuver is indicated."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "AI-generated version of the same nighttime road scene. Streetlights and road layout are preserved but appear slightly distorted or less defined.",
+            "key_objects": [
+                "faint vehicle lights",
+                "blurred streetlight sources"
+            ],
+            "traffic_elements": [
+                "inconsistent lane markings",
+                "less distinct curbs"
+            ],
+            "visibility_notes": "Objects are more blurred and less coherent than real video; some structures appear warped or merged."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion is simulated but exhibits slight warping and temporal instability in light patterns and road edges.",
+            "object_continuity": "Vehicle lights persist but vary in shape and intensity unnaturally; occasional ghosting or fading occurs.",
+            "structure_continuity": "Road boundaries show minor drift and deformation over time; overall structure maintained but with perceptible artifacts."
+        },
+        "decision": {
+            "ego_behavior_description": "Simulated ego motion follows similar forward trajectory as real video.",
+            "risk_context": "Reduced clarity and structural instability may impair accurate perception; no explicit risky interaction shown but scene readability is compromised."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "road curvature",
+            "general lighting pattern",
+            "presence of distant vehicle"
+        ],
+        "missing_or_weakened_elements": [
+            "sharpness of lane markings",
+            "clarity of roadside structures",
+            "stability of light sources"
+        ],
+        "newly_introduced_elements": [
+            "warping artifacts",
+            "ghosted light blobs",
+            "deformed curb lines"
+        ],
+        "artifacts_or_instabilities": [
+            "temporal flicker in illumination",
+            "structural drift in road edges",
+            "loss of fine detail in objects"
+        ]
+    }
+}

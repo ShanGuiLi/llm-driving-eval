@@ -1,0 +1,87 @@
+{
+    "video_id": "43",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/43.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a straight road with slight left curvature.",
+        "main_object_trajectory_trend": "White vehicle ahead moving forward in the same lane; pedestrian crossing detected on the right side."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A daytime driving scene on a paved road with covered walkways on both sides. The environment includes trees, buildings, and clear road markings.",
+            "key_objects": [
+                "White car ahead",
+                "Pedestrian near crosswalk",
+                "Covered walkway structures",
+                "Trees and poles"
+            ],
+            "traffic_elements": [
+                "Lane lines",
+                "Crosswalk markings",
+                "Road signs",
+                "Traffic bollards"
+            ],
+            "visibility_notes": "All key objects are clearly visible with no significant occlusion or blur."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward progression of the ego vehicle; white car maintains consistent speed and position relative to the road.",
+            "object_continuity": "No sudden appearance or disappearance of objects; pedestrian remains visible throughout the sequence.",
+            "structure_continuity": "Road structure and surrounding infrastructure remain stable without warping or flickering."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily, maintaining lane position.",
+            "risk_context": "No immediate risk detected; pedestrian is stationary or moving slowly near the crosswalk."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar daytime driving scene with covered walkways, trees, and road markings. However, some elements appear less defined compared to Row 1.",
+            "key_objects": [
+                "White car ahead (slightly distorted)",
+                "Pedestrian near crosswalk (less distinct)",
+                "Covered walkway structures",
+                "Trees and poles"
+            ],
+            "traffic_elements": [
+                "Lane lines (faint in parts)",
+                "Crosswalk markings (partially blurred)",
+                "Road signs (less legible)",
+                "Traffic bollards (some missing or merged)"
+            ],
+            "visibility_notes": "Some objects show reduced clarity; minor artifacts present in textures and edges."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion appears smooth but with slight jitter in object boundaries; overall trajectory matches Row 1.",
+            "object_continuity": "Objects remain present but exhibit minor instability in shape and edge definition over time.",
+            "structure_continuity": "Road structure is preserved but shows subtle warping and texture inconsistencies."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily, similar to Row 1.",
+            "risk_context": "No clear emergency maneuver required; however, reduced visual fidelity may impact downstream decision interpretation."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "Overall scene layout",
+            "Presence of white car and pedestrian",
+            "Covered walkways and road markings"
+        ],
+        "missing_or_weakened_elements": [
+            "Clarity of road signs and bollards",
+            "Sharpness of pedestrian details",
+            "Precision of lane line definitions"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "Minor texture blurring",
+            "Edge distortion around vehicles and structures",
+            "Slight temporal jitter in object boundaries"
+        ]
+    }
+}

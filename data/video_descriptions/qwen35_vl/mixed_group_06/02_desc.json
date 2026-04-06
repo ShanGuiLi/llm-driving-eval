@@ -1,0 +1,96 @@
+{
+    "video_id": "02",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/02.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a straight road with slight curvature to the left.",
+        "main_object_trajectory_trend": "Construction barriers and workers on the right side are static relative to the ground; vehicles ahead maintain forward trajectory."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A daytime urban street scene showing a multi-lane road under construction. The view is captured from a moving vehicle.",
+            "key_objects": [
+                "Orange and white water-filled barriers",
+                "Construction workers in high-visibility vests",
+                "Excavator and other construction machinery",
+                "White sedan driving ahead",
+                "Modern glass office buildings",
+                "Trees and greenery on sidewalks"
+            ],
+            "traffic_elements": [
+                "Lane markings (dashed white lines)",
+                "Double yellow lines on the right edge",
+                "Road curbs",
+                "Sidewalks"
+            ],
+            "visibility_notes": "Clear visibility of all objects. No significant occlusions or blurring affecting object identification."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward camera movement consistent with vehicle travel. Objects transition naturally without sudden jumps or disappearances.",
+            "object_continuity": "Workers and machinery remain visible and stationary relative to the road frame. The white car ahead maintains consistent position and speed.",
+            "structure_continuity": "Road geometry, building facades, and barrier alignment remain stable and continuous throughout the sequence."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily within its lane, maintaining safe distance from the construction zone on the right.",
+            "risk_context": "No immediate risk detected. The presence of construction activity requires attention but does not necessitate emergency maneuvers."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "An AI-generated approximation of the same urban street scene with construction. Visual fidelity is lower than the reference.",
+            "key_objects": [
+                "Barriers appear distorted and less defined",
+                "Construction workers are blurry or partially missing",
+                "Machinery shapes are inconsistent or merged with barriers",
+                "White sedan is present but lacks detail",
+                "Buildings have simplified textures and structural inaccuracies",
+                "Trees show unnatural blending or repetition"
+            ],
+            "traffic_elements": [
+                "Lane markings are faint or broken",
+                "Curbs and edges are poorly defined",
+                "Some elements like signs or poles may be missing or malformed"
+            ],
+            "visibility_notes": "Significant degradation in clarity. Many objects lack sharp boundaries or realistic texture. Some elements appear hallucinated or duplicated."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Camera motion appears smooth but exhibits subtle warping or flickering in background structures. Object transitions are less stable compared to Row 1.",
+            "object_continuity": "Some objects (e.g., workers) intermittently vanish or reappear with altered form. Barriers show minor positional drift across frames.",
+            "structure_continuity": "Building lines and road edges exhibit slight bending or misalignment over time, indicating generative instability."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego motion mimics forward progression, though path stability is slightly compromised by visual artifacts.",
+            "risk_context": "Reduced scene readability due to artifacting may impair accurate perception of hazards. No explicit risky behavior is modeled, but environmental understanding is degraded."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "General road layout and direction of travel",
+            "Presence of construction zone on the right",
+            "Approximate location of vehicles and buildings"
+        ],
+        "missing_or_weakened_elements": [
+            "Clear definition of construction workers",
+            "Accurate rendering of machinery details",
+            "Sharpness of lane markings and curb lines",
+            "Textural realism of building facades and foliage"
+        ],
+        "newly_introduced_elements": [
+            "Hallucinated barrier segments or merged objects",
+            "Unnatural repetitions in tree patterns",
+            "Flickering or ghosting effects around static structures"
+        ],
+        "artifacts_or_instabilities": [
+            "Blurring and loss of fine detail in generated video",
+            "Minor geometric distortions in building and road structures",
+            "Inconsistent object persistence (workers appearing/disappearing)",
+            "Slight temporal jitter in background elements"
+        ]
+    }
+}

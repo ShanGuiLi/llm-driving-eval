@@ -1,0 +1,94 @@
+{
+    "video_id": "74",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/74.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a curved road with slight rightward drift.",
+        "main_object_trajectory_trend": "A vehicle ahead is moving forward in the same lane; trajectory lines indicate smooth path following."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A multi-panel view of a suburban or campus-like environment with paved roads, trees, buildings, and clear sky. The scene includes curbs, lane markings, and roadside infrastructure.",
+            "key_objects": [
+                "roadway",
+                "trees",
+                "buildings",
+                "curbs",
+                "lane markings",
+                "distant vehicle"
+            ],
+            "traffic_elements": [
+                "white lane lines",
+                "curb edges",
+                "road signs (faint)",
+                "parked cars in distance"
+            ],
+            "visibility_notes": "All elements are clearly visible with natural lighting and no significant occlusion."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Consistent forward movement across frames; no abrupt jumps or discontinuities in object positions.",
+            "object_continuity": "Vehicles and static objects maintain stable presence and relative positioning over time.",
+            "structure_continuity": "Road geometry and environmental structures remain coherent without warping or distortion."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle appears to be moving forward steadily along a gently curving road.",
+            "risk_context": "No immediate hazards or risky interactions are visible; traffic flow seems calm and predictable."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar layout to Row 1 but with noticeable blurring and reduced clarity. Road features, trees, and buildings are present but less defined.",
+            "key_objects": [
+                "blurred roadway",
+                "indistinct trees",
+                "faint building outlines",
+                "unclear lane markings"
+            ],
+            "traffic_elements": [
+                "faded lane lines",
+                "poorly defined curbs",
+                "missing or ambiguous signage"
+            ],
+            "visibility_notes": "Significant blur affects readability of fine details; some objects appear smeared or merged."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion appears smoother than real video but lacks sharp transitions; possible temporal smoothing artifacts.",
+            "object_continuity": "Objects persist across frames but show reduced definition; minor flickering or ghosting may be present.",
+            "structure_continuity": "Overall structure is preserved but exhibits softening and slight warping at boundaries."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego motion continues forward, consistent with reference, though visual feedback is degraded.",
+            "risk_context": "Reduced scene clarity may impair accurate perception of obstacles or lane boundaries, potentially affecting downstream decisions."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "road layout",
+            "general tree placement",
+            "building silhouettes",
+            "forward motion trend"
+        ],
+        "missing_or_weakened_elements": [
+            "clear lane markings",
+            "sharp curb definitions",
+            "distinct vehicle details",
+            "readable signage"
+        ],
+        "newly_introduced_elements": [
+            "blur artifacts",
+            "smearing effects",
+            "ghost-like traces around moving objects"
+        ],
+        "artifacts_or_instabilities": [
+            "temporal smoothing causing loss of detail",
+            "spatial warping near edges",
+            "reduced contrast and edge fidelity"
+        ]
+    }
+}

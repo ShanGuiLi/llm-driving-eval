@@ -1,0 +1,96 @@
+{
+    "video_id": "58",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/58.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a multi-lane urban road.",
+        "main_object_trajectory_trend": "White van on the right is moving forward in the adjacent lane; other vehicles ahead are maintaining distance."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene with multiple lanes, buildings on both sides, and moderate traffic. The view includes a white van in the right lane and several cars ahead.",
+            "key_objects": [
+                "white van",
+                "silver sedan",
+                "black SUV",
+                "bus (distant)",
+                "buildings",
+                "streetlights",
+                "trees"
+            ],
+            "traffic_elements": [
+                "lane markings",
+                "curbs",
+                "sidewalks",
+                "parked cars"
+            ],
+            "visibility_notes": "All objects are clearly visible with natural lighting and sharp details. No occlusions obscure critical elements."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion appears smooth and continuous across frames. Vehicles maintain consistent relative positions and speeds.",
+            "object_continuity": "Vehicles remain continuously visible without sudden appearance or disappearance. Trajectories are stable.",
+            "structure_continuity": "Road structure, buildings, and roadside elements remain geometrically consistent throughout the sequence."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily within its lane.",
+            "risk_context": "No immediate risk factors are visible. Traffic flow is orderly, and no emergency maneuvers are required."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene similar to Row 1 but with significant visual degradation. Objects appear blurred, distorted, or partially missing.",
+            "key_objects": [
+                "blurred white van",
+                "indistinct silver sedan",
+                "faint black SUV",
+                "blurry buildings",
+                "unclear streetlights"
+            ],
+            "traffic_elements": [
+                "faint lane markings",
+                "distorted curbs",
+                "missing sidewalk details"
+            ],
+            "visibility_notes": "Key objects are heavily blurred or ghosted. Details such as license plates, windows, and textures are lost. Some objects appear duplicated or smeared."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Temporal consistency is poor. Objects exhibit flickering, warping, and unnatural movement patterns. Motion trails and ghosting artifacts are present.",
+            "object_continuity": "Objects frequently disappear, reappear, or change shape abruptly. Continuity of trajectories is broken by distortions.",
+            "structure_continuity": "Road structure and buildings show warping and instability. Geometric alignment is inconsistent across frames."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego motion direction is still forward, but stability is compromised due to visual artifacts.",
+            "risk_context": "Scene readability is significantly reduced, which may impair downstream decision-making. Risk context is unclear due to distortion."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "general road layout",
+            "presence of main vehicles",
+            "building silhouettes"
+        ],
+        "missing_or_weakened_elements": [
+            "clear object boundaries",
+            "texture details",
+            "precise lane markings",
+            "sidewalk structures"
+        ],
+        "newly_introduced_elements": [
+            "ghosting artifacts",
+            "motion blur streaks",
+            "warping distortions"
+        ],
+        "artifacts_or_instabilities": [
+            "severe blurring",
+            "temporal flickering",
+            "geometric warping",
+            "object duplication/smearing"
+        ]
+    }
+}

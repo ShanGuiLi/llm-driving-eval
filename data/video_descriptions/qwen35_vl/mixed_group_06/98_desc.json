@@ -1,0 +1,88 @@
+{
+    "video_id": "98",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/98.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a curved road path.",
+        "main_object_trajectory_trend": "Two pedestrians crossing from left to right; a white car approaching in the distance."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A daytime outdoor scene showing an entrance or campus area with paved roads, guard booths, and buildings. The view is split into multiple camera angles.",
+            "key_objects": [
+                "Two pedestrians walking across the road",
+                "A yellow vehicle parked on the side",
+                "A white car driving towards the camera in one segment",
+                "Guard booths (blue and white)",
+                "Traffic cones and bollards"
+            ],
+            "traffic_elements": [
+                "Crosswalk markings",
+                "Lane dividers",
+                "Road signs",
+                "Barriers"
+            ],
+            "visibility_notes": "All objects are clearly visible with natural lighting and sharp details."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Pedestrians move smoothly across the frame. The white car approaches steadily. No sudden jumps or disappearances occur.",
+            "object_continuity": "Objects remain consistent throughout the frames. Pedestrians do not vanish or teleport.",
+            "structure_continuity": "Road layout, buildings, and barriers maintain structural integrity without warping or flickering."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle appears to be moving forward slowly, possibly yielding or navigating around the crossing pedestrians.",
+            "risk_context": "Low risk context; pedestrians are crossing but appear to be at a safe distance or already clearing the path."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar scene composition to Row 1, showing the same entrance area with guard booths and buildings. However, visual fidelity is lower.",
+            "key_objects": [
+                "Two pedestrians (less detailed)",
+                "Yellow vehicle (blurred)",
+                "White car (less distinct)",
+                "Guard booths (simplified geometry)"
+            ],
+            "traffic_elements": [
+                "Crosswalk markings (faint)",
+                "Lane dividers (inconsistent)",
+                "Barriers (less defined)"
+            ],
+            "visibility_notes": "Details are softer and less precise compared to Row 1. Some elements appear slightly distorted or merged."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Pedestrian motion is present but appears slightly jerky or less fluid than in Row 1. The white car's approach is consistent but lacks fine detail.",
+            "object_continuity": "Objects persist across frames, though some minor artifacts like slight blurring or shape deformation occur.",
+            "structure_continuity": "Overall structure remains stable, but edges of buildings and road markings show minor instability or softness."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego motion mirrors Row 1, continuing forward with similar speed and trajectory.",
+            "risk_context": "Risk context is comparable to Row 1, though reduced clarity may affect downstream interpretation of pedestrian intent."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "General scene layout",
+            "Presence of pedestrians and vehicles",
+            "Guard booth locations",
+            "Road curvature"
+        ],
+        "missing_or_weakened_elements": [
+            "Fine texture details on vehicles and clothing",
+            "Sharpness of road markings",
+            "Clarity of distant objects"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "Slight blurring in generated video",
+            "Minor geometric distortions in building edges",
+            "Reduced contrast in shadows and highlights"
+        ]
+    }
+}

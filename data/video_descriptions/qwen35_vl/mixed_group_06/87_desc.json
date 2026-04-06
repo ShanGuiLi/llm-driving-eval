@@ -1,0 +1,94 @@
+{
+    "video_id": "87",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/87.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a multi-lane urban road with slight rightward drift.",
+        "main_object_trajectory_trend": "Vehicles ahead maintain forward trajectories; no sudden stops or erratic turns observed."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene during daylight with clear visibility. Road includes multiple lanes, crosswalks, traffic lights, and construction barriers on the left. Buildings line both sides of the street.",
+            "key_objects": [
+                "white sedan (left lane)",
+                "black SUV (center-right)",
+                "construction barriers",
+                "traffic lights",
+                "pedestrian crossing area"
+            ],
+            "traffic_elements": [
+                "red traffic light (visible in some frames)",
+                "lane markings",
+                "stop lines",
+                "crosswalk",
+                "road signs"
+            ],
+            "visibility_notes": "All key objects are clearly visible without distortion or occlusion issues."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward motion of ego vehicle; vehicles ahead move consistently without abrupt changes.",
+            "object_continuity": "Objects remain continuously visible across frames; no sudden appearance/disappearance.",
+            "structure_continuity": "Road structure, buildings, and infrastructure remain stable and coherent over time."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily, approaching an intersection with red light.",
+            "risk_context": "No immediate risk detected; standard urban driving context with expected stopping behavior at red light."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street scene but with noticeable blurring and loss of detail. Some elements appear distorted or merged.",
+            "key_objects": [
+                "faint white sedan shape",
+                "indistinct black SUV form",
+                "blurred construction barriers",
+                "unclear traffic lights"
+            ],
+            "traffic_elements": [
+                "faded lane markings",
+                "partially visible stop lines",
+                "obscured crosswalk",
+                "ambiguous road signs"
+            ],
+            "visibility_notes": "Many details are blurred or missing; object boundaries are less defined compared to Row 1."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion appears smoother than real video but lacks fine-grained temporal fidelity; minor flickering in background structures.",
+            "object_continuity": "Some objects show slight positional jumps or fading between frames; overall continuity is maintained but degraded.",
+            "structure_continuity": "Building facades and road geometry show mild warping and instability, especially near edges."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle appears to continue forward, though trajectory is less precise due to visual degradation.",
+            "risk_context": "Reduced scene readability may impair accurate decision-making; potential for misinterpretation of traffic signals or obstacles."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "general road layout",
+            "presence of vehicles",
+            "building silhouettes",
+            "traffic light locations"
+        ],
+        "missing_or_weakened_elements": [
+            "clear lane markings",
+            "sharp object boundaries",
+            "readable traffic signs",
+            "precise pedestrian crossings"
+        ],
+        "newly_introduced_elements": [
+            "minor ghosting artifacts around moving vehicles",
+            "slight color bleeding in building textures"
+        ],
+        "artifacts_or_instabilities": [
+            "overall blur reducing clarity",
+            "mild structural warping in background",
+            "reduced contrast in low-detail areas"
+        ]
+    }
+}

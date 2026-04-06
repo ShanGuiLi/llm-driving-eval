@@ -1,0 +1,90 @@
+{
+    "video_id": "97",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/97.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement through an intersection with slight steering adjustments.",
+        "main_object_trajectory_trend": "Pedestrians crossing or standing near the curb; vehicles stationary or moving slowly in the distance."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene at an intersection under overcast skies. Construction scaffolding is visible on the right side. The road has clear lane markings and traffic signals.",
+            "key_objects": [
+                "pedestrian in yellow vest (left)",
+                "pedestrian in orange vest (center-right)",
+                "construction barriers",
+                "traffic lights",
+                "distant vehicles"
+            ],
+            "traffic_elements": [
+                "traffic lights",
+                "lane markings",
+                "crosswalks",
+                "curbs",
+                "road signs"
+            ],
+            "visibility_notes": "All key objects are clearly visible with natural lighting and sharp details."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth temporal progression. Pedestrians move naturally across frames without abrupt jumps. Camera motion is steady forward with minor lateral shifts.",
+            "object_continuity": "Objects remain consistently present and trackable across frames. No sudden appearances or disappearances.",
+            "structure_continuity": "Road geometry and building structures maintain consistent perspective and alignment throughout the sequence."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle proceeds forward steadily through the intersection, maintaining lane position.",
+            "risk_context": "No immediate hazards detected. Pedestrians are at a safe distance from the ego path. Traffic flow appears orderly."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street scene with construction and pedestrians. However, visual fidelity is reduced compared to Row 1.",
+            "key_objects": [
+                "pedestrian in yellow vest (left)",
+                "pedestrian in orange vest (center-right)",
+                "construction barriers",
+                "traffic lights",
+                "distant vehicles"
+            ],
+            "traffic_elements": [
+                "traffic lights",
+                "lane markings",
+                "curbs"
+            ],
+            "visibility_notes": "Some elements appear slightly blurred or less defined. Colors are somewhat muted. Details on distant objects are softer."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Temporal consistency is generally maintained but shows minor flickering in texture details. Motion of pedestrians is smooth but lacks fine-grained realism.",
+            "object_continuity": "Key objects persist across frames, though some exhibit slight warping or blending artifacts during transitions.",
+            "structure_continuity": "Overall structure remains stable, but edges of buildings and road boundaries show occasional softening or minor misalignment."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward similarly to Row 1, following the same general trajectory.",
+            "risk_context": "No new risks introduced by generation artifacts. Scene readability is slightly reduced due to blurring, which may affect precise object detection."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "overall scene layout",
+            "presence of pedestrians and construction",
+            "traffic signal positions",
+            "general road geometry"
+        ],
+        "missing_or_weakened_elements": [
+            "fine textural detail on surfaces",
+            "sharpness of distant objects",
+            "color vibrancy"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "slight blurring in generated video",
+            "minor edge softening on structural elements",
+            "reduced contrast in shadows and highlights"
+        ]
+    }
+}

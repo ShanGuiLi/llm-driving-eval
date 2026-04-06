@@ -1,0 +1,86 @@
+{
+    "video_id": "56",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/56.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a straight road with slight curvature to the right.",
+        "main_object_trajectory_trend": "No dynamic objects detected; static scene elements (buildings, curbs) show consistent forward parallax."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A daytime driving scene on a multi-lane urban road. The view includes modern buildings on both sides, green landscaping, and overhead pedestrian bridges.",
+            "key_objects": [
+                "Overhead bridge structure",
+                "Modern glass buildings",
+                "Trees and bushes",
+                "Orange traffic cones"
+            ],
+            "traffic_elements": [
+                "Lane markings (white dashed lines)",
+                "Double yellow lines at edges",
+                "Traffic cones on the left side",
+                "Construction barriers"
+            ],
+            "visibility_notes": "Clear visibility of all road features and surrounding infrastructure. No occlusions affecting scene understanding."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward motion with consistent perspective changes. Objects maintain their relative positions and sizes as expected during vehicle movement.",
+            "object_continuity": "Static objects (buildings, trees) remain stable without flickering or disappearing. Traffic cones persist in their locations.",
+            "structure_continuity": "Road geometry and building structures remain coherent throughout the sequence without warping or structural shifts."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily along the lane.",
+            "risk_context": "No immediate hazards or risky interactions visible. The presence of construction cones suggests caution but no active avoidance maneuver is required."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban driving scene with buildings, roads, and vegetation. However, visual fidelity differs from the reference.",
+            "key_objects": [
+                "Buildings (slightly distorted geometry)",
+                "Trees (less detailed texture)",
+                "Overhead bridge (simplified structure)"
+            ],
+            "traffic_elements": [
+                "Lane markings (present but less distinct)",
+                "Traffic cones (visible but potentially inconsistent shape/position)",
+                "Barriers (simplified appearance)"
+            ],
+            "visibility_notes": "Some details are blurred or simplified compared to the reference. Road boundaries are generally preserved but may lack sharpness."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion appears smooth overall, though some minor temporal inconsistencies may be present in object rendering.",
+            "object_continuity": "Most static objects remain visible, but some may exhibit slight position drift or shape deformation over time.",
+            "structure_continuity": "General scene structure is maintained, but fine architectural details and textures show signs of generation artifacts or smoothing."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward, maintaining lane position similar to the reference.",
+            "risk_context": "No clear emergency maneuvers needed. Reduced visual clarity in some areas may affect precise decision-making for downstream systems."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "Overall road layout and direction",
+            "Building silhouettes and general placement",
+            "Presence of traffic cones and barriers",
+            "Forward ego-motion trend"
+        ],
+        "missing_or_weakened_elements": [
+            "Fine textural details on buildings and foliage",
+            "Sharpness of lane markings and road boundaries",
+            "Precise geometric definition of overhead structures"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "Slight blurring or smoothing of textures in generated video",
+            "Potential minor positional drift in static objects",
+            "Reduced contrast in certain areas compared to real reference"
+        ]
+    }
+}

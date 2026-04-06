@@ -1,0 +1,85 @@
+{
+    "video_id": "06",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/06.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a curved road path.",
+        "main_object_trajectory_trend": "Red trajectory lines indicate ego vehicle following the lane curvature; blue line suggests lateral offset or boundary tracking."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Nighttime urban street scene with dim lighting. Road curves gently to the right. Buildings and fences line both sides. Streetlights provide sparse illumination.",
+            "key_objects": [
+                "distant vehicle headlights",
+                "roadside structures",
+                "fences"
+            ],
+            "traffic_elements": [
+                "lane markings (faint)",
+                "curb edges",
+                "streetlights"
+            ],
+            "visibility_notes": "Low visibility due to darkness; some objects are blurred or partially obscured by shadows."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward progression consistent with driving on a curved road. No abrupt jumps or discontinuities in object positions.",
+            "object_continuity": "Distant vehicle remains visible throughout frames without sudden disappearance or duplication.",
+            "structure_continuity": "Road geometry and roadside structures maintain consistent spatial relationships across frames."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily along the curve.",
+            "risk_context": "Reduced visibility may require cautious navigation, but no immediate hazard is visually apparent."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar nighttime urban street scene as Row 1, but with noticeable artifacts and reduced clarity. Road layout and basic elements are preserved but appear distorted or smeared.",
+            "key_objects": [
+                "blurred distant vehicle lights",
+                "indistinct roadside structures"
+            ],
+            "traffic_elements": [
+                "faint lane markings",
+                "dim streetlights"
+            ],
+            "visibility_notes": "Significant blur and ghosting reduce object definition; some features appear duplicated or warped."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion appears generally smooth but exhibits minor flickering and warping effects, especially around moving light sources.",
+            "object_continuity": "Most objects persist across frames, though their shapes and positions show slight instability or drifting.",
+            "structure_continuity": "Road structure remains recognizable but suffers from localized distortions and edge smearing."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward, maintaining course despite visual degradation.",
+            "risk_context": "Visual artifacts may impair perception of fine details, potentially affecting downstream decision-making under low-light conditions."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "overall road curvature",
+            "presence of distant vehicle lights",
+            "general building/fence silhouettes"
+        ],
+        "missing_or_weakened_elements": [
+            "clear lane markings",
+            "sharp object boundaries",
+            "consistent lighting contrast"
+        ],
+        "newly_introduced_elements": [
+            "ghosting artifacts",
+            "smearing around light sources",
+            "localized warping near curbs"
+        ],
+        "artifacts_or_instabilities": [
+            "temporal flickering in lights",
+            "spatial distortion in static structures",
+            "reduced texture fidelity"
+        ]
+    }
+}

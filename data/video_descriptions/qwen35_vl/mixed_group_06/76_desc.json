@@ -1,0 +1,87 @@
+{
+    "video_id": "76",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/76.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "The ego vehicle is moving forward along a curved road, approaching an intersection.",
+        "main_object_trajectory_trend": "Red boxes indicate static or slow-moving objects (buildings, poles) on the left and right; green lines suggest lane boundaries curving to the right."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A daytime driving scene showing a multi-lane road curving to the right. There are modern buildings on the left, grassy areas with trees on the right, and traffic infrastructure like poles and lights.",
+            "key_objects": [
+                "Buildings",
+                "Trees",
+                "Grass",
+                "Road signs/poles"
+            ],
+            "traffic_elements": [
+                "Lane markings (dashed white)",
+                "Traffic light pole",
+                "Curbs",
+                "Crosswalk markings"
+            ],
+            "visibility_notes": "All elements are clearly visible with natural lighting and sharp details."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "The camera moves smoothly forward, maintaining consistent perspective and scale of objects as expected in real-world driving.",
+            "object_continuity": "Objects remain stable and do not flicker or disappear unexpectedly.",
+            "structure_continuity": "Road geometry and environmental structures remain continuous without warping or distortion."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily along the curve.",
+            "risk_context": "No immediate hazards or risky interactions are visible; the path ahead appears clear."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar layout to Row 1: road curving right, buildings on left, trees/grass on right. However, visual fidelity is lower.",
+            "key_objects": [
+                "Buildings",
+                "Trees",
+                "Grass",
+                "Poles"
+            ],
+            "traffic_elements": [
+                "Lane markings",
+                "Traffic light pole",
+                "Curbs"
+            ],
+            "visibility_notes": "Some elements appear slightly blurred or less defined compared to Row 1. Colors are somewhat muted."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion is generally smooth but exhibits minor jitter or instability in texture rendering over time.",
+            "object_continuity": "Most objects persist across frames, though some edges show slight wavering or ghosting effects.",
+            "structure_continuity": "Road structure remains largely intact but shows subtle warping near boundaries and distant objects."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego motion mimics forward progression along the curve, consistent with Row 1.",
+            "risk_context": "No overt risk indicators, though reduced clarity may affect downstream perception reliability."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "Road curvature",
+            "Building positions",
+            "Tree locations",
+            "General traffic infrastructure"
+        ],
+        "missing_or_weakened_elements": [
+            "Fine detail in textures (e.g., foliage, pavement)",
+            "Sharpness of lane markings",
+            "Color vibrancy"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "Slight blurring in generated video",
+            "Minor edge warping near curbs and poles",
+            "Reduced temporal stability in object boundaries"
+        ]
+    }
+}

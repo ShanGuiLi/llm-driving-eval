@@ -1,0 +1,95 @@
+{
+    "video_id": "21",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/21.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a multi-lane road with slight rightward drift or lane change indicated by blue trajectory lines.",
+        "main_object_trajectory_trend": "Red boxes indicate static or slow-moving objects (buildings, parked cars) on the sides; green and red lines suggest dynamic object paths or lane boundaries."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene during daylight with clear visibility. The road has multiple lanes, crosswalks, and intersections. Buildings, trees, parked cars, and moving vehicles are present.",
+            "key_objects": [
+                "moving cars",
+                "parked cars",
+                "buildings",
+                "trees",
+                "traffic signs",
+                "crosswalk markings"
+            ],
+            "traffic_elements": [
+                "lane lines",
+                "stop lines",
+                "crosswalks",
+                "road curbs",
+                "traffic lights (visible in distance)"
+            ],
+            "visibility_notes": "All key elements are clearly visible with no significant occlusion or distortion."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward progression of ego vehicle. Objects move naturally relative to camera motion. No sudden jumps or disappearances.",
+            "object_continuity": "Vehicles and roadside structures remain continuously visible and track consistently across frames.",
+            "structure_continuity": "Road geometry, building positions, and environmental features maintain spatial coherence over time."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily, approaching an intersection with crosswalk and traffic signals.",
+            "risk_context": "No immediate risk detected; scene is orderly with predictable traffic flow."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "AI-generated version of the same urban street scene. Overall layout preserved but with noticeable artifacts and distortions in object shapes and textures.",
+            "key_objects": [
+                "cars (some distorted)",
+                "buildings (blurred edges)",
+                "trees (less defined foliage)",
+                "signs (partially illegible)"
+            ],
+            "traffic_elements": [
+                "lane lines (faint or broken)",
+                "crosswalks (inconsistent width/alignment)",
+                "curbs (sometimes missing or warped)"
+            ],
+            "visibility_notes": "Some objects appear smeared or duplicated; fine details like text on signs or license plates are often lost."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion appears generally consistent but with occasional flickering or warping of distant objects. Some vehicles show unnatural size changes or position shifts.",
+            "object_continuity": "Most objects persist across frames but exhibit instability — e.g., cars may briefly vanish or reappear with altered shape.",
+            "structure_continuity": "Road structure remains broadly recognizable but suffers from local deformations, especially near intersections and curbs."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward, though perceived speed or path may be slightly inconsistent due to generation artifacts.",
+            "risk_context": "Scene readability reduced; potential for misinterpretation of lane boundaries or object positions could affect downstream decision-making."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "overall road layout",
+            "general vehicle presence",
+            "building silhouettes",
+            "tree locations"
+        ],
+        "missing_or_weakened_elements": [
+            "clear lane line continuity",
+            "legible signage",
+            "precise crosswalk alignment",
+            "fine texture detail on vehicles and buildings"
+        ],
+        "newly_introduced_elements": [
+            "smearing artifacts around moving objects",
+            "ghosting or duplication of distant structures",
+            "warping at road edges and intersections"
+        ],
+        "artifacts_or_instabilities": [
+            "temporal flickering of object boundaries",
+            "geometric distortion in perspective rendering",
+            "loss of sharpness in static elements over time"
+        ]
+    }
+}

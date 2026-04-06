@@ -1,0 +1,90 @@
+{
+    "video_id": "34",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/34.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a curved road with slight rightward drift.",
+        "main_object_trajectory_trend": "Red boxes indicate vehicles ahead moving in the same direction; trajectory lines show smooth forward progression."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A multi-lane urban road surrounded by trees and modern buildings. The scene includes parked cars on the right side, road markings, curbs, and distant traffic signals or signs.",
+            "key_objects": [
+                "parked black SUV",
+                "white van",
+                "distant vehicle",
+                "trees",
+                "buildings"
+            ],
+            "traffic_elements": [
+                "lane lines",
+                "curb",
+                "road edge",
+                "grass verge"
+            ],
+            "visibility_notes": "All objects are clearly visible with natural lighting and no occlusion issues."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward motion of ego vehicle; static objects remain stable in position relative to camera frame.",
+            "object_continuity": "Vehicles maintain consistent appearance and position over time without sudden jumps or disappearances.",
+            "structure_continuity": "Road geometry and surrounding structures remain continuous and coherent throughout the sequence."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily along the lane, following the curve of the road.",
+            "risk_context": "No immediate hazards detected; environment appears calm with no conflicting traffic or pedestrians."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban road layout with trees, buildings, and parked vehicles. However, some elements appear slightly distorted or less defined compared to Row 1.",
+            "key_objects": [
+                "parked black SUV (slightly blurred)",
+                "white van (less distinct)",
+                "trees",
+                "buildings"
+            ],
+            "traffic_elements": [
+                "faint lane lines",
+                "curb (partially obscured)"
+            ],
+            "visibility_notes": "Some objects show reduced clarity; minor artifacts present around vehicle edges and background details."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion is preserved but exhibits slight jittering or instability in object boundaries.",
+            "object_continuity": "Most objects persist across frames, though some exhibit subtle flickering or morphing effects.",
+            "structure_continuity": "Overall structure remains intact, but minor warping occurs near road edges and building facades."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle moves forward similarly to Row 1, maintaining lane alignment despite minor visual distortions.",
+            "risk_context": "No clear risk indicators; however, reduced visual fidelity may impact downstream perception reliability."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "road layout",
+            "vehicle positions",
+            "tree placement",
+            "building silhouettes"
+        ],
+        "missing_or_weakened_elements": [
+            "sharpness of lane markings",
+            "clarity of distant signage",
+            "edge definition of parked vehicles"
+        ],
+        "newly_introduced_elements": [
+            "minor ghosting artifacts around vehicle contours",
+            "slight color bleeding in foliage areas"
+        ],
+        "artifacts_or_instabilities": [
+            "temporal flicker in object boundaries",
+            "softening of fine textures",
+            "subtle geometric distortion near road curves"
+        ]
+    }
+}

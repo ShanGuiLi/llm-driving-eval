@@ -1,0 +1,90 @@
+{
+    "video_id": "81",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/81.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a city street with slight rightward drift or lane change indicated by trajectory lines.",
+        "main_object_trajectory_trend": "A USPS truck is visible on the left; its bounding box suggests it is stationary or moving slowly relative to the ego vehicle. Other vehicles are parked or moving in adjacent lanes."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene on an overcast day. The road is wet, indicating recent rain. A white USPS delivery truck is prominent on the left side of the frame. Parked cars line the right curb. Buildings and storefronts (e.g., 'BISTRO & GRILL') are visible in the background.",
+            "key_objects": [
+                "USPS Truck",
+                "Parked SUVs",
+                "Silver Pickup Truck",
+                "Buildings",
+                "Street Signs"
+            ],
+            "traffic_elements": [
+                "Lane markings",
+                "Crosswalk",
+                "Traffic lights",
+                "Sidewalks"
+            ],
+            "visibility_notes": "Visibility is moderate due to weather conditions but key objects are clearly distinguishable."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "The camera moves forward smoothly. Objects maintain consistent relative positions as expected during forward motion. No sudden jumps or disappearances occur.",
+            "object_continuity": "The USPS truck remains visible throughout the sequence, maintaining its position relative to the road edge. Parked cars remain static.",
+            "structure_continuity": "Road geometry, building facades, and infrastructure elements remain stable and continuous without warping or flickering."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle proceeds forward steadily along the lane, passing the parked USPS truck on the left.",
+            "risk_context": "No immediate hazards are visible. The wet road surface may require caution, but no active conflict or emergency maneuver is apparent."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street scene with wet pavement and overcast sky. A white USPS truck is present on the left. Buildings and parked cars are visible.",
+            "key_objects": [
+                "USPS Truck",
+                "Parked SUVs",
+                "Silver Pickup Truck",
+                "Buildings"
+            ],
+            "traffic_elements": [
+                "Lane markings",
+                "Crosswalk",
+                "Traffic lights"
+            ],
+            "visibility_notes": "Objects are generally recognizable but exhibit some blurring and texture degradation compared to Row 1. The silver pickup truck on the far right appears slightly distorted."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion is simulated, but there is noticeable instability in object boundaries and textures. Some frames show slight warping or ghosting around vehicle edges.",
+            "object_continuity": "The USPS truck and other vehicles persist through the sequence, though their shapes fluctuate slightly between frames, suggesting generation artifacts rather than true physical continuity.",
+            "structure_continuity": "Building lines and road structures remain largely intact but show minor undulations and softening of sharp edges, particularly near the horizon and distant objects."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle appears to move forward similarly to Row 1, maintaining a comparable path and speed.",
+            "risk_context": "No clear risk interactions are depicted. However, reduced visual clarity due to artifacts may obscure potential hazards that would be visible in the real reference."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "USPS Truck",
+            "Parked vehicles",
+            "Building facades",
+            "Road layout",
+            "Weather conditions"
+        ],
+        "missing_or_weakened_elements": [
+            "Sharpness of text on signs",
+            "Detail in vehicle grilles and windows",
+            "Clarity of distant traffic signals"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "Texture blurring on vehicles",
+            "Slight warping of vertical structures",
+            "Ghosting effects around moving objects",
+            "Reduced contrast in shadowed areas"
+        ]
+    }
+}

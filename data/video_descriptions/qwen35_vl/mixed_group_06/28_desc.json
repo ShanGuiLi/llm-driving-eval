@@ -1,0 +1,93 @@
+{
+    "video_id": "28",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/28.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a straight road with slight rightward drift or lane change indicated by trajectory lines.",
+        "main_object_trajectory_trend": "A white vehicle ahead maintains forward trajectory; pedestrians on the left sidewalk appear stationary or moving slowly parallel to the road."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Daytime urban road scene with covered bus stops on both sides, trees lining the road, and a white van driving ahead in the same lane. Road markings include yellow center lines and dashed white lane dividers.",
+            "key_objects": [
+                "white van",
+                "pedestrians near bus stop (left)",
+                "covered bus shelters",
+                "trees",
+                "road signs"
+            ],
+            "traffic_elements": [
+                "yellow double line",
+                "dashed white lane lines",
+                "curbs",
+                "bus stop structures",
+                "traffic light pole (distant)"
+            ],
+            "visibility_notes": "All key objects are clearly visible with natural lighting and sharp detail. No occlusions obscure critical elements."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward progression of ego vehicle; white van moves steadily ahead without abrupt changes. Pedestrians remain consistently positioned relative to the bus stop structure.",
+            "object_continuity": "White van remains continuously visible throughout frames. Pedestrians do not disappear or teleport. Bus shelter structures maintain stable geometry.",
+            "structure_continuity": "Road layout, curbs, and overhead shelter supports show no warping or discontinuity across frames."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily within its lane, maintaining safe distance from the white van ahead.",
+            "risk_context": "No immediate hazards detected. Scene is calm with no crossing traffic, sudden pedestrian movements, or signal conflicts requiring intervention."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban road scene with covered bus stops, trees, and a white van ahead. However, visual fidelity is reduced compared to Row 1, with some blurring and loss of fine texture detail.",
+            "key_objects": [
+                "white van (slightly blurred)",
+                "pedestrians near bus stop (less distinct)",
+                "covered bus shelters (simplified geometry)",
+                "trees (reduced leaf detail)"
+            ],
+            "traffic_elements": [
+                "yellow double line (faintly rendered)",
+                "dashed white lane lines (partially obscured)",
+                "curbs (less defined edges)",
+                "bus stop structures (simplified form)"
+            ],
+            "visibility_notes": "Key objects are present but less sharply defined. Some textures and small details (e.g., signage, pavement cracks) are lost or smoothed out."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion appears smooth overall, but minor flickering or jitter may be present in static elements like tree branches or shelter edges. White van movement is consistent but slightly less fluid than Row 1.",
+            "object_continuity": "White van remains visible throughout. Pedestrians persist but exhibit slight positional instability or blending artifacts in some frames. Shelter structures occasionally show minor shape deformation.",
+            "structure_continuity": "Road geometry largely preserved, but edge definitions (curbs, lane lines) show occasional softening or misalignment between frames."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily, mirroring Row 1’s trajectory. Lane position appears stable despite minor rendering inconsistencies.",
+            "risk_context": "No clear emergency maneuver required. Reduced visual clarity may marginally affect perception reliability, but no overt risk indicators are present."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "road layout and lane markings",
+            "presence of white van and pedestrians",
+            "bus shelter structures",
+            "tree-lined roadside",
+            "overall forward motion trend"
+        ],
+        "missing_or_weakened_elements": [
+            "fine texture details (pavement, foliage)",
+            "sharpness of traffic signs and poles",
+            "clarity of pedestrian features",
+            "precision of curb and line edges"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "minor flickering in static structures",
+            "blurring of distant objects",
+            "slight geometric distortion in shelter outlines",
+            "reduced contrast in shadowed areas"
+        ]
+    }
+}

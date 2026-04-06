@@ -1,0 +1,98 @@
+{
+    "video_id": "33",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/33.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a straight road with slight rightward drift or lane change indicated by trajectory lines.",
+        "main_object_trajectory_trend": "Static objects (buildings, parked cars) show consistent depth; moving vehicles follow expected paths relative to ego."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene under clear daylight. Road has multiple lanes, crosswalks, curbs, and traffic markings. Buildings line both sides. Vehicles include trucks, SUVs, and sedans in motion or parked.",
+            "key_objects": [
+                "black pickup truck on left",
+                "white box truck ahead",
+                "silver SUV at intersection",
+                "parked white vans",
+                "streetlights",
+                "traffic signs",
+                "fence on right"
+            ],
+            "traffic_elements": [
+                "crosswalk stripes",
+                "lane dividers",
+                "stop lines",
+                "curb edges",
+                "roadside barriers"
+            ],
+            "visibility_notes": "All elements clearly visible with natural lighting and shadows. No occlusions obscure critical traffic features."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward progression of ego vehicle. Objects move naturally with perspective changes. No sudden jumps or disappearances.",
+            "object_continuity": "Vehicles maintain consistent size and position over time. Pedestrians (if any) would be continuous — none observed here.",
+            "structure_continuity": "Road geometry, building facades, and infrastructure remain stable and coherent across frames."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle moves forward steadily, maintaining lane position. Slight adjustment toward right side may indicate lane following or avoidance.",
+            "risk_context": "No immediate hazards detected. Traffic flow appears orderly. Crosswalk is clear. No yielding or braking required based on visible context."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street layout but with noticeable artifacts. Road structure preserved but some details blurred or distorted. Vehicles present but less defined.",
+            "key_objects": [
+                "black pickup truck (left) - slightly warped",
+                "white box truck - reduced detail",
+                "silver SUV - partially obscured or merged",
+                "parked vans - less distinct",
+                "streetlights - fainter",
+                "fence on right - inconsistent texture"
+            ],
+            "traffic_elements": [
+                "crosswalk stripes - faded or misaligned",
+                "lane dividers - sometimes broken or shifted",
+                "curb edges - occasionally wavy or missing segments"
+            ],
+            "visibility_notes": "Overall scene recognizable but suffers from blurring, edge distortion, and occasional object merging. Some elements appear duplicated or smeared."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion generally smooth but exhibits minor flickering in object boundaries. Some vehicles show slight positional jitter between frames.",
+            "object_continuity": "Most objects persist across frames but with degraded definition. Occasional ghosting or partial disappearance near frame transitions.",
+            "structure_continuity": "Road and building structures mostly continuous but exhibit subtle warping or stretching, especially near periphery."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward with similar trajectory as Row 1. Minor lateral adjustments still visible but less precise.",
+            "risk_context": "Reduced clarity of traffic elements may impair downstream decision-making. No overt risk indicators, but scene ambiguity increases uncertainty."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "general road layout",
+            "vehicle presence and approximate positions",
+            "building silhouettes",
+            "direction of travel"
+        ],
+        "missing_or_weakened_elements": [
+            "sharpness of lane markings",
+            "clarity of vehicle details",
+            "definition of curb and fence textures",
+            "contrast of traffic signs"
+        ],
+        "newly_introduced_elements": [
+            "ghosting artifacts around moving vehicles",
+            "warping distortions at image edges",
+            "blurred transitions between static and dynamic objects"
+        ],
+        "artifacts_or_instabilities": [
+            "temporal flickering in object outlines",
+            "spatial warping of linear structures",
+            "reduced fidelity in small-scale features like poles and signage"
+        ]
+    }
+}

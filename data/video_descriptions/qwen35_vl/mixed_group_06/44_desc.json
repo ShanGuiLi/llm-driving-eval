@@ -1,0 +1,83 @@
+{
+    "video_id": "44",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/44.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "The ego vehicle is moving forward along a curved road to the right.",
+        "main_object_trajectory_trend": "A large red box indicates a nearby object (likely a bus or truck) on the left side of the ego path, with trajectories suggesting it is either stationary or moving slowly relative to the ego vehicle."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Nighttime driving scene on a wet road. The view includes a multi-lane road curving slightly to the right, streetlights illuminating the pavement, and roadside vegetation.",
+            "key_objects": [
+                "Distant vehicles with headlights visible in the distance",
+                "Streetlights",
+                "Roadside trees and bushes"
+            ],
+            "traffic_elements": [
+                "Lane markings (white lines)",
+                "Curb on the left",
+                "Wet road surface reflecting lights"
+            ],
+            "visibility_notes": "Visibility is moderate due to night conditions and rain, but key road features are discernible."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "The camera moves forward smoothly along the road curve. Light reflections on the wet road shift consistently with motion.",
+            "object_continuity": "Distant vehicles remain visible and maintain consistent relative positions as the ego vehicle approaches.",
+            "structure_continuity": "Road boundaries and lane lines appear continuous without sudden breaks or warping."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily, following the road curvature.",
+            "risk_context": "No immediate risk is visible; the road ahead appears clear except for distant traffic."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Nighttime driving scene similar to Row 1, showing a wet road curving right with streetlights and vegetation.",
+            "key_objects": [
+                "Distant vehicles with headlights",
+                "Streetlights",
+                "Roadside structures"
+            ],
+            "traffic_elements": [
+                "Lane markings",
+                "Curb",
+                "Wet road surface"
+            ],
+            "visibility_notes": "Image quality is lower than Row 1, with noticeable blur and reduced contrast. Some details are less distinct."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion is present but appears slightly jittery or less smooth compared to Row 1. Lighting flickers slightly.",
+            "object_continuity": "Distant objects are present but occasionally exhibit slight positional instability or blurring artifacts.",
+            "structure_continuity": "Road structure remains generally consistent, though edges and lane lines show some softness or minor distortion."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle appears to move forward along the curve, consistent with Row 1.",
+            "risk_context": "Scene readability is reduced due to blur and artifacts, which may affect downstream decision interpretation, but no explicit risky interaction is visible."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "Road layout and curvature",
+            "Presence of streetlights and distant vehicles",
+            "General wet road appearance"
+        ],
+        "missing_or_weakened_elements": [
+            "Sharpness of lane markings",
+            "Clarity of roadside details",
+            "Consistency of light reflections"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "Increased blur in Row 3",
+            "Slight flickering of lights in Row 3",
+            "Reduced contrast and detail in generated video"
+        ]
+    }
+}

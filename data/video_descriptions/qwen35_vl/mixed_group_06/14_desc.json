@@ -1,0 +1,85 @@
+{
+    "video_id": "14",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/14.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a multi-lane road with slight rightward drift or lane change.",
+        "main_object_trajectory_trend": "Multiple vehicles ahead moving in the same direction; red boxes indicate detected objects and their predicted paths."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Nighttime urban driving scene on a wet road with streetlights illuminating the environment. Multiple lanes of traffic are visible.",
+            "key_objects": [
+                "sedan cars",
+                "pickup truck",
+                "streetlights",
+                "trees",
+                "roadside barriers"
+            ],
+            "traffic_elements": [
+                "lane markings",
+                "curbs",
+                "parked/stopped vehicles on left",
+                "moving vehicles in adjacent lanes"
+            ],
+            "visibility_notes": "Road surface is reflective due to wet conditions. Some motion blur present on fast-moving vehicles. Lighting is adequate for scene interpretation."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Vehicles move smoothly forward; no sudden jumps or disappearances. Ego vehicle maintains steady forward progression.",
+            "object_continuity": "Objects remain consistently visible across frames unless occluded by others or exiting frame boundaries.",
+            "structure_continuity": "Road layout, curbs, and roadside structures remain stable and continuous throughout the sequence."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily within its lane, maintaining distance from surrounding traffic.",
+            "risk_context": "No immediate hazardous interactions observed. Wet road may require cautious driving but no emergency maneuver is needed."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar nighttime urban driving scene with wet roads and streetlights. Traffic composition appears comparable to Row 1.",
+            "key_objects": [
+                "sedan cars",
+                "pickup truck",
+                "streetlights",
+                "trees",
+                "roadside barriers"
+            ],
+            "traffic_elements": [
+                "lane markings",
+                "curbs",
+                "parked/stopped vehicles on left",
+                "moving vehicles in adjacent lanes"
+            ],
+            "visibility_notes": "Slight softening of edges compared to Row 1. Motion blur patterns are similar but may be slightly less defined. Overall scene clarity remains high."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Temporal flow matches Row 1 closely. Vehicle movements appear smooth without abrupt changes or flickering.",
+            "object_continuity": "All major objects persist across frames with consistent presence and positioning relative to ego vehicle.",
+            "structure_continuity": "Road geometry and environmental structures remain coherent and unchanged over time."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle proceeds forward at a steady pace, mirroring behavior seen in Row 1.",
+            "risk_context": "No new risks introduced. Scene readability supports safe navigation under current conditions."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "vehicle types and positions",
+            "road structure and lane layout",
+            "lighting conditions and reflections",
+            "temporal motion patterns"
+        ],
+        "missing_or_weakened_elements": [],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "slightly reduced edge sharpness in generated video",
+            "minor smoothing of motion blur effects"
+        ]
+    }
+}

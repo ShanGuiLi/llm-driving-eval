@@ -1,0 +1,88 @@
+{
+    "video_id": "51",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/51.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a curved road with slight rightward drift.",
+        "main_object_trajectory_trend": "Red boxes indicate detected vehicles ahead; trajectories show forward motion consistent with ego vehicle path."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban road scene with trees lining both sides, modern buildings on the right, and a clear asphalt road. A white car is visible ahead in the same lane.",
+            "key_objects": [
+                "white car ahead",
+                "trees",
+                "buildings",
+                "road curbs"
+            ],
+            "traffic_elements": [
+                "lane markings (faint)",
+                "curb edges",
+                "no traffic lights or signs visible"
+            ],
+            "visibility_notes": "All objects are clearly visible with natural lighting and no occlusions affecting key elements."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward motion; vehicle ahead maintains consistent distance and trajectory. No sudden jumps or disappearances.",
+            "object_continuity": "White car remains continuously visible throughout frames without abrupt changes.",
+            "structure_continuity": "Road structure, tree positions, and building facades remain stable and coherent across frames."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily along the curved road.",
+            "risk_context": "No immediate hazards; safe following distance maintained to vehicle ahead."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban road layout with trees and buildings, but visual fidelity is reduced. The white car ahead appears distorted or partially missing in some frames.",
+            "key_objects": [
+                "distorted/missing white car",
+                "trees",
+                "buildings",
+                "road curbs"
+            ],
+            "traffic_elements": [
+                "lane markings less distinct",
+                "curb edges present but blurred"
+            ],
+            "visibility_notes": "Key object (white car) suffers from generation artifacts — sometimes fragmented, ghosted, or absent. Road texture appears smeared."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion appears generally smooth but exhibits flickering around the white car and roadside elements. Some frames show unnatural warping near building edges.",
+            "object_continuity": "White car intermittently disappears or morphs between frames, indicating poor temporal coherence for dynamic objects.",
+            "structure_continuity": "Static structures (trees, buildings) remain mostly continuous but show minor drifting and blurring over time."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle appears to continue forward, though motion may be slightly unstable due to rendering artifacts.",
+            "risk_context": "Reduced clarity of leading vehicle may impair downstream decision-making if used for planning; no explicit collision risk visible."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "road layout",
+            "tree alignment",
+            "building presence",
+            "general forward motion"
+        ],
+        "missing_or_weakened_elements": [
+            "clear definition of white car",
+            "sharpness of lane markings",
+            "texture detail on surfaces"
+        ],
+        "newly_introduced_elements": [
+            "ghosting artifacts around moving objects",
+            "smearing effects on static structures"
+        ],
+        "artifacts_or_instabilities": [
+            "temporal inconsistency of white car",
+            "flickering at object boundaries",
+            "slight structural drift in background"
+        ]
+    }
+}

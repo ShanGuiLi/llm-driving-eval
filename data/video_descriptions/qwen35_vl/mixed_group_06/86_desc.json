@@ -1,0 +1,99 @@
+{
+    "video_id": "86",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/86.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward movement along a curved road path with slight rightward drift.",
+        "main_object_trajectory_trend": "A white car ahead maintains forward trajectory; pedestrians on the sidewalk remain relatively static."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban environment with multi-lane road, guard booths, barriers, trees, and buildings. A white sedan is visible ahead under an overpass.",
+            "key_objects": [
+                "white sedan",
+                "pedestrians (two individuals)",
+                "guard booth",
+                "barriers",
+                "trees",
+                "buildings"
+            ],
+            "traffic_elements": [
+                "road markings",
+                "curbs",
+                "barrier gates",
+                "overpass structure"
+            ],
+            "visibility_notes": "All objects are clearly visible with natural lighting and sharp detail. No occlusions obscure critical elements."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward motion of ego vehicle; white car ahead moves consistently without abrupt changes. Pedestrians walk steadily along sidewalk.",
+            "object_continuity": "All key objects remain continuously visible throughout frames. No sudden appearances or disappearances.",
+            "structure_continuity": "Road geometry, building facades, and overhead structures maintain consistent spatial relationships across frames."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily, following the road curve while maintaining safe distance from ahead vehicle.",
+            "risk_context": "No immediate hazards detected. Road ahead is clear except for distant white car which appears to be moving at similar speed."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban scene layout but with noticeable degradation in object clarity and texture fidelity. White sedan and pedestrians present but less defined.",
+            "key_objects": [
+                "white sedan (blurred)",
+                "pedestrians (less distinct)",
+                "guard booth (simplified)",
+                "barriers (reduced detail)",
+                "trees (less detailed)",
+                "buildings (flattened textures)"
+            ],
+            "traffic_elements": [
+                "road markings (faint)",
+                "curbs (less pronounced)",
+                "barrier gates (simplified shapes)",
+                "overpass structure (reduced depth cues)"
+            ],
+            "visibility_notes": "Objects exhibit reduced sharpness and texture detail compared to reference. Some elements appear slightly distorted or simplified."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion appears smooth but with minor jitter in object boundaries. White car movement is consistent but lacks fine-grained detail.",
+            "object_continuity": "Key objects remain present throughout sequence but show slight positional instability and boundary flickering.",
+            "structure_continuity": "Overall scene structure preserved but with subtle warping and loss of precise geometric alignment in some areas."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward with apparent steady motion, though visual artifacts may affect perception accuracy.",
+            "risk_context": "Reduced visual fidelity may impair downstream decision-making systems' ability to accurately assess distances and object states."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "overall scene layout",
+            "presence of white sedan",
+            "pedestrian locations",
+            "guard booth position",
+            "road curvature",
+            "building positions"
+        ],
+        "missing_or_weakened_elements": [
+            "fine texture details on vehicles and buildings",
+            "precise road marking visibility",
+            "sharp pedestrian features",
+            "accurate depth perception cues"
+        ],
+        "newly_introduced_elements": [
+            "minor boundary flickering around objects",
+            "slight geometric distortions in structural elements"
+        ],
+        "artifacts_or_instabilities": [
+            "reduced image sharpness",
+            "texture simplification",
+            "subtle positional jitter in dynamic objects",
+            "loss of fine detail in static structures"
+        ]
+    }
+}

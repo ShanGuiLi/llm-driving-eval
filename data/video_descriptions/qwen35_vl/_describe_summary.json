@@ -1,0 +1,8 @@
+{
+    "mode": "describe",
+    "dataset_dir": "/home/msds/ming007/llm-driving-eval/data/raw_videos",
+    "total_videos": 100,
+    "success_count": 100,
+    "fail_count": 0,
+    "model": "qwen3.5-35b-a3b"
+}

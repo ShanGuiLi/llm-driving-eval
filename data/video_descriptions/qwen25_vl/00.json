@@ -1,0 +1,70 @@
+{
+    "video_id": "00",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "The ego vehicle moves forward.",
+        "main_object_trajectory_trend": "The DHL van is moving forward."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "The scene shows a street with a pedestrian crossing, greenery, and buildings on both sides.",
+            "key_objects": [
+                "pedestrian",
+                "DHL van"
+            ],
+            "traffic_elements": [
+                "crosswalk",
+                "roadside trees"
+            ],
+            "visibility_notes": "All elements are clear and visible."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "The ego vehicle and the DHL van maintain consistent motion.",
+            "object_continuity": "The pedestrian and the DHL van remain continuously visible.",
+            "structure_continuity": "The road layout and surrounding structures are continuous."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily.",
+            "risk_context": "No clear emergency maneuver is visible."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "The scene shows a street with a pedestrian crossing, greenery, and buildings on both sides.",
+            "key_objects": [
+                "pedestrian",
+                "DHL van"
+            ],
+            "traffic_elements": [
+                "crosswalk",
+                "roadside trees"
+            ],
+            "visibility_notes": "All elements are clear and visible."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "The ego vehicle and the DHL van maintain consistent motion.",
+            "object_continuity": "The pedestrian and the DHL van remain continuously visible.",
+            "structure_continuity": "The road layout and surrounding structures are continuous."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily.",
+            "risk_context": "No clear emergency maneuver is visible."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "pedestrian",
+            "DHL van",
+            "crosswalk",
+            "roadside trees"
+        ],
+        "missing_or_weakened_elements": [],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": []
+    }
+}

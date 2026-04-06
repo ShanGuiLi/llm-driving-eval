@@ -1,0 +1,89 @@
+{
+    "video_id": "32",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/32.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "The ego vehicle appears to be moving forward along a city street, maintaining a lane position.",
+        "main_object_trajectory_trend": "A white truck is visible ahead and slightly to the right; its trajectory aligns with the road direction. A black SUV is present on the left side."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "A daytime urban street scene captured from a vehicle perspective. The view includes a multi-lane road, sidewalks, buildings, trees, and traffic infrastructure.",
+            "key_objects": [
+                "Black SUV (left)",
+                "White delivery truck (center-right)",
+                "White sedan (right background)",
+                "Pedestrians (on sidewalk)"
+            ],
+            "traffic_elements": [
+                "Traffic lights",
+                "Lane markings",
+                "Crosswalks",
+                "Street signs",
+                "Curbs"
+            ],
+            "visibility_notes": "All objects are clearly visible with natural lighting and sharp details. No occlusions obscure critical elements."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Objects move smoothly consistent with vehicle motion. No sudden jumps or disappearances occur.",
+            "object_continuity": "Vehicles and pedestrians maintain continuous presence across frames without abrupt changes in position or form.",
+            "structure_continuity": "Road geometry, building facades, and tree positions remain stable and coherent over time."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle continues forward steadily within its lane.",
+            "risk_context": "No immediate hazards are visible. Traffic flow appears orderly with no signs of conflict requiring emergency maneuvers."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "An AI-generated version of the same urban street scene. It preserves the general layout but exhibits visual artifacts and distortions.",
+            "key_objects": [
+                "Black SUV (left) - partially distorted",
+                "White delivery truck (center-right) - text and shape altered",
+                "White sedan (right background) - less defined",
+                "Pedestrians - simplified or missing detail"
+            ],
+            "traffic_elements": [
+                "Traffic lights - blurred or misaligned",
+                "Lane markings - inconsistent or broken",
+                "Crosswalks - faint or irregular",
+                "Street signs - illegible or absent"
+            ],
+            "visibility_notes": "Key objects are recognizable but suffer from blurring, warping, and loss of fine detail. Some elements appear duplicated or smeared."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Motion is generally smooth but shows minor flickering and instability in object boundaries. Textures warp slightly during movement.",
+            "object_continuity": "Most objects persist across frames, though their shapes and positions exhibit slight drift or deformation compared to reference.",
+            "structure_continuity": "Road structure remains broadly intact but suffers from local warping and inconsistency in alignment, especially near edges and distant objects."
+        },
+        "decision": {
+            "ego_behavior_description": "The ego vehicle appears to continue forward, though motion cues are less precise due to generation artifacts.",
+            "risk_context": "Scene readability is reduced by visual distortions, which may affect downstream decision interpretation. No clear emergency maneuver is visible, but confidence in hazard detection is lower."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "General road layout",
+            "Presence of main vehicles (SUV, truck, sedan)",
+            "Urban environment context (buildings, trees)"
+        ],
+        "missing_or_weakened_elements": [
+            "Clear legibility of traffic signs and signals",
+            "Precise definition of lane markings and crosswalks",
+            "Detailed appearance of pedestrians"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "Text distortion on truck",
+            "Blurring and smearing of vehicle edges",
+            "Flickering in static structures",
+            "Warping of road surface and curbs"
+        ]
+    }
+}

@@ -1,0 +1,88 @@
+{
+    "video_id": "52",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/52.mp4",
+    "mode": "video_description",
+    "layout": {
+        "rows": 3,
+        "row_1": "real_world_reference",
+        "row_2": "trajectory_auxiliary",
+        "row_3": "ai_generated_video"
+    },
+    "row2_auxiliary_summary": {
+        "ego_motion_trend": "Forward motion along a straight urban road with slight lane adjustments.",
+        "main_object_trajectory_trend": "Static objects (buildings, parked cars) remain fixed; moving vehicles follow expected paths."
+    },
+    "row1_reference_video": {
+        "semantic": {
+            "scene_summary": "Urban street scene on an overcast day with wet pavement. Multi-lane road with visible lane markings, sidewalks, buildings, trees, and parked/street vehicles.",
+            "key_objects": [
+                "white SUV (left)",
+                "silver sedan (right)",
+                "black sedan (parked right)",
+                "modern glass building (center-right)",
+                "streetlights and poles"
+            ],
+            "traffic_elements": [
+                "yellow double lines",
+                "white lane dividers",
+                "curbs",
+                "sidewalks"
+            ],
+            "visibility_notes": "Raindrops on lens reduce clarity slightly but all key elements remain identifiable."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Smooth forward progression; no sudden jumps or discontinuities in object positions or scene structure.",
+            "object_continuity": "Vehicles maintain consistent presence and relative positions; no abrupt appearances/disappearances.",
+            "structure_continuity": "Road geometry, building facades, and roadside infrastructure remain stable and continuous across frames."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle moves forward steadily within its lane, maintaining safe distance from adjacent traffic.",
+            "risk_context": "Wet road conditions may increase stopping distance, but no immediate hazards or emergency maneuvers are visible."
+        }
+    },
+    "row3_generated_video": {
+        "semantic": {
+            "scene_summary": "Similar urban street layout with wet pavement, buildings, and vehicles. Overall composition matches Row 1 but with reduced detail fidelity.",
+            "key_objects": [
+                "white SUV (left)",
+                "silver sedan (right)",
+                "black sedan (parked right)",
+                "glass building (center-right)"
+            ],
+            "traffic_elements": [
+                "lane markings present but less distinct",
+                "curbs and sidewalks visible but softer edges"
+            ],
+            "visibility_notes": "Objects appear slightly blurred or smeared; fine details like reflections, text, or small features are lost."
+        },
+        "logical": {
+            "motion_and_temporal_consistency": "Forward motion appears smooth but exhibits minor temporal flickering in texture and edge definition.",
+            "object_continuity": "Main objects persist across frames without disappearance, though their shapes occasionally warp or blur inconsistently.",
+            "structure_continuity": "Road and building structures remain generally coherent but show subtle warping or instability at boundaries."
+        },
+        "decision": {
+            "ego_behavior_description": "Ego vehicle continues forward steadily, mirroring Row 1’s trajectory.",
+            "risk_context": "Reduced visual clarity due to artifacts may impair downstream perception systems, though no explicit risk event is depicted."
+        }
+    },
+    "comparison_summary": {
+        "preserved_elements": [
+            "road layout and lane structure",
+            "position and type of major vehicles",
+            "building silhouettes and general architecture",
+            "overall direction of ego motion"
+        ],
+        "missing_or_weakened_elements": [
+            "fine surface textures (e.g., water droplets, tire tracks)",
+            "sharpness of lane markings and curb edges",
+            "detailed reflections on wet surfaces",
+            "small roadside objects (signs, benches, etc.)"
+        ],
+        "newly_introduced_elements": [],
+        "artifacts_or_instabilities": [
+            "temporal flickering in object boundaries",
+            "smearing or blurring during motion",
+            "slight geometric warping near road edges and building corners"
+        ]
+    }
+}
