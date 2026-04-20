@@ -8,15 +8,8 @@ __pycache__/
 .env
 .venv
 
-# models (非常大)
+# models
 models/
-
-# datasets
-data/raw_videos/
-data/tmp_frames/
-
-# evaluation outputs
-data/eval_results/
 
 # notebooks checkpoints
 .ipynb_checkpoints/

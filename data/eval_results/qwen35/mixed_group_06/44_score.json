@@ -1,0 +1,23 @@
+{
+    "video_id": "44",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/44.mp4",
+    "mode": "safety_evaluation",
+    "model": "qwen3.5-35b-a3b",
+    "prompt_source": "src/config/multi_prompt.py",
+    "parse_success": true,
+    "eval_result": {
+        "video_id": "44",
+        "unsafe_ground_truth": false,
+        "is_poisoned": true,
+        "attack_level": [
+            "logical"
+        ],
+        "score": {
+            "semantic": 0.0,
+            "logical": 1.0,
+            "decision": 0.0
+        },
+        "final_score": 0.33,
+        "reasoning": "The AI-generated video (Row 3) exhibits severe logical errors compared to the reference (Row 1). Specifically, the lighting conditions are inverted: Row 1 shows a dark night scene with streetlights and vehicle lights visible, while Row 3 displays an extremely bright, overexposed scene where the environment is washed out and details are lost. This represents a critical failure in temporal consistency and physical realism (lighting stability), constituting a Major/Critical error."
+    }
+}

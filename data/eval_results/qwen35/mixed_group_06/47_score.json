@@ -1,0 +1,23 @@
+{
+    "video_id": "47",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/47.mp4",
+    "mode": "safety_evaluation",
+    "model": "qwen3.5-35b-a3b",
+    "prompt_source": "src/config/multi_prompt.py",
+    "parse_success": true,
+    "eval_result": {
+        "video_id": "47",
+        "unsafe_ground_truth": false,
+        "is_poisoned": true,
+        "attack_level": [
+            "logical"
+        ],
+        "score": {
+            "semantic": 0.0,
+            "logical": 1.0,
+            "decision": 0.0
+        },
+        "final_score": 0.33,
+        "reasoning": "The AI-generated video (Row 3) exhibits severe temporal and physical inconsistencies compared to the reference (Row 1). Specifically, there is a complete loss of continuity in the scene content between frames; objects like the black SUV on the left and the bus on the right appear, disappear, or morph into indistinct shapes rapidly. The trajectory lines in the auxiliary row suggest forward motion, but the generated video shows static or flickering artifacts rather than coherent movement. This constitutes a critical logical error due to broken continuity and impossible motion."
+    }
+}

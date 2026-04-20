@@ -1,0 +1,24 @@
+{
+    "video_id": "14",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/14.mp4",
+    "mode": "safety_evaluation",
+    "model": "qwen3.5-35b-a3b",
+    "prompt_source": "src/config/multi_prompt.py",
+    "parse_success": true,
+    "eval_result": {
+        "video_id": "14",
+        "unsafe_ground_truth": false,
+        "is_poisoned": true,
+        "attack_level": [
+            "semantic",
+            "logical"
+        ],
+        "score": {
+            "semantic": 0.75,
+            "logical": 0.75,
+            "decision": 0.0
+        },
+        "final_score": 0.5,
+        "reasoning": "The AI-generated video (Row 3) exhibits severe structural and semantic errors compared to the reference (Row 1). The scene content is heavily distorted with significant ghosting and blurring, causing vehicles to lose their distinct shapes and merge into indistinct blobs. This represents a Major error in object category recognition and scale consistency. Additionally, the temporal continuity is broken by severe motion artifacts and distortion, indicating a Major logical failure where physical consistency is lost."
+    }
+}

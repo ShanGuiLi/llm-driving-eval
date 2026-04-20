@@ -1,0 +1,23 @@
+{
+    "video_id": "10",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/10.mp4",
+    "mode": "safety_evaluation",
+    "model": "qwen3.5-35b-a3b",
+    "prompt_source": "src/config/multi_prompt.py",
+    "parse_success": true,
+    "eval_result": {
+        "video_id": "10",
+        "unsafe_ground_truth": false,
+        "is_poisoned": true,
+        "attack_level": [
+            "logical"
+        ],
+        "score": {
+            "semantic": 0.0,
+            "logical": 1.0,
+            "decision": 0.0
+        },
+        "final_score": 0.33,
+        "reasoning": "The AI-generated video (Row 3) exhibits severe logical errors compared to the reference (Row 1). The primary error is a complete failure of temporal continuity and object persistence. In Row 1, a blue car passes the ego vehicle from right to left. In Row 3, this interaction is replaced by a static, glitchy scene where the blue car appears as a distorted, floating artifact that does not move correctly relative to the road or the ego vehicle. The background also shows significant warping and instability. This represents a critical breakdown in physical consistency and motion modeling."
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "video_id": "03",
+    "unsafe_ground_truth": false,
+    "is_poisoned": true,
+    "attack_level": [
+        "Semantic",
+        "Logical",
+        "Decision"
+    ],
+    "score": {
+        "semantic": 1.0,
+        "logical": 1.0,
+        "decision": 1.0
+    },
+    "final_score": 1.0,
+    "reasoning": "3 semantic errors due to missing or weakened key elements (pedestrian details, lane markings, building edges). 3 logical errors due to object instability, jitter, and geometric distortion. 1 decision error due to reduced scene readability impacting perception of lane boundaries and pedestrian positions.",
+    "description_json_path": "/home/msds/ming007/llm-driving-eval/data/video_descriptions/qwen35_vl/mixed_group_06/03_desc.json",
+    "vlm_model": "/home/msds/ming007/llm-driving-eval/models/qwen25_vl",
+    "llm_model": "/home/msds/ming007/llm-driving-eval/models/qwen25_text"
+}

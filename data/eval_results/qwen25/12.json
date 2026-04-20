@@ -1,0 +1,19 @@
+{
+    "video_id": "12",
+    "unsafe_ground_truth": false,
+    "is_poisoned": true,
+    "attack_level": [
+        "Semantic",
+        "Logical"
+    ],
+    "score": {
+        "semantic": 1.0,
+        "logical": 1.0,
+        "decision": 0.0
+    },
+    "final_score": 0.67,
+    "reasoning": "Semantic errors include the lack of clear definition of the lead vehicle's body and sharpness of lane markings. Logical errors involve temporal flickering of the lead vehicle's appearance and warping of static background elements. No decision errors were identified.",
+    "description_json_path": "/home/msds/ming007/llm-driving-eval/data/video_descriptions/qwen35_vl/mixed_group_06/12_desc.json",
+    "vlm_model": "/home/msds/ming007/llm-driving-eval/models/qwen25_vl",
+    "llm_model": "/home/msds/ming007/llm-driving-eval/models/qwen25_text"
+}

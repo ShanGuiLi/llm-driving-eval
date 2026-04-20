@@ -24,7 +24,7 @@ MODE_DESCRIBE = "describe"
 MODE_SCORE = "score"
 
 # 当前运行模式
-CURRENT_MODE = MODE_DESCRIBE
+CURRENT_MODE = MODE_SCORE
 
 # 数据集目录
 RAW_VIDEO_DIR = os.path.join(PROJECT_ROOT, "data", "raw_videos")

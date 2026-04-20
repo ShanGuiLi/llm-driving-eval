@@ -1,0 +1,19 @@
+{
+    "video_id": "57",
+    "unsafe_ground_truth": false,
+    "is_poisoned": false,
+    "attack_level": [
+        "Semantic",
+        "Logical"
+    ],
+    "score": {
+        "semantic": 0.5,
+        "logical": 0.5,
+        "decision": 0.0
+    },
+    "final_score": 0.33,
+    "reasoning": "1 semantic error event due to weakened lane markings and parked vehicles clarity. 1 logical error event due to blurring of object edges and temporal flickering in road textures. No decision errors.",
+    "description_json_path": "/home/msds/ming007/llm-driving-eval/data/video_descriptions/qwen35_vl/mixed_group_06/57_desc.json",
+    "vlm_model": "/home/msds/ming007/llm-driving-eval/models/qwen25_vl",
+    "llm_model": "/home/msds/ming007/llm-driving-eval/models/qwen25_text"
+}

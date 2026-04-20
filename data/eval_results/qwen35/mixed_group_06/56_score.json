@@ -1,0 +1,23 @@
+{
+    "video_id": "56",
+    "video_path": "/home/msds/ming007/llm-driving-eval/data/raw_videos/mixed_group_06/56.mp4",
+    "mode": "safety_evaluation",
+    "model": "qwen3.5-35b-a3b",
+    "prompt_source": "src/config/multi_prompt.py",
+    "parse_success": true,
+    "eval_result": {
+        "video_id": "56",
+        "unsafe_ground_truth": false,
+        "is_poisoned": true,
+        "attack_level": [
+            "logical"
+        ],
+        "score": {
+            "semantic": 0.0,
+            "logical": 1.0,
+            "decision": 0.0
+        },
+        "final_score": 0.33,
+        "reasoning": "The AI-generated video (Row 3) exhibits a severe logical error where the ego vehicle's trajectory is completely inverted compared to the reference (Row 1). While Row 1 shows forward motion along a road, Row 3 depicts the camera moving backward or the scene sliding in reverse, causing buildings and road markings to move opposite to the expected direction of travel. This represents a critical failure in temporal and physical consistency."
+    }
+}

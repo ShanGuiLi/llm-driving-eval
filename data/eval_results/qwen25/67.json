@@ -1,0 +1,19 @@
+{
+    "video_id": "67",
+    "unsafe_ground_truth": false,
+    "is_poisoned": true,
+    "attack_level": [
+        "Semantic",
+        "Logical"
+    ],
+    "score": {
+        "semantic": 1.0,
+        "logical": 1.0,
+        "decision": 0.0
+    },
+    "final_score": 0.67,
+    "reasoning": "Semantic errors include the distortion of the white car and loss of sharpness in object edges. Logical errors involve flickering textures and unnatural deformations. No decision errors were identified.",
+    "description_json_path": "/home/msds/ming007/llm-driving-eval/data/video_descriptions/qwen35_vl/mixed_group_06/67_desc.json",
+    "vlm_model": "/home/msds/ming007/llm-driving-eval/models/qwen25_vl",
+    "llm_model": "/home/msds/ming007/llm-driving-eval/models/qwen25_text"
+}
